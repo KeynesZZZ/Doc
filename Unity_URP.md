@@ -79,171 +79,189 @@ GI有几种方法，比如烘烤/动态光照图 、辐照度体积、光传播�
 
 ### 代码
 
-- **RenderPipelineManager**
+##### **RenderPipelineManager**
 
-  ```c#
-  DoRenderLoop_Internal(){……}//当前的pipeline.Render()
-  ```
+```c#
+DoRenderLoop_Internal(){……}//当前的pipeline.Render()
+```
 
-- **UniversalRenderPipeline**（**RenderPipeline**）
+##### **UniversalRenderPipeline**（**RenderPipeline**）
 
-  ```C#
-  /*
-  		Culing:	context.Cull
-  		Rendeing:
-  						renderer.Setup(context, ref renderingData);
-      				renderer.Execute(context, ref renderingData);
-  */
-  Render(ScriptableRenderContext renderContext, List<Camera> cameras)
-  {
-      ……
-      //根据相机的depath 排序
-      SortCameras(cameras);
-      //渲染CameraStack中camera,对所有相机 RenderSingleCamera
-      RenderCameraStack(ScriptableRenderContext context, Camera baseCamera)
-  }
+```C#
+/*
+		Culing:	context.Cull
+		Rendeing:
+						renderer.Setup(context, ref renderingData);
+    				renderer.Execute(context, ref renderingData);
+*/
+Render(ScriptableRenderContext renderContext, List<Camera> cameras)
+{
+    ……
+    //根据相机的depath 排序
+    SortCameras(cameras);
+    //渲染CameraStack中camera,对所有相机 RenderSingleCamera
+    RenderCameraStack(ScriptableRenderContext context, Camera baseCamera)
+}
+
+//剪裁、设置、执行渲染
+RenderSingleCamera(ScriptableRenderContext context, Camera camera)
+{
+    Camera camera = cameraData.camera;
+  	//renderer is ScriptableRenderer
+    var renderer = cameraData.renderer;
+    //省略部分代码
+    CommandBuffer cmd = CommandBufferPool.Get();
+	  //设置剪裁参数
+    renderer.SetupCullingParameters(ref cullingParameters, ref cameraData);
+    //提交执行渲染命令
+    context.ExecuteCommandBuffer(cmd); 
+    //进行裁剪
+    var cullResults = context.Cull(ref cullingParameters);
+    //对lighting,shadows,postprocessing 设置
+    InitializeRenderingData(asset, ref cameraData, ref cullResults, anyPostProcessingEnabled, out var 		  renderingData);
+    //每帧执行，设置渲染参数 
+    renderer.Setup(context, ref renderingData);
+    //执行渲染
+    renderer.Execute(context, ref renderingData);
+    CleanupLightData(ref renderingData.lightData);
+   // Sends to ScriptableRenderContext all the commands enqueued since cmd.Clear, i.e the "EndSample" command
+    context.ExecuteCommandBuffer(cmd); 
+    CommandBufferPool.Release(cmd);
+    context.Submit();
+}
+
+
+```
+
+##### **ScriptableRenderer**
+
+​     
+
+```c#
+//执行渲染 
+public void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
+{
+	//pass.OnCameraSetup(cmd, ref renderingData);
+  //在渲染camera之前执行，
+  InternalStartRendering(context, ref renderingData);
+  //重置每个相机着色器的关键字
+  //省略代码
+	//对pass 进行排序
+  SortStable(m_ActiveRenderPassQueue);
   
-  //剪裁、设置、执行渲染
-  RenderSingleCamera(ScriptableRenderContext context, Camera camera)
-  {
-      Camera camera = cameraData.camera;
-    	//renderer is ScriptableRenderer
-      var renderer = cameraData.renderer;
-      //省略部分代码
-      CommandBuffer cmd = CommandBufferPool.Get();
-  	  //设置剪裁参数
-      renderer.SetupCullingParameters(ref cullingParameters, ref cameraData);
-      //提交执行渲染命令
-      context.ExecuteCommandBuffer(cmd); 
-      //进行裁剪
-      var cullResults = context.Cull(ref cullingParameters);
-      //对lighting,shadows,postprocessing 设置
-      InitializeRenderingData(asset, ref cameraData, ref cullResults, anyPostProcessingEnabled, out var 		  renderingData);
-      //每帧执行，设置渲染参数 
-      renderer.Setup(context, ref renderingData);
-      //执行渲染
-      renderer.Execute(context, ref renderingData);
-      CleanupLightData(ref renderingData.lightData);
-     // Sends to ScriptableRenderContext all the commands enqueued since cmd.Clear, i.e the "EndSample" command
-      context.ExecuteCommandBuffer(cmd); 
-      CommandBufferPool.Release(cmd);
-      context.Submit();
-  }
-  
-  
-  ```
+   //依据 RenderPassEvent 进行pass数据整理
+   using var renderBlocks = new RenderBlocks(m_ActiveRenderPassQueue);
+   //设置光照参数
+   SetupLights(context, ref renderingData);
+   //省略
 
-- **ScriptableRenderer**
-
-  ​     
-
-  ```c#
-  //执行渲染 
-  public void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
-  {
-  	//pass.OnCameraSetup(cmd, ref renderingData);
-    //在渲染camera之前执行，
-    InternalStartRendering(context, ref renderingData);
-    //重置每个相机着色器的关键字
-    //省略代码
-  	//对pass 进行排序
-    SortStable(m_ActiveRenderPassQueue);
-    
-     //依据 RenderPassEvent 进行pass数据整理
-     using var renderBlocks = new RenderBlocks(m_ActiveRenderPassQueue);
-     //设置光照参数
-     SetupLights(context, ref renderingData);
-     //省略
-  
-     //渲染不透明 Opaque blocks...
-     if (renderBlocks.GetLength(RenderPassBlock.MainRenderingOpaque) > 0)
-     {
-        // TODO: Separate command buffers per pass break the profiling scope order/hierarchy.
-        // If a single buffer is used (passed as a param) for passes,
-        // put all of the "block" scopes back into the command buffer. (i.e. null -> cmd)
-        using var profScope = new ProfilingScope(null, Profiling.RenderBlock.mainRenderingOpaque);
-        ExecuteBlock(RenderPassBlock.MainRenderingOpaque, in renderBlocks, context, ref renderingData);
-      }
-      
-     //渲染透明Transparent blocks...
-     if (renderBlocks.GetLength(RenderPassBlock.MainRenderingTransparent) > 0)
-     {
-          using var profScope = new ProfilingScope(null, Profiling.RenderBlock.mainRenderingTransparent);
-        ExecuteBlock(RenderPassBlock.MainRenderingTransparent, in renderBlocks, context, ref renderingData);
-     } 
-     //渲染绘图发生后，例如后处理，视频播放器捕获。
-     if (renderBlocks.GetLength(RenderPassBlock.AfterRendering) > 0)
-     {
-         using var profScope = new ProfilingScope(null, Profiling.RenderBlock.afterRendering);
-         ExecuteBlock(RenderPassBlock.AfterRendering, in renderBlocks, context, ref renderingData);
-     }
-     //释放在render过程中创建的资源
-     InternalFinishRendering(context, cameraData.resolveFinalTarget);
-  
-     //提交执行渲染命令
-     context.ExecuteCommandBuffer(cmd);
-     CommandBufferPool.Release(cmd);
-   } //同一个渲染队列的pass 执行渲染
-   void ExecuteBlock(int blockIndex, in RenderBlocks renderBlocks,ScriptableRenderContext context, ref    									RenderingData renderingData, bool submit = false)
+   //渲染不透明 Opaque blocks...
+   if (renderBlocks.GetLength(RenderPassBlock.MainRenderingOpaque) > 0)
    {
-     //省略代码……
-     ExecuteRenderPass();
-   }
-   void ExecuteRenderPass(ScriptableRenderContext context, ScriptableRenderPass renderPass,ref         RenderingData renderingData)
-   {
-       //nativeRenderPass 不支持 OpenGL ES.
-       //ConfigureNativeRenderPass(cmd, renderPass, cameraData);
-       //设置参数
-     	 renderPass.Configure(cmd, cameraData.cameraTargetDescriptor);
-       //执行渲染
-     	 //ExecuteNativeRenderPass(context, renderPass, cameraData, ref renderingData);
-       renderPass.Execute(context, ref renderingData);
-   }
-  ```
-
-- **ScriptableRendererFeature**
-
-  ```C#
-  //pass的管理类 
-  public abstract class ScriptableRendererFeature : ScriptableObject, IDisposable
-  {
-    //pass初始化设置
-     public abstract void Create();
-     //主要是把pass添加到渲染的queue中
-     public abstract void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData);
+      // TODO: Separate command buffers per pass break the profiling scope order/hierarchy.
+      // If a single buffer is used (passed as a param) for passes,
+      // put all of the "block" scopes back into the command buffer. (i.e. null -> cmd)
+      using var profScope = new ProfilingScope(null, Profiling.RenderBlock.mainRenderingOpaque);
+      ExecuteBlock(RenderPassBlock.MainRenderingOpaque, in renderBlocks, context, ref renderingData);
+    }
     
-     //省略其它代码
-  }
-  ```
+   //渲染透明Transparent blocks...
+   if (renderBlocks.GetLength(RenderPassBlock.MainRenderingTransparent) > 0)
+   {
+        using var profScope = new ProfilingScope(null, Profiling.RenderBlock.mainRenderingTransparent);
+      ExecuteBlock(RenderPassBlock.MainRenderingTransparent, in renderBlocks, context, ref renderingData);
+   } 
+   //渲染绘图发生后，例如后处理，视频播放器捕获。
+   if (renderBlocks.GetLength(RenderPassBlock.AfterRendering) > 0)
+   {
+       using var profScope = new ProfilingScope(null, Profiling.RenderBlock.afterRendering);
+       ExecuteBlock(RenderPassBlock.AfterRendering, in renderBlocks, context, ref renderingData);
+   }
+   //释放在render过程中创建的资源
+   InternalFinishRendering(context, cameraData.resolveFinalTarget);
 
+   //提交执行渲染命令
+   context.ExecuteCommandBuffer(cmd);
+   CommandBufferPool.Release(cmd);
+ } //同一个渲染队列的pass 执行渲染
+ void ExecuteBlock(int blockIndex, in RenderBlocks renderBlocks,ScriptableRenderContext context, ref    									RenderingData renderingData, bool submit = false)
+ {
+   //省略代码……
+   ExecuteRenderPass();
+ }
+ void ExecuteRenderPass(ScriptableRenderContext context, ScriptableRenderPass renderPass,ref         RenderingData renderingData)
+ {
+     //nativeRenderPass 不支持 OpenGL ES.
+     //ConfigureNativeRenderPass(cmd, renderPass, cameraData);
+     //设置参数
+   	 renderPass.Configure(cmd, cameraData.cameraTargetDescriptor);
+     //执行渲染
+   	 //ExecuteNativeRenderPass(context, renderPass, cameraData, ref renderingData);
+     renderPass.Execute(context, ref renderingData);
+ }
+```
+##### **ScriptableRendererFeature**
+
+```C#
+//pass的管理类 
+public abstract class ScriptableRendererFeature : ScriptableObject, IDisposable
+{
+  //pass初始化设置
+   public abstract void Create();
+   //主要是把pass添加到渲染的queue中
+   public abstract void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData);
   
+   //省略其它代码
+}
+```
 
-- **ScriptableRenderPass**
 
-  ```c#
-  //pass 实现类
-  public abstract partial class ScriptableRenderPass
-  {
-     //为这个pass 设置渲染对象
-     public void ConfigureTarget(RenderTargetIdentifier[] colorAttachments, RenderTargetIdentifier depthAttachment){ }
-     
-     public virtual void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor){}
+
+##### **ScriptableRenderPass**
+
+```c#
+//pass 实现类
+public abstract partial class ScriptableRenderPass
+{
+   //为这个pass 设置渲染对象
+   public void ConfigureTarget(RenderTargetIdentifier[] colorAttachments, RenderTargetIdentifier depthAttachment){ }
    
-     public abstract void Execute(ScriptableRenderContext context, ref RenderingData renderingData);
-    
-     //省略其它代码
-  }
-  ```
+   public virtual void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor){}
+ 
+   public abstract void Execute(ScriptableRenderContext context, ref RenderingData renderingData);
+  
+   //省略其它代码
+}
+```
+
+##### UniversalRenderer
+
+```c#
+public sealed class UniversalRenderer : ScriptableRenderer
+{
+  
+}
+```
+
+
 
 ### Shader
 
+##### Simple Lit
+
 ```
 Simple Lit
+
+
+
+
+
+
 ```
 
-```HLSL
-Unlit
-```
+##### Unlit
+
+##### Lit
 
 ```HLSL
 Lit
