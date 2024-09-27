@@ -60,6 +60,6 @@ public partial class ECSSystem : SystemBase
 
 以下图示说明了系统的事件顺序：
 
-<figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 父系统组的 `OnUpdate` 方法触发其组内所有系统的 `OnUpdate` 方法。有关系统如何更新的更多信息，请参见 Update order of systems（系统的更新顺序）。
