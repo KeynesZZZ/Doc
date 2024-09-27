@@ -1,4 +1,4 @@
-# Page
+# Define and manage system data
 
 在定义如何构建系统级别数据时，你应该将其组织为组件级别的数据，而不是作为系统类型内的字段。
 

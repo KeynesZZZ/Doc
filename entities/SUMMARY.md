@@ -51,7 +51,7 @@
     * [系统比较](system-gai-shu/system-jie-shao/xi-tong-bi-jiao/README.md)
       * [ISystem 概述](system-gai-shu/system-jie-shao/xi-tong-bi-jiao/isystem-gai-shu.md)
       * [SystemBase 概述](system-gai-shu/system-jie-shao/xi-tong-bi-jiao/systembase-gai-shu.md)
-    * [Define and manage system data](system-gai-shu/system-jie-shao/define-and-manage-system-data.md)
+    * [Define and manage system data](system-gai-shu/system-jie-shao/page.md)
     * [System groups](system-gai-shu/system-jie-shao/system-groups.md)
     * [管理多个世界中的系统](system-gai-shu/system-jie-shao/guan-li-duo-ge-shi-jie-zhong-de-xi-tong.md)
   * [使用系统 (Working with Systems)](system-gai-shu/shi-yong-xi-tong-working-with-systems/README.md)
@@ -124,3 +124,4 @@
   * [Entities Preferences Reference](zai-bian-ji-qi-zhong-gong-zuo/entities-preferences-reference.md)
   * [Entities Project Settings Reference](zai-bian-ji-qi-zhong-gong-zuo/entities-project-settings-reference.md)
   * [Working with Authoring and Runtime Data](zai-bian-ji-qi-zhong-gong-zuo/working-with-authoring-and-runtime-data.md)
+* [内容都是通过ChatGPT 翻译，编辑器部分调试部分不做翻译](nei-rong-dou-shi-tong-guo-chatgpt-fan-yi-bian-ji-qi-bu-fen-tiao-shi-bu-fen-bu-zuo-fan-yi.md)
