@@ -8,7 +8,7 @@ description: 游戏UI系统架构设计
 unity_version: 2021.3+
 status: 待验证
 validation: Demo验证
-related: ["【教程】三消核心算法", "【笔记】UGUI深度解析", "【实战案例】游戏系统实战整合"]
+related: ["【笔记】UGUI深度解析"]
 author: llm
 ---
 
@@ -20,7 +20,7 @@ author: llm
 
 讲解游戏UI系统的架构设计，包括Canvas分层策略、UI面板管理系统、MVVM模式在UI中的应用、UI动画系统和分辨率适配方案。
 
-**相关文档**：[[【教程】三消核心算法]]、[[【笔记】UGUI深度解析]]、[[【实战案例】游戏系统实战整合]]
+**相关文档**：[[【笔记】UGUI深度解析]]
 
 ---
 

@@ -8,7 +8,7 @@ description: HybridCLR 接入与使用的高频坑：泛型 MissingMethod、AOT 
 unity_version: 2021.3+
 status: 待验证
 validation: 社区高频反馈整理
-related: ["[[【设计原理】热更新方案对比]]", "[[【教程】打包与热更新]]", "[[【笔记】热更新面试问答]]", "[[【踩坑】tolua热更新常见坑]]"]
+related: ["[[【设计原理】热更新方案对比]]", "[[【笔记】HybridCLR构建管线与Generate工具链]]", "[[【教程】打包与热更新]]", "[[【笔记】热更新面试问答]]", "[[【踩坑】tolua热更新常见坑]]"]
 author: llm
 sources:
   - "HybridCLR 官方文档 https://hybridclr.doc.code-philosophy.com/"

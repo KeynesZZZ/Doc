@@ -813,6 +813,233 @@ CPU性能排序 (从快到慢):
 
 ---
 
+## Canvas 分层架构设计（实战篇）
+
+> 基于本文测试数据，推导实际项目中的 UI 框架 Canvas 组织方式。
+
+### 核心矛盾：DrawCall 合批 vs Canvas Rebuild
+
+Canvas 是 UGUI 合批的最小单元，也是 Rebuild 的最小单元：
+
+- **Canvas 内合批**：同 Canvas、同材质、同图集的元素自动合批，可压到 1~2 个 DC
+- **Canvas 间不合批**：不同 Canvas 即使材质图集完全相同也无法合批（见测试3）
+- **Canvas 内 Rebuild 联动**：任一元素变化（位置、颜色、Text 内容），整个 Canvas 重新构建顶点/布局
+
+因此：
+- Canvas **太少** → 频繁变化的元素拖累静态元素，每帧全量 Rebuild
+- Canvas **太多** → 合批被打断，DC 线性增长（测试3：10 Canvas = 20 DC）
+
+### 按"生命周期 + 变化频率"两维度划分
+
+#### 维度一：生命周期
+
+| 类型 | 例子 | 特点 |
+|------|------|------|
+| **常驻层** | 主城HUD、战斗HUD、摇杆 | 整局游戏不销毁 |
+| **功能面板** | 背包、商店、技能、任务 | 玩家主动打开/关闭 |
+| **临时弹窗** | 确认框、Toast提示、获得奖励 | 1~3秒后自动消失 |
+| **全屏切换** | 登录→主城→战斗 | 同一时刻只显示一个 |
+
+#### 维度二：变化频率
+
+| 类型 | 例子 | 变化频率 |
+|------|------|----------|
+| **静态** | 背景框、标题文字、按钮底图 | 几乎不变 |
+| **低频动态** | 背包格子内容、技能CD数字 | 玩家操作时才变 |
+| **高频动态** | 血条、倒计时、伤害飘字、聊天 | 每帧/每秒变化 |
+
+### 推荐 Canvas 分层方案
+
+将两个维度交叉，得到 3~4 个 Canvas 层：
+
+```
+Root (Canvas + CanvasScaler + ScreenSpace-Overlay)
+│
+├── [Canvas_A] HUD层 (常驻 + 高频动态)
+│   └── 血条、倒计时、摇杆、小地图标记...
+│
+├── [Canvas_B] 功能面板层 (临时 + 低频动态)
+│   ├── 背包面板 (SetActive false/true)
+│   ├── 商店面板 (SetActive false/true)
+│   └── 技能面板 (SetActive false/true)
+│
+├── [Canvas_C] 弹窗层 (临时 + 静态)
+│   └── 确认框、Toast、奖励飘窗...
+│
+└── [Canvas_D] 全屏界面层 (互斥显示)
+    ├── 登录界面
+    ├── 加载界面
+    └── 战斗结算
+```
+
+**各层设计依据**：
+
+| Canvas 层 | 隔离理由 | 预期 DC |
+|-----------|----------|---------|
+| **HUD层** | 血条每帧变化，隔离后 Rebuild 不波及面板层 | 2~5 |
+| **面板层** | 同时存在的面板少（1~2个），共用 Canvas 可跨面板合批 | 2~4 |
+| **弹窗层** | 频繁出现/消失，整体 SetActive 不影响其他层 | 1~2 |
+| **全屏层** | 互斥显示，单独 Canvas + sortingOrder 最高 | 2~3 |
+
+### 框架核心代码
+
+#### UILayer 枚举与面板基类
+
+```csharp
+/// <summary>
+/// UI层级枚举，对应不同Canvas层
+/// </summary>
+public enum UILayer
+{
+    HUD,        // 常驻 + 高频动态
+    Panel,      // 功能面板
+    Popup,      // 临时弹窗
+    FullScreen  // 全屏互斥界面
+}
+
+/// <summary>
+/// UI面板基类，所有面板继承此类
+/// </summary>
+public abstract class UIPanelBase : MonoBehaviour
+{
+    public abstract string PanelName { get; }
+    public abstract UILayer Layer { get; }     // 声明所属Canvas层
+
+    public virtual void OnOpen() { }
+    public virtual void OnClose() { }
+    public virtual void OnRefresh() { }        // 已打开时刷新数据
+}
+```
+
+#### UIManager 面板路由
+
+```csharp
+/// <summary>
+/// UI管理器：按 UILayer 自动路由面板到对应 Canvas
+/// </summary>
+public class UIManager : MonoBehaviour
+{
+    // 四个Canvas层，Inspector 中绑定
+    [SerializeField] private Transform hudLayer;
+    [SerializeField] private Transform panelLayer;
+    [SerializeField] private Transform popupLayer;
+    [SerializeField] private Transform fullscreenLayer;
+
+    // 已实例化的面板缓存
+    private readonly Dictionary<string, UIPanelBase> panels = new();
+
+    /// <summary>
+    /// 打开面板（已存在则刷新，不存在则实例化）
+    /// </summary>
+    public T Open<T>() where T : UIPanelBase
+    {
+        var panelName = typeof(T).Name;
+
+        // 已存在：刷新并显示
+        if (panels.TryGetValue(panelName, out var exist))
+        {
+            exist.OnRefresh();
+            exist.gameObject.SetActive(true);
+            return exist as T;
+        }
+
+        // 不存在：加载预制体并挂到对应Canvas层下
+        var prefab = LoadPrefab(panelName);
+        var parent = GetLayerRoot(prefab.GetComponent<T>().Layer);
+        var panel = Instantiate(prefab, parent).GetComponent<T>();
+
+        panels[panelName] = panel;
+        panel.OnOpen();
+        return panel;
+    }
+
+    /// <summary>
+    /// 关闭面板（隐藏不销毁，复用减少GC）
+    /// </summary>
+    public void Close(string panelName)
+    {
+        if (panels.TryGetValue(panelName, out var panel))
+        {
+            panel.OnClose();
+            panel.gameObject.SetActive(false);
+        }
+    }
+
+    private Transform GetLayerRoot(UILayer layer) => layer switch
+    {
+        UILayer.HUD        => hudLayer,
+        UILayer.Panel      => panelLayer,
+        UILayer.Popup      => popupLayer,
+        UILayer.FullScreen => fullscreenLayer,
+        _                  => panelLayer
+    };
+
+    private GameObject LoadPrefab(string panelName)
+    {
+        // 实际用 Addressables / Resources 加载
+        return Resources.Load<GameObject>($"UI/{panelName}");
+    }
+}
+```
+
+### 各系统面板归属示例
+
+```
+背包系统 (InventorySystem)
+├── UIPanel: 背包主界面    → UILayer.Panel
+├── UIPanel: 物品详情弹窗  → UILayer.Popup
+└── UIPopup: 批量使用确认   → UILayer.Popup
+
+商店系统 (ShopSystem)
+├── UIPanel: 商店主界面    → UILayer.Panel
+└── UIPopup: 购买确认       → UILayer.Popup
+
+战斗系统 (BattleSystem)
+├── UIPanel: 战斗HUD       → UILayer.HUD
+├── UIPanel: 技能轮盘      → UILayer.HUD
+└── UIPanel: 战斗结算      → UILayer.FullScreen
+```
+
+**关键点**：系统不关心 Canvas，只声明自己属于哪个 `UILayer`，UIManager 统一路由。
+
+### 图集按 Canvas 层划分
+
+由于跨 Canvas 不合批，图集应跟着 Canvas 层走：
+
+| 图集 | 专用 Canvas 层 | 内容 |
+|------|---------------|------|
+| **HUD图集** | Canvas_A | 血条、技能图标、摇杆 |
+| **通用图集** | Canvas_B / Canvas_C | 按钮底图、边框、背景 |
+| **弹窗图集** | Canvas_C | 确认框、Toast 背景 |
+
+同一 Canvas 内用同一图集 = 1~2 个 DC，是最优配置。
+
+### 面板内部动静分离（可选优化）
+
+单个面板内部也可加 Sub-Canvas 做更细粒度隔离：
+
+```
+背包面板 (挂在 Canvas_B 下)
+├── ScrollView (静态 - 格子框架、背景)
+├── 详情区域 (静态 - 物品描述)
+└── [Sub-Canvas] 货币数量 (如果每帧刷新，单独隔离)
+```
+
+这是优化手段，不是初始设计。只有 Profiler 显示某面板 Rebuild 开销过大时才需要。
+
+### 设计原则速查
+
+```
+1. Canvas 按 UILayer 分层（HUD / Panel / Popup / FullScreen），不是按系统分
+2. 系统只声明 Layer，UIManager 统一路由到对应 Canvas
+3. 同层面板共用 Canvas，最大化合批
+4. 高频更新内容隔离到 HUD 层，不拖累其他层 Rebuild
+5. 图集跟着 Canvas 层走，同层同图集 = 最少 DC
+6. 面板内部 Sub-Canvas 是后期优化手段，非初始设计
+```
+
+---
+
 ## 性能预算参考
 
 ### 移动端预算

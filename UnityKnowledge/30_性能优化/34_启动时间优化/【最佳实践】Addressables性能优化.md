@@ -49,15 +49,65 @@ Unity Addressables资源管理系统的性能优化指南，涵盖异步加载�
 
 ### 1.2 性能对比
 
-| 方案 | 内存占用 | 加载时间 | 灵活性 | 推荐场景 |
+| 方案 | 首包大小 | 加载时间 | 灵活性 | 推荐场景 |
 |------|---------|---------|--------|---------|
-| Resources.Load | 低 | 快（同步阻塞） | 低 | 小型项目、原型 |
-| AssetBundle | 中 | 中（异步） | 高 | 大型项目、热更 |
-| Addressables | 中 | 中（异步） | 高 | 所有项目（推荐） |
+| Resources.Load | 大（全打入首包） | 快（同步阻塞主线程） | 低 | 小型项目、原型 |
+| AssetBundle | 小（按需下载） | 中（异步） | 高 | 大型项目、热更 |
+| Addressables | 小（按需下载） | 中（异步） | 高 | 所有项目（推荐） |
 
 ---
 
 ## 2. 异步加载优化
+
+### 2.0 初始化前提（必须）
+
+> **在使用任何 Addressables API 之前，必须确保 `Addressables.InitializeAsync()` 已完成。**
+
+首次调用 `LoadAssetAsync` 时会自动触发惰性初始化，但这可能导致不可预期的延迟。建议在启动流程中显式调用：
+
+```csharp
+/// <summary>
+/// Addressables 初始化管理器
+/// </summary>
+public class AddressablesInitializer : MonoBehaviour
+{
+    private static bool isInitialized;
+
+    /// <summary>
+    /// 确保初始化完成（可多次调用，只初始化一次）
+    /// </summary>
+    public static async Task EnsureInitialized()
+    {
+        if (isInitialized) return;
+
+        var handle = Addressables.InitializeAsync();
+        await handle.Task;
+
+        if (handle.Status == AsyncOperationStatus.Succeeded)
+        {
+            isInitialized = true;
+            Debug.Log("[Addressables] 初始化完成");
+        }
+        else
+        {
+            Debug.LogError("[Addressables] 初始化失败!");
+        }
+    }
+}
+```
+
+**初始化内容包括**：
+
+| 内容 | 说明 | 耗时 |
+|------|------|------|
+| 加载 Catalog | 资源地址映射表（address → path） | 50-200ms（取决于资源数量） |
+| 初始化 Resource Manager | 内部资源管理器 | < 10ms |
+| 检查缓存目录 | 确认本地缓存可用 | < 5ms |
+
+**注意事项**：
+- Catalog 文件随包发布（`catalog_*.json` + `.hash`），大型项目可能达到数 MB
+- Catalog 解析在主线程进行，可在 Splash Screen 或加载界面阶段完成
+- 初始化失败会导致后续所有加载 API 抛异常，必须处理失败情况
 
 ### 2.1 基础异步加载
 
@@ -190,12 +240,9 @@ public class ProgressLoader : MonoBehaviour
     {
         var handle = Addressables.LoadAssetAsync<T>(address);
 
-        // 等待加载完成，同时报告进度
-        while (!handle.IsDone)
-        {
-            onProgress?.Invoke(handle.PercentComplete);
-            await Task.Delay(16); // ~60fps
-        }
+        // 直接 await handle.Task，无需手动轮询
+        // 如需进度回调，用协程方式（见下方补充）
+        await handle.Task;
 
         onProgress?.Invoke(1f);
 
@@ -605,15 +652,16 @@ public class AddressablesMemoryMonitor : MonoBehaviour
 
     private void DrawWindow(int windowId)
     {
-        // 显示内存使用
+        // 显示内存使用（GetTotalAllocatedMemoryLong 包含托管堆 + Native 分配）
         long totalMemory = UnityEngine.Profiling.Profiler.GetTotalAllocatedMemoryLong() / 1024 / 1024;
+        long monoMemory = UnityEngine.Profiling.Profiler.GetMonoUsedSizeLong() / 1024 / 1024;
 
-        GUILayout.Label($"Managed Memory: {totalMemory}MB");
+        GUILayout.Label($"Total Allocated: {totalMemory}MB | Mono Heap: {monoMemory}MB");
 
         if (totalMemory > warningThresholdMB)
         {
             GUI.color = Color.red;
-            GUILayout.Label($"⚠ Memory exceeds threshold!");
+            GUILayout.Label($"WARNING: Memory exceeds threshold {warningThresholdMB}MB!");
             GUI.color = Color.white;
         }
 
@@ -669,6 +717,14 @@ public class AddressablesMemoryMonitor : MonoBehaviour
 
 ### 4.2 Group 配置建议
 
+**操作路径**：`Window > Asset Management > Addressables > Groups` → 选中 Group → Inspector
+
+**Compression 选项**：选中 Group → Inspector → Advanced → Bundle Compression
+
+**Bundle Mode 选项**：选中 Group → Inspector → Advanced → Bundle Mode
+
+**Build Path / Load Path**：选中 Group → Inspector → Schema > Content Packing & Loading
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │           Addressables Group 配置建议                        │
@@ -680,7 +736,7 @@ public class AddressablesMemoryMonitor : MonoBehaviour
 │  └── 适合需要快速加载的UI元素                              │
 │                                                             │
 │  3D 资源组：                                                │
-│  ├── Compression: LZ4 or LZMA (高压缩)                     │
+│  ├── Compression: LZ4 (Addressables 默认，无需选 LZMA)     │
 │  ├── Bundle Mode: Pack Separately (独立打包)               │
 │  └── 每个资源独立地址                                      │
 │                                                             │
@@ -770,11 +826,18 @@ public class RemoteAssetDownloader : MonoBehaviour
 
     /// <summary>
     /// 清理下载缓存
+    /// 注意: 清空全部缓存用 Caching.ClearCache()，不是 ClearDependencyCacheAsync
     /// </summary>
     public async Task ClearCacheAsync()
     {
-        await Addressables.ClearDependencyCacheAsync("");
-        Debug.Log("Cache cleared");
+        // 清空所有 AssetBundle 缓存
+        if (Caching.ClearCache())
+        {
+            Debug.Log("Cache cleared successfully");
+        }
+
+        // 如需按 label 清理特定资源的缓存:
+        // await Addressables.ClearDependencyCacheAsync(new List<string> { "boss_assets" }, true);
     }
 }
 ```

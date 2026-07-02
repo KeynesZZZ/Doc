@@ -8,7 +8,7 @@ description: UGUI系统源码深度解析
 unity_version: 2021.3+
 status: 待验证
 validation: 未经测试
-related: ["【教程】UI系统架构", "【实战案例】游戏系统实战整合", "【教程】三消核心算法"]
+related: ["【教程】UI系统架构"]
 author: llm
 ---
 
@@ -20,7 +20,7 @@ author: llm
 
 基于UnityCsReference源码深度分析UGUI系统内部实现，包括Canvas重构流程、Layout System布局计算、Graphic渲染管线、ClipRect裁剪机制和EventSystem事件传递链。
 
-**相关文档**：[[【教程】UI系统架构]]、[[【实战案例】游戏系统实战整合]]、[[【教程】三消核心算法]]、
+**相关文档**：[[【教程】UI系统架构]]
 
 ---
 

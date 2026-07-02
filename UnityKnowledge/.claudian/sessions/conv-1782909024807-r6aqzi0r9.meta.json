@@ -4,20 +4,20 @@
   "title": "我来帮你解答关于 HybridCLR 元数据的问题。首先让我检查项目中的相关文档。## Hyb...",
   "titleGenerationStatus": "success",
   "createdAt": 1782909024807,
-  "updatedAt": 1782909243177,
-  "lastResponseAt": 1782909243177,
+  "updatedAt": 1782920997827,
+  "lastResponseAt": 1782909653242,
   "sessionId": "4bdfe7fd-dafd-4b2a-9898-c4e1e6314669",
   "providerState": {
     "providerSessionId": "4bdfe7fd-dafd-4b2a-9898-c4e1e6314669"
   },
   "usage": {
     "model": "opus",
-    "inputTokens": 1806,
+    "inputTokens": 458,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 51712,
+    "cacheReadInputTokens": 80000,
     "contextWindow": 200000,
-    "contextTokens": 53518,
-    "percentage": 27,
+    "contextTokens": 80458,
+    "percentage": 40,
     "contextWindowIsAuthoritative": true
   }
 }

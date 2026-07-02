@@ -40,12 +40,12 @@ Unity应用启动的完整流程深度解析，涵盖Native初始化、Runtime�
 │     └─ 加载Unity核心库                                       │
 │           ↓ 约50-200ms                                      │
 │                                                             │
-│  2. Runtime初始化（.NET/Mono启动）                          │
-│     ├─ 初始化CLR运行时                                       │
-│     ├─ 加载mscorlib.dll                                     │
-│     ├─ 初始化AppDomain                                      │
-│     └─ 加载System程序集                                      │
-│           ↓ 约100-500ms                                     │
+│  2. Runtime初始化（脚本后端启动）                            │
+│     ├─ 初始化CLR/GC运行时                                    │
+│     ├─ Mono: 加载mscorlib.dll, 初始化AppDomain               │
+│     ├─ IL2CPP: 加载generated code, 初始化元数据               │
+│     └─ 加载程序集                                             │
+│           ↓ 约100-500ms (Mono) / 50-200ms (IL2CPP, AOT)     │
 │                                                             │
 │  3. Application初始化                                       │
 │     ├─ 加载PlayerSettings配置                                │
@@ -82,8 +82,8 @@ Unity应用启动的完整流程深度解析，涵盖Native初始化、Runtime�
 
 ### 2.1 Native层初始化（不可优化）
 
-**时间**：50-200ms
-**优化空间**：几乎为0
+**时间**：50-200ms（高端设备约 50ms，低端设备可达 200ms+）
+**优化空间**：极小（仅能通过 Player Settings 微调，如关闭 Splash Screen、选择 ARM64）
 
 ```
 Unity引擎启动阶段
@@ -109,15 +109,17 @@ Unity引擎启动阶段
 **优化空间**：有限
 
 ```
-.NET/Mono运行时启动
-├─ 初始化Common Language Runtime
-├─ 加载mscorlib.dll（核心类库）
-├─ 初始化AppDomain（应用程序域）
-├─ 加载System程序集
-└─ JIT编译器准备
+脚本运行时启动
+
+[Mono 后端]                    [IL2CPP 后端（移动端默认）]
+├─ 初始化 CLR                   ├─ 加载 generated C++ code
+├─ 加载 mscorlib.dll            ├─ 初始化元数据（metadata）
+├─ 初始化 AppDomain             ├─ 初始化 GC 运行时
+├─ 加载 System 程序集           ├─ 链接预编译的程序集
+└─ JIT 编译器准备               └─ （无 JIT，代码已 AOT 编译）
 
 优化方向：
-✅ 使用IL2CPP（减少Runtime初始化时间）
+✅ 使用 IL2CPP（AOT 编译，无需 JIT，提升运行时性能和安全性）
 ✅ 减少Assembly-CSharp.dll大小（剥离不用的代码）
 ✅ 使用code stripping（代码裁剪）
 
@@ -211,17 +213,22 @@ Unity应用初始化
 ### 3.1 使用Profiler分析
 
 ```
-Unity Profiler → First Frame
-├─ GPU.Renderer → 查看渲染耗时
-├─ Script.Awake → 查看Awake耗时
-├─ Script.Start → 查看Start耗时
-├─ AssetDatabase.Load → 查看资源加载耗时
-└─ Shader.Parse → 查看Shader编译耗时
+Window > Analysis > Profiler
+操作: 选择第一帧 → CPU Usage 模块 → Hierarchy 或 PlayerLoop 视图
+
+主要关注以下 Profiler 标记：
+├─ PlayerLoop > Initialization  → 引擎初始化耗时
+├─ Script.Awake / Script.OnEnable → 脚本初始化耗时
+├─ Script.Start                 → 首帧前脚本逻辑
+├─ Resources.Load / AssetBundle.LoadFromFile → 资源加载耗时
+│   (注意: AssetDatabase.Load 仅在 Editor 中出现，运行时不会显示)
+├─ Addressables.LoadAssetAsync  → Addressables 异步加载
+└─ Shader.Parse / Shader.CreateGPUProgram → Shader 编译耗时
 
 关键指标：
-- Script.Awake时间过长 → Awake中有复杂逻辑
-- AssetDatabase.Load频繁 → 资源未优化
-- Shader.Parse耗时 → Shader未缓存
+- Script.Awake 时间过长 → Awake 中有复杂逻辑
+- Resources.Load / AssetBundle.Load 频繁 → 资源未优化
+- Shader.Parse 耗时 → Shader 未预编译
 ```
 
 ---
@@ -237,9 +244,10 @@ void Awake()
     // 读取配置文件
     var config = LoadConfig();  // 可能耗时500ms+
 
-    // 加载大量资源
+    // 加载大量资源（发起异步请求但未等待完成，资源无法使用）
     for (int i = 0; i < 100; i++)
     {
+        // Resources.LoadAsync 返回 ResourceRequest，不 await/yield 的话无法获取结果
         Resources.LoadAsync<Texture>("Icon" + i);
     }
 
@@ -304,17 +312,22 @@ void Start()
 **解决方案**：异步加载
 
 ```csharp
-// ✅ 正确：异步加载
+// ✅ 正确：异步加载（逐个 yield，避免轮询两个独立请求）
 IEnumerator Start()
 {
+    // 发起异步请求
     var loadOp1 = Resources.LoadAsync<Texture2D>("BigTexture");
-    var loadOp2 = Resources.LoadAsync<Mesh>("BigMesh");
 
-    while (!loadOp1.isDone || !loadOp2.isDone)
-    {
-        UpdateProgressBar(loadOp1.progress);
-        yield return null;
-    }
+    // 逐个等待完成（ResourceRequest 可直接 yield）
+    yield return loadOp1;
+    var bigTexture = loadOp1.asset as Texture2D;
+
+    var loadOp2 = Resources.LoadAsync<Mesh>("BigMesh");
+    yield return loadOp2;
+    var bigMesh = loadOp2.asset as Mesh;
+
+    // 注意: Resources.LoadAsync 内部排队执行，同时发起多个也不会真正并行
+    // 如需并行加载，使用 Addressables
 }
 ```
 
@@ -324,13 +337,13 @@ IEnumerator Start()
 
 ### 4.1 按阶段优化
 
-| 阶段 | 耗时 | 优化空间 | 主要方法 |
+| 阶段 | 耗时（高端/低端） | 优化空间 | 主要方法 |
 |------|------|----------|----------|
-| Native初始化 | 50-200ms | 几乎无 | 升级Unity版本 |
-| Runtime初始化 | 100-500ms | 小 | 使用IL2CPP、代码裁剪 |
-| Application初始化 | 50-200ms | 中 | 简化配置、关闭不需要的模块 |
-| **首场景加载** | **1-5秒** | **大** | **异步加载、延迟初始化** |
-| 首帧渲染 | 50-300ms | 中 | Shader缓存、优化UI |
+| Native初始化 | 50ms / 200ms+ | 极小 | 升级Unity版本、关闭Splash Screen |
+| Runtime初始化 | 50ms / 500ms | 小 | IL2CPP（提升运行性能）、代码裁剪 |
+| Application初始化 | 50ms / 200ms | 中 | 简化配置、关闭不需要的Manager |
+| **首场景加载** | **0.5s / 5s+** | **大** | **异步加载、延迟初始化、精简场景** |
+| 首帧渲染 | 50ms / 300ms | 中 | Shader预编译缓存、优化UI |
 
 ### 4.2 优化优先级
 
@@ -373,6 +386,111 @@ P2（小收益）：
 | 主要瓶颈 | 首场景加载 | 首场景加载 |
 | 优化重点 | 资源优化 | 资源优化 |
 
+### 5.3 Splash Screen 阶段
+
+Splash Screen（Unity Logo 显示期间）是启动流程的重要组成部分，它覆盖了 Native 初始化到首场景加载之间的等待时间。
+
+**Splash Screen 与启动阶段的对应关系**：
+
+```
+App 进程启动
+  │
+  ├─ [系统/平台层] Android: 显示应用主题的 Launch Screen
+  │                            ↓ 约 200-500ms
+  ├─ [Unity 引擎] 显示 Unity Splash Screen
+  │                    ↓ 覆盖阶段 1-3 (Native + Runtime + Application 初始化)
+  │                    ↓ 约 500-2000ms
+  ├─ Splash Screen 结束 → 首场景开始加载
+  │
+  └─ [开发者] 加载界面 / 主菜单
+```
+
+**配置位置**：`Project Settings > Player > Splash Image`
+
+**版本差异**：
+
+| 配置项 | Unity Personal | Unity Pro |
+|--------|---------------|-----------|
+| Splash Screen 显示 | **强制显示**，不可关闭 | 可关闭或自定义 |
+| 最小显示时间 | 约 1 秒 | 无限制 |
+| 自定义 Logo | 不支持 | 支持 |
+| Splash 背景 | 可改颜色 | 完全自定义 |
+
+**优化建议**：
+
+```
+✅ Unity Pro: 关闭 Splash Screen，用自定义加载界面替代
+✅ Unity Personal: 接受 Splash Screen，在它结束后立即显示自己的加载界面
+✅ Android: 在 styles.xml 中配置 Launch Theme（系统启动画面），减少白屏时间
+✅ iOS: 配置 LaunchScreen.storyboard，减少系统白屏 → Unity Splash 之间的间隙
+```
+
+**Android Launch Theme 示例**（`res/values/styles.xml`）：
+
+```xml
+<!-- 系统启动主题: 点击图标到 Activity 创建之间显示 -->
+<style name="UnityLaunchTheme" parent="android:Theme.Light.NoTitleBar">
+    <item name="android:windowBackground">@drawable/launch_background</item>
+    <item name="android:windowFullscreen">true</item>
+</style>
+```
+
+在 `AndroidManifest.xml` 中引用：
+
+```xml
+<activity android:name="com.unity3d.player.UnityPlayerActivity"
+          android:theme="@style/UnityLaunchTheme">
+```
+
+### 5.4 Android 特有启动瓶颈
+
+Android 平台存在 iOS 没有的启动开销来源：
+
+**ART (Android Runtime) 编译开销**：
+
+```
+Android App 安装后，ART 可能需要将 DEX 编译为机器码：
+
+安装方式        | 编译模式           | 首次启动影响
+─────────────────────────────────────────────────
+Google Play    | AOT (Cloud/APK)   | 低（商店端已预编译）
+侧载安装        | dex2oat (JIT+AOT) | 高（首次启动额外 2-5 秒）
+系统升级后      | 重新编译           | 高（所有 App 受影响）
+```
+
+**MultiDex 开销**：
+
+```
+当 APK 方法数超过 65535 时，需要 MultiDex 分包：
+
+无 MultiDex:    首次启动正常
+MultiDex:       首次启动额外加载 .dex 文件 → +500ms ~ +2s
+                (后续启动从 ART 缓存读取，开销降低)
+
+检测: Build 后查看 build/logs，或用 dex-count 插件统计方法数
+```
+
+**优化建议**：
+
+```markdown
+# Android 启动优化检查清单
+
+## ART 编译
+- [ ] 通过 Google Play 发布（利用 Play 的 AOT 预编译）
+- [ ] 测试时在全新安装 + 冷启动下测量（不是热启动）
+- [ ] 系统升级后重新测试启动时间
+
+## MultiDex
+- [ ] 检查方法数是否超过 65535（Android Studio → Analyze APK）
+- [ ] 超过则开启 R8/ProGuard 代码压缩，减少无用方法
+- [ ] 使用 AndroidX MultiDex（比旧版性能更好）
+- [ ] 将启动时不需要的类放到 secondary dex 中
+
+## 启动主题
+- [ ] 配置 Launch Theme（避免白屏/黑屏）
+- [ ] Launch Theme 的背景图与首场景风格一致（减少视觉跳变）
+```
+
 ---
 
 ## 六、常见误区
@@ -381,12 +499,13 @@ P2（小收益）：
 
 ```
 错误做法：
-- 启动时间才2秒就开始优化
-- 过度优化导致代码复杂
+- 启动时间才2秒就开始过度优化
+- 牺牲代码可读性换取微小的启动提升
 
 正确做法：
-- 启动时间超过5秒才考虑优化
-- 先用Profiler找到瓶颈
+- 移动端冷启动建议不超过3秒（休闲游戏用户耐心更短）
+- 超过5秒必须优化（影响留存率）
+- 先用 Profiler 找到最大瓶颈，优先优化收益最大的阶段
 ```
 
 ### ❌ 误区2：只看总时间

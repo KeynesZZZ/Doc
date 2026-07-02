@@ -1,0 +1,24 @@
+{
+  "id": "conv-1782961622087-1zg7ox3k1",
+  "providerId": "claude",
+  "title": "我需要先了解一些信息才能帮你修改文章。请告诉我：\n\n1. **要修改哪篇文章？** 请提供文件...",
+  "titleGenerationStatus": "success",
+  "createdAt": 1782961622087,
+  "updatedAt": 1782961721594,
+  "lastResponseAt": 1782961721594,
+  "sessionId": "09c4710d-cf57-42c4-a72f-66e87422e9a9",
+  "providerState": {
+    "providerSessionId": "09c4710d-cf57-42c4-a72f-66e87422e9a9"
+  },
+  "currentNote": "35_高级主题/global-metadata.dat文件加密.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 7568,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 46016,
+    "contextWindow": 200000,
+    "contextTokens": 53584,
+    "percentage": 27,
+    "contextWindowIsAuthoritative": true
+  }
+}

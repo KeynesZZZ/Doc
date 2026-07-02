@@ -4,8 +4,8 @@
   "title": "你好！我是你的助手，可以帮你处理 Unity 游戏开发相关的任务。\n\n有什么我可以帮你的吗？比...",
   "titleGenerationStatus": "success",
   "createdAt": 1782874542569,
-  "updatedAt": 1782907878081,
-  "lastResponseAt": 1782907878081,
+  "updatedAt": 1782961603722,
+  "lastResponseAt": 1782921297824,
   "sessionId": "5750af32-4ce3-4052-8164-2b77f4a3c872",
   "providerState": {
     "providerSessionId": "5750af32-4ce3-4052-8164-2b77f4a3c872",
@@ -91,12 +91,12 @@
   },
   "usage": {
     "model": "opus",
-    "inputTokens": 94,
+    "inputTokens": 262,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 131392,
+    "cacheReadInputTokens": 148480,
     "contextWindow": 200000,
-    "contextTokens": 131486,
-    "percentage": 66,
+    "contextTokens": 148742,
+    "percentage": 74,
     "contextWindowIsAuthoritative": true
   }
 }

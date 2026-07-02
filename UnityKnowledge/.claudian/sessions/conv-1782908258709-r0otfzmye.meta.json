@@ -4,8 +4,8 @@
   "title": "我需要先找到相关的UI性能优化文档。让我搜索一下：让我直接搜索项目中的UI性能优化文档：让我直...",
   "titleGenerationStatus": "success",
   "createdAt": 1782908258709,
-  "updatedAt": 1782909221362,
-  "lastResponseAt": 1782909221361,
+  "updatedAt": 1782909561593,
+  "lastResponseAt": 1782909331430,
   "sessionId": "fac6d919-20e2-4b4d-8686-d1b5353a749f",
   "providerState": {
     "providerSessionId": "fac6d919-20e2-4b4d-8686-d1b5353a749f",
@@ -1347,11 +1347,12 @@
   },
   "usage": {
     "model": "opus",
-    "inputTokens": 247,
+    "inputTokens": 58,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 88896,
+    "cacheReadInputTokens": 151040,
     "contextWindow": 200000,
-    "contextTokens": 89143,
-    "percentage": 45
+    "contextTokens": 151098,
+    "percentage": 76,
+    "contextWindowIsAuthoritative": true
   }
 }
