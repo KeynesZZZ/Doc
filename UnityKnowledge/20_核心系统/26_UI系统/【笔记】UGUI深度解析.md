@@ -3,8 +3,8 @@ title: 【笔记】UGUI深度解析
 tags: ["Unity", "游戏系统", "UGUI", "源码解析", "设计原理", "UI"]
 category: 核心系统/游戏系统
 created: "2026-03-05 08:32"
-updated: "2026-05-29 00:00"
-description: UGUI系统源码深度解析
+updated: "2026-07-02 00:00"
+description: UGUI系统源码深度解析，含三种脏标记（Vertices/Layout/Material）机制、Canvas重建边界与高频UI优化策略
 unity_version: 2021.3+
 status: 待验证
 validation: 未经测试
@@ -3978,6 +3978,61 @@ namespace UnityEngine.UI
 ### 6.2 性能优化源码级分析
 
 #### 6.2.1 Canvas 脏标记机制
+
+##### 三种脏标记总结
+
+UGUI 通过三种脏标记（Dirty Flag）追踪 UI 元素的变化，理解它们的触发条件和性能代价是 UI 优化的核心：
+
+| 脏标记 | 触发条件 | 重建内容 | 重建阶段 | 性能代价 |
+|--------|----------|----------|----------|----------|
+| **Vertices Dirty** | RectTransform 尺寸变化、Sprite 切换、UV 变化 | 重新生成网格顶点（`DoMeshGeneration`） | Graphic Rebuild | **最重** |
+| **Layout Dirty** | 子物体增减、布局参数变化、ContentSizeFitter 触发 | 递归计算所有子元素的位置和尺寸 | Layout Rebuild（先于 Graphic） | **中等** |
+| **Material Dirty** | 颜色变化（`graphic.color`）、材质/纹理引用变化 | 更新 CanvasRenderer 的材质引用 | Graphic Rebuild | **最轻** |
+
+##### 标记与执行的分离设计
+
+脏标记的核心设计是**标记与执行分离**：
+
+```
+SetXxxDirty() 调用时（立即）
+├─ 设置内部 bool 标志（m_VertsDirty / m_MaterialDirty）
+├─ 注册到 CanvasUpdateRegistry 的重建队列（IndexedSet，自动去重）
+└─ 返回 — 不做任何实际重建工作
+
+Canvas.willRenderCanvases 回调（每帧渲染前，统一执行）
+└─ CanvasUpdateRegistry.PerformUpdate()
+    ├─ 阶段 1: ProcessLayoutRebuild()  — 按层级深度排序后执行
+    ├─ 阶段 2: ClipperRegistry.Cull()  — 裁剪计算
+    └─ 阶段 3: ProcessGraphicRebuild() — 顶点 + 材质重建
+        └─ 每个元素处理后清除自身脏标记
+```
+
+**关键推论**：一帧内多次调用 `SetVerticesDirty()` 只会产生一次实际重建——脏标记是布尔值，多次设置等价于一次；重建队列使用 `IndexedSet`，同一元素不会重复入队。这就是 UGUI 能容忍频繁属性修改的底层原因。
+
+##### Canvas 的重建边界作用
+
+脏标记是**元素级**的，但重建是 **Canvas 级**的：
+
+```
+Canvas_A
+├─ Image_1 (SetVerticesDirty)  ← 标记脏
+├─ Image_2 (干净)
+└─ Image_3 (干净)
+
+→ Canvas_A 整体重建：Image_1 + Image_2 + Image_3 全部参与批处理重算
+→ 即使 Image_2/3 未变脏，它们仍被重新纳入网格合并
+```
+
+这是 UGUI 性能优化的第一原则——**用嵌套 Canvas 隔离频繁变化的区域**，避免一个动态元素拖累整个 Canvas 的重建。
+
+##### 高频 UI 更新的实践策略
+
+| 场景 | 错误做法 | 正确做法 | 原因 |
+|------|----------|----------|------|
+| 血条/进度条每帧更新 | 修改 `RectTransform.anchorMax` | 用 `Image.fillAmount` | fillAmount 只触发 Material Dirty |
+| 倒计时文字每帧更新 | 用 Text 组件 | 用 TextMeshPro + SetText | TMP 的 SetText 可避免生成 GC |
+| 列表滚动 | 每帧移动所有 Item | 使用虚拟列表（Scroll Rect 重用） | 减少参与重建的元素数量 |
+| 频繁变色 | 修改材质引用 | 修改 `graphic.color` | color 只触发 Material Dirty（最轻） |
 
 ```csharp
 // ===== Canvas 脏标记机制分析 =====

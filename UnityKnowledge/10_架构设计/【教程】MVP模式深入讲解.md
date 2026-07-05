@@ -20,7 +20,7 @@ author: llm
 
 本文档从**使用角度**讲解MVP模式在Unity UI开发中的应用，涵盖Model-View-Presenter的职责划分、接口设计、数据绑定机制以及与MVC/MVVM的对比分析。
 
-**相关文档**：[[【架构决策】UI架构-MVP vs MVVM]]、[[【教程】项目架构设计]]
+**相关文档**：[[【架构决策】UI架构-MVC vs MVP]]、[[【架构决策】UI架构-MVP vs MVVM]]、[[【教程】项目架构设计]]
 
 ---
 
@@ -878,6 +878,8 @@ public class GoodPresenter
 
 ## 相关链接
 
+- [[【架构决策】UI架构-MVC vs MVP]]
+- [[【架构决策】UI架构-MVP vs MVVM]]
 - [MVP Pattern - Martin Fowler](https://martinfowler.com/eaaDev/uiArchs.html)
 - [Passive View - Martin Fowler](https://martinfowler.com/eaaDev/PassiveScreen.html)
 - [MVP in Unity - Unity Blog](https://blog.unity.com/technology/architecture-patterns-for-gameplay)

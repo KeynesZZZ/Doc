@@ -60,7 +60,8 @@ UGUI 的 `Screen Space Overlay` 模式在场景所有渲染完成之后直接绘
 1. Canvas → Render Mode: Screen Space - Camera
 2. Canvas → Render Camera: 指定 UI Camera（正交相机）
 3. 场景中放 ParticleSystem，Layer 设为 UI
-4. ParticleSystem → Renderer → Sorting Layer / Order in Layer 设为比 Canvas 大的值
+4. 通过代码设置 ParticleSystemRenderer.sortingOrder 为比 Canvas 大的值
+   （Inspector 的 Renderer 模块没有 Sorting Layer 字段，只有无关的 Sorting Fudge）
 ```
 
 ### 排序控制工具
