@@ -1333,7 +1333,7 @@ public static class MemoryOptimizationChecklist
 | 知识点 | 核心要点 |
 |--------|----------|
 | 内存模型 | Native/Managed/Graphics三层 |
-| GC机制 | 分代回收、增量式GC |
+| GC机制 | Boehm GC（非分代、非压缩）、增量式GC |
 | GC优化 | 避免分配、对象池、缓存 |
 | 纹理优化 | 压缩格式、Mipmap、MaxSize |
 | 资源管理 | 加载策略、卸载时机 |

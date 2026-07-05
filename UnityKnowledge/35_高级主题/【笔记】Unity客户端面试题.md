@@ -50,7 +50,7 @@ sources:
 
 ### 1. 什么是 GC？什么情况下会产生 GC？如何避免？
 
-GC（Garbage Collection，垃圾回收）自动回收托管堆上不再被引用的对象。当 `new` 分配对象、堆内存不足或达到分代阈值时触发。GC 是 stop-the-world 操作，扫描/压缩堆占用大量 CPU，移动端频繁 GC 严重影响性能。
+GC（Garbage Collection，垃圾回收）自动回收托管堆上不再被引用的对象。当 `new` 分配对象、堆内存不足时触发。Unity 使用 Boehm GC（非分代、非压缩），GC 是 stop-the-world 操作，全堆扫描占用大量 CPU，移动端频繁 GC 严重影响性能。
 
 **避免/减少 GC**（原文要点）：
 
