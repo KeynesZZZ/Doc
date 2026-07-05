@@ -4,20 +4,20 @@
   "title": "我先搜索一下项目中是否有关于 HybridCLR 的文档。让我查找项目本地是否有 Hybrid...",
   "titleGenerationStatus": "success",
   "createdAt": 1782961321792,
-  "updatedAt": 1782962596416,
-  "lastResponseAt": 1782962596416,
+  "updatedAt": 1782998182388,
+  "lastResponseAt": 1782963032760,
   "sessionId": "756fd007-a197-42b1-926a-9747073012e8",
   "providerState": {
     "providerSessionId": "756fd007-a197-42b1-926a-9747073012e8"
   },
   "usage": {
     "model": "opus",
-    "inputTokens": 584,
+    "inputTokens": 98,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 100672,
+    "cacheReadInputTokens": 112896,
     "contextWindow": 200000,
-    "contextTokens": 101256,
-    "percentage": 51,
+    "contextTokens": 112994,
+    "percentage": 56,
     "contextWindowIsAuthoritative": true
   }
 }

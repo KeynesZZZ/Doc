@@ -1,0 +1,23 @@
+{
+  "id": "conv-1783003130443-l32ieb8np",
+  "providerId": "claude",
+  "title": "我将帮你补充 YooAsset 相关的知识内容。让我先检查一下现有文档结构。基于获取的文档信息...",
+  "titleGenerationStatus": "success",
+  "createdAt": 1783003130443,
+  "updatedAt": 1783144349029,
+  "lastResponseAt": 1783052580988,
+  "sessionId": "52db2e12-8f4a-492f-b143-c2cfae7de79d",
+  "providerState": {
+    "providerSessionId": "52db2e12-8f4a-492f-b143-c2cfae7de79d"
+  },
+  "usage": {
+    "model": "opus",
+    "inputTokens": 286,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 123648,
+    "contextWindow": 200000,
+    "contextTokens": 123934,
+    "percentage": 62,
+    "contextWindowIsAuthoritative": true
+  }
+}

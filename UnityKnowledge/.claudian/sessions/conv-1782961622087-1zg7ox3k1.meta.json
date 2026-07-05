@@ -4,21 +4,1081 @@
   "title": "我需要先了解一些信息才能帮你修改文章。请告诉我：\n\n1. **要修改哪篇文章？** 请提供文件...",
   "titleGenerationStatus": "success",
   "createdAt": 1782961622087,
-  "updatedAt": 1782961721594,
-  "lastResponseAt": 1782961721594,
+  "updatedAt": 1783004019645,
+  "lastResponseAt": 1783004019626,
   "sessionId": "09c4710d-cf57-42c4-a72f-66e87422e9a9",
   "providerState": {
-    "providerSessionId": "09c4710d-cf57-42c4-a72f-66e87422e9a9"
+    "providerSessionId": "09c4710d-cf57-42c4-a72f-66e87422e9a9",
+    "subagentData": {
+      "call_d6b3b59165c54a5c9b87727b": {
+        "id": "call_d6b3b59165c54a5c9b87727b",
+        "description": "探索UI系统相关文档",
+        "prompt": "在 D:\\GitHub\\Doc\\UnityKnowledge 中，全面搜索 UI 系统相关的所有文档。需要找到：\n1. 20_核心系统/26_UI系统/ 目录下的所有 .md 文件名\n2. 任何标题或内容中包含 \"UI\"、\"UGUI\"、\"Canvas\"、\"DrawCall\"、\"合批\"、\"Mask\"、\"Layout\"、\"TextMeshPro\"、\"TMP\"、\"Graphic\"、\"Raycast\"、\"事件系统\"、\"输入系统\" 的文档\n3. 性能优化目录下与 UI 相关的文档\n4. 35_高级主题 下与 UI 相关的文档\n\n请列出所有找到的文件路径和标题（frontmatter 中的 title 字段），按目录组织。搜索要非常彻底。",
+        "status": "completed",
+        "toolCalls": [
+          {
+            "id": "call_0aa891d5c6a94e6bb144128f",
+            "name": "Glob",
+            "input": {
+              "pattern": "**/*.md",
+              "path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统"
+            },
+            "status": "error",
+            "isExpanded": false,
+            "result": "spawn C:\\Users\\Keynes\\AppData\\Roaming\\npm\\node_modules\\@anthropic-ai\\claude-code\\vendor\\ripgrep\\ia32-win32\\rg.exe ENOENT"
+          },
+          {
+            "id": "call_dd781c2ba3364b7cbe9be826",
+            "name": "Grep",
+            "input": {
+              "pattern": "UGUI|DrawCall|合批|Canvas|Raycast|Graphic|TextMeshPro|TMP|Mask|Layout|事件系统|输入系统",
+              "path": "D:\\GitHub\\Doc\\UnityKnowledge",
+              "output_mode": "files_with_matches",
+              "-i": true
+            },
+            "status": "error",
+            "isExpanded": false,
+            "result": "spawn C:\\Users\\Keynes\\AppData\\Roaming\\npm\\node_modules\\@anthropic-ai\\claude-code\\vendor\\ripgrep\\ia32-win32\\rg.exe ENOENT"
+          },
+          {
+            "id": "call_f32fb5a00ddf49afaba0d867",
+            "name": "Grep",
+            "input": {
+              "pattern": "^title:.*UI",
+              "path": "D:\\GitHub\\Doc\\UnityKnowledge",
+              "output_mode": "content",
+              "-i": true
+            },
+            "status": "error",
+            "isExpanded": false,
+            "result": "spawn C:\\Users\\Keynes\\AppData\\Roaming\\npm\\node_modules\\@anthropic-ai\\claude-code\\vendor\\ripgrep\\ia32-win32\\rg.exe ENOENT"
+          },
+          {
+            "id": "call_8c587bd39ebb49c1977a53e5",
+            "name": "Glob",
+            "input": {
+              "pattern": "**/*UI*.md",
+              "path": "D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化"
+            },
+            "status": "error",
+            "isExpanded": false,
+            "result": "spawn C:\\Users\\Keynes\\AppData\\Roaming\\npm\\node_modules\\@anthropic-ai\\claude-code\\vendor\\ripgrep\\ia32-win32\\rg.exe ENOENT"
+          },
+          {
+            "id": "call_451e9271f89545fb812dee9b",
+            "name": "Glob",
+            "input": {
+              "pattern": "**/*.md",
+              "path": "D:\\GitHub\\Doc\\UnityKnowledge\\35_高级主题"
+            },
+            "status": "error",
+            "isExpanded": false,
+            "result": "spawn C:\\Users\\Keynes\\AppData\\Roaming\\npm\\node_modules\\@anthropic-ai\\claude-code\\vendor\\ripgrep\\ia32-win32\\rg.exe ENOENT"
+          },
+          {
+            "id": "call_f10037631bdf4caf96a7fe34",
+            "name": "Bash",
+            "input": {
+              "command": "ls \"D:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/\"",
+              "description": "列出 UI 系统目录下的文件"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "README.md\nUI系统专题索引.md\n【实战案例】UI卡顿优化全流程.md\n【教程】UI系统架构.md\n【最佳实践】TextMeshPro性能优化实战.md\n【最佳实践】UI性能优化速查.md\n【片段】UGUI 性能优化规则清单.md\n【笔记】UGUI DrawCall影响因素全面测试.md\n【笔记】UGUI性能优化实战总览.md\n【笔记】UGUI深度解析.md\n【笔记】UI粒子特效实现方案.md\n【笔记】Unity事件系统实现机制.md\n【设计原理】UGUI合批机制深度解析.md\n【踩坑】UGUI常见性能陷阱与根因分析.md"
+          },
+          {
+            "id": "call_efaac5b713924b368b88f636",
+            "name": "Bash",
+            "input": {
+              "command": "ls \"D:/GitHub/Doc/UnityKnowledge/35_高级主题/\"",
+              "description": "列出高级主题目录下的文件"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "README.md\nglobal-metadata.dat文件加密.md\ntolua专题索引.md\n【实战案例】tolua热更新系统完整落地.md\n【实战案例】内存泄漏排查实战.md\n【教程】打包与热更新.md\n【片段】项目面试STAR话术.md\n【笔记】HybridCLR构建管线与Generate工具链.md\n【笔记】Lua语法速查.md\n【笔记】Lua面向对象深入.md\n【笔记】Unity客户端面试题.md\n【笔记】Unity资源依赖与打包陷阱.md\n【笔记】tolua入门与调用机制.md\n【笔记】tolua性能与GC优化.md\n【笔记】性能优化面试问答.md\n【笔记】渲染与Shader面试问答.md\n【笔记】热更新知识脑图.md\n【笔记】热更新面试问答.md\n【笔记】高级Unity游戏开发面试复习地图.md\n【设计原理】Unity内存管理.md\n【设计原理】Unity网络同步.md\n【设计原理】热更新方案对比.md\n【踩坑】HybridCLR接入常见坑.md\n【踩坑】tolua热更新常见坑.md"
+          },
+          {
+            "id": "call_08f374046e4745598d57cf9b",
+            "name": "Bash",
+            "input": {
+              "command": "find \"D:/GitHub/Doc/UnityKnowledge/30_性能优化/\" -name \"*.md\" -type f 2>/dev/null | sort",
+              "description": "查找性能优化目录下所有 md 文件"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "D:/GitHub/Doc/UnityKnowledge/30_性能优化/31_代码优化/README.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/31_代码优化/【最佳实践】Update优化清单.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/31_代码优化/【最佳实践】异步编程最佳实践.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/31_代码优化/【笔记】Dictionary性能.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/31_代码优化/【笔记】LINQ性能测试.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/31_代码优化/【笔记】foreach vs for.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/31_代码优化/【笔记】协程vs UniTask.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/31_代码优化/【设计原理】为什么foreach比for慢.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/31_代码优化/【踩坑】常见性能陷阱.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/32_内存管理/README.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/32_内存管理/【实战案例】内存泄漏排查实战.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/32_内存管理/【最佳实践】GC优化清单.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/32_内存管理/【最佳实践】内存分析工具使用指南.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/32_内存管理/【最佳实践】序列化性能优化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/32_内存管理/【最佳实践】资源卸载指南.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/32_内存管理/【笔记】字符串拼接方式对比.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/32_内存管理/【笔记】对象池vs实例化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/32_内存管理/【笔记】装箱拆箱性能影响.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/32_内存管理/【设计原理】GC工作原理深度解析.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/32_内存管理/【踩坑】内存泄漏模式.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/README.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【教程】Frame Debugger渲染诊断流程.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【最佳实践】3D渲染优化指南.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【最佳实践】LOD系统实战指南.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【最佳实践】Overdraw优化实战.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【最佳实践】光照与烘焙优化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【最佳实践】粒子系统优化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【最佳实践】遮挡剔除实战.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【笔记】Shader性能优化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【笔记】纹理压缩格式对比.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/34_启动时间优化/README.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/34_启动时间优化/【实战案例】加载时间优化实战.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/34_启动时间优化/【最佳实践】Addressables性能优化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/34_启动时间优化/【最佳实践】资源预加载策略.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/34_启动时间优化/【笔记】优化措施效果对比.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/34_启动时间优化/【设计原理】Unity启动流程深度解析.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/README.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【教程】CPU优化技术.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【教程】性能优化学习路径.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【教程】性能分析工具.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【教程】渲染性能优化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【笔记】性能数据真实性检验.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【笔记】手机游戏发热性能问题定位与优化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/性能优化专题索引.md"
+          },
+          {
+            "id": "call_5d0e796649ea4bef82b14f68",
+            "name": "Bash",
+            "input": {
+              "command": "grep -rl -i --include=\"*.md\" -E \"UGUI|DrawCall|合批|Canvas|Raycast|Graphic|TextMeshPro|\\bTMP\\b|Mask|Layout|事件系统|输入系统\" \"D:/GitHub/Doc/UnityKnowledge/\" 2>/dev/null | sort",
+              "description": "搜索所有包含 UI 相关关键词的文档"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "D:/GitHub/Doc/UnityKnowledge/00_元数据与模板/【教程】知识库贡献指南.md\nD:/GitHub/Doc/UnityKnowledge/00_元数据与模板/【方案】知识库完善.md\nD:/GitHub/Doc/UnityKnowledge/00_元数据与模板/【方案】缺失知识点补全文档清单.md\nD:/GitHub/Doc/UnityKnowledge/00_元数据与模板/【模板】代码审查清单.md\nD:/GitHub/Doc/UnityKnowledge/00_元数据与模板/【模板】性能分析.md\nD:/GitHub/Doc/UnityKnowledge/00_元数据与模板/【模板】系统设计说明书.md\nD:/GitHub/Doc/UnityKnowledge/00_元数据与模板/元数据规范.md\nD:/GitHub/Doc/UnityKnowledge/00_元数据与模板/学习路径导航.md\nD:/GitHub/Doc/UnityKnowledge/00_元数据与模板/文档定位指南.md\nD:/GitHub/Doc/UnityKnowledge/00_元数据与模板/标签体系.md\nD:/GitHub/Doc/UnityKnowledge/100_项目实战/01_休闲游戏云存档系统/06-微信小游戏实现.md\nD:/GitHub/Doc/UnityKnowledge/100_项目实战/01_休闲游戏云存档系统/07-抖音小游戏实现.md\nD:/GitHub/Doc/UnityKnowledge/100_项目实战/01_休闲游戏云存档系统/11-UI组件与集成.md\nD:/GitHub/Doc/UnityKnowledge/100_项目实战/02_休闲游戏框架/01-UI框架设计.md\nD:/GitHub/Doc/UnityKnowledge/100_项目实战/02_休闲游戏框架/02-事件系统设计.md\nD:/GitHub/Doc/UnityKnowledge/100_项目实战/02_休闲游戏框架/README.md\nD:/GitHub/Doc/UnityKnowledge/10_架构设计/【代码片段】事件总线.md\nD:/GitHub/Doc/UnityKnowledge/10_架构设计/【代码片段】命令模式.md\nD:/GitHub/Doc/UnityKnowledge/10_架构设计/【教程】事件系统与观察者模式.md\nD:/GitHub/Doc/UnityKnowledge/10_架构设计/【教程】项目架构设计.md\nD:/GitHub/Doc/UnityKnowledge/10_架构设计/【最佳实践】依赖注入使用指南.md\nD:/GitHub/Doc/UnityKnowledge/10_架构设计/【最佳实践】组件化重构案例.md\nD:/GitHub/Doc/UnityKnowledge/10_架构设计/【架构决策】UI架构-MVP vs MVVM.md\nD:/GitHub/Doc/UnityKnowledge/10_架构设计/【架构决策】事件系统实现对比.md\nD:/GitHub/Doc/UnityKnowledge/10_架构设计/【架构决策】单例vs依赖注入.md\nD:/GitHub/Doc/UnityKnowledge/10_架构设计/【设计原理】为什么要用设计模式.md\nD:/GitHub/Doc/UnityKnowledge/10_架构设计/【设计原理】事件驱动本质.md\nD:/GitHub/Doc/UnityKnowledge/10_架构设计/【设计原理】命令模式本质.md\nD:/GitHub/Doc/UnityKnowledge/10_架构设计/事件系统专题索引.md\nD:/GitHub/Doc/UnityKnowledge/10_架构设计/设计模式专题索引.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/21_动画系统/【教程】动画系统学习路径.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/21_动画系统/【最佳实践】Animator状态机最佳实践.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/21_动画系统/【笔记】IK系统实现.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/21_动画系统/【笔记】动画事件与回调.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/21_动画系统/【设计原理】Animator深度解析.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/21_动画系统/【设计原理】Animator状态机.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/21_动画系统/动画系统专题索引.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/22_渲染系统/README.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/22_渲染系统/【代码片段】Shader基础模板.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/22_渲染系统/【实战案例】三消游戏视觉效果.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/22_渲染系统/【教程】HLSL与Shader基础.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/22_渲染系统/【教程】常用Shader技术.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/22_渲染系统/【最佳实践】URP常用配置.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/22_渲染系统/【笔记】VFX Graph效果制作.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/22_渲染系统/渲染系统专题索引.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/23_物理系统/【实战案例】2D物理系统专项.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/23_物理系统/【实战案例】物理材质与摩擦力.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/23_物理系统/【最佳实践】Rigidbody配置与优化.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/23_物理系统/【最佳实践】物理系统性能优化.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/23_物理系统/【笔记】碰撞检测模式对比.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/24_输入系统/README.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/24_输入系统/【实战案例】多平台输入统一架构设计.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/24_输入系统/【笔记】Input System底层实现机制.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/24_输入系统/【笔记】输入系统性能基准测试.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/24_输入系统/【系统架构】输入管理.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/24_输入系统/【设计原理】新输入系统架构深度解析.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/24_输入系统/输入系统专题索引.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/README.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/UI系统专题索引.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【实战案例】UI卡顿优化全流程.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【教程】UI系统架构.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【最佳实践】TextMeshPro性能优化实战.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【最佳实践】UI性能优化速查.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【片段】UGUI 性能优化规则清单.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【笔记】UGUI性能优化实战总览.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【笔记】UGUI深度解析.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【笔记】UI粒子特效实现方案.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【笔记】Unity事件系统实现机制.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【设计原理】UGUI合批机制深度解析.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【踩坑】UGUI常见性能陷阱与根因分析.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/27_场景系统/【实战案例】大型游戏场景流式加载架构.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/27_场景系统/【笔记】SceneManager实现分析.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/28_存档系统/存档系统专题索引.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/29_网络系统/【最佳实践】网络同步模型.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/30_特效系统/【实战案例】战斗特效系统架构设计.md\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/30_特效系统/【设计原理】粒子系统GPU加速机制.md\nD:/GitHub/Doc/UnityKnowledge/25_DOTS技术栈/DOTS专题索引.md\nD:/GitHub/Doc/UnityKnowledge/25_DOTS技术栈/【实战案例】10w单位渲染与动画最小Demo.md\nD:/GitHub/Doc/UnityKnowledge/25_DOTS技术栈/【片段】VAT顶点动画烘焙脚本.md\nD:/GitHub/Doc/UnityKnowledge/25_DOTS技术栈/【笔记】Burst SIMD原理详解.md\nD:/GitHub/Doc/UnityKnowledge/25_DOTS技术栈/【笔记】ECS与GameObject通信.md\nD:/GitHub/Doc/UnityKnowledge/25_DOTS技术栈/【笔记】Entities 1.4 与 Entities Graphics 1.4 官方文档.md\nD:/GitHub/Doc/UnityKnowledge/25_DOTS技术栈/【笔记】同屏大规模单位渲染方案.md\nD:/GitHub/Doc/UnityKnowledge/25_DOTS技术栈/【笔记】大规模单位动画方案.md\nD:/GitHub/Doc/UnityKnowledge/25_DOTS技术栈/【笔记】大规模技能特效方案.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/32_内存管理/【实战案例】内存泄漏排查实战.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/32_内存管理/【踩坑】内存泄漏模式.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/README.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【教程】Frame Debugger渲染诊断流程.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【最佳实践】3D渲染优化指南.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【最佳实践】LOD系统实战指南.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【最佳实践】Overdraw优化实战.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【最佳实践】遮挡剔除实战.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【笔记】Shader性能优化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/34_启动时间优化/【实战案例】加载时间优化实战.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/34_启动时间优化/【最佳实践】Addressables性能优化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/34_启动时间优化/【设计原理】Unity启动流程深度解析.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/README.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【教程】CPU优化技术.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【教程】性能优化学习路径.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【教程】性能分析工具.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【教程】渲染性能优化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【笔记】性能数据真实性检验.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【笔记】手机游戏发热性能问题定位与优化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/性能优化专题索引.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【实战案例】内存泄漏排查实战.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【片段】项目面试STAR话术.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【笔记】Unity客户端面试题.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【笔记】Unity资源依赖与打包陷阱.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【笔记】性能优化面试问答.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【笔记】渲染与Shader面试问答.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【笔记】高级Unity游戏开发面试复习地图.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【设计原理】Unity内存管理.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【设计原理】Unity网络同步.md\nD:/GitHub/Doc/UnityKnowledge/40_工具链/41_编辑器扩展/【教程】EditorWindow开发.md\nD:/GitHub/Doc/UnityKnowledge/40_工具链/41_编辑器扩展/【教程】编辑器扩展学习路径.md\nD:/GitHub/Doc/UnityKnowledge/40_工具链/41_编辑器扩展/【教程】自定义Inspector.md\nD:/GitHub/Doc/UnityKnowledge/40_工具链/【教程】Editor扩展开发.md\nD:/GitHub/Doc/UnityKnowledge/40_工具链/【教程】自动化规则检查工具.md\nD:/GitHub/Doc/UnityKnowledge/40_工具链/【最佳实践】Addressables性能优化.md\nD:/GitHub/Doc/UnityKnowledge/50_平台适配/【踩坑】Android常见问题清单.md\nD:/GitHub/Doc/UnityKnowledge/50_平台适配/【踩坑】iOS常见问题清单.md\nD:/GitHub/Doc/UnityKnowledge/60_第三方库/【代码片段】DOTween常用动画.md\nD:/GitHub/Doc/UnityKnowledge/90_项目复盘/【实战案例】休闲游戏框架复盘.md\nD:/GitHub/Doc/UnityKnowledge/README.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第12章 UI 资源与图集系统.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第15章 文本渲染系统.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第17章 UI Shader 机制.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第18章 UI 特效实现.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第19章 UI 特效与性能.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第20章 UI 性能分析基础.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第21章 Canvas 优化.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第22章 批处理优化.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第24章 大规模 UI 优化.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第25章 UI 架构设计.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第26章 UI 动画实现.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第27章 可扩展 UI 组件设计.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第28章 调试与分析工具.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第29章 综合案例分析.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第4章 UI 更新与重建系统.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第7章 CanvasRenderer 机制.md\nD:/GitHub/Doc/UnityKnowledge/UGUI/第9章 UI 与渲染管线.md\nD:/GitHub/Doc/UnityKnowledge/index.md\nD:/GitHub/Doc/UnityKnowledge/log.md\nD:/GitHub/Doc/UnityKnowledge/性能优化/2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂 1.md\nD:/GitHub/Doc/UnityKnowledge/性能优化/2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂 2.md\nD:/GitHub/Doc/UnityKnowledge/性能优化/2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂.md\nD:/GitHub/Doc/UnityKnowledge/性能优化/Unity小游戏优化简谱  吃透底层逻辑，告别掉帧与流失 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\nD:/GitHub/Doc/UnityKnowledge/性能优化/Unity性能优化 — UI模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\nD:/GitHub/Doc/UnityKnowledge/性能优化/Unity性能优化 — 动画模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\nD:/GitHub/Doc/UnityKnowledge/性能优化/Unity性能优化指南-笔记.md\nD:/GitHub/Doc/UnityKnowledge/性能优化/Unity性能优化系列—渲染模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\nD:/GitHub/Doc/UnityKnowledge/性能优化/Unity移动端游戏性能优化简谱之 CPU耗时调优.md\nD:/GitHub/Doc/UnityKnowledge/性能优化/关于Unity中的UGUI优化，你可能遇到这些问题 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md"
+          },
+          {
+            "id": "call_25a83113270e4bee8227fd84",
+            "name": "Bash",
+            "input": {
+              "command": "grep -r -i --include=\"*.md\" -E \"^title:.*UI\" \"D:/GitHub/Doc/UnityKnowledge/\" 2>/dev/null | sort",
+              "description": "搜索 title 中包含 UI 的文档"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "D:/GitHub/Doc/UnityKnowledge/00_元数据与模板/元数据规范.md:title: 【踩坑】UGUI DrawCall飙升\nD:/GitHub/Doc/UnityKnowledge/100_项目实战/01_休闲游戏云存档系统/11-UI组件与集成.md:title: 【教程】UI组件与集成\nD:/GitHub/Doc/UnityKnowledge/100_项目实战/02_休闲游戏框架/01-UI框架设计.md:title: 【教程】UI框架设计\nD:/GitHub/Doc/UnityKnowledge/10_架构设计/【架构决策】UI架构-MVP vs MVVM.md:title: 【架构决策】UI 架构 - MVP vs MVVM\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/UI系统专题索引.md:title: 【教程】UI系统专题索引\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【实战案例】UI卡顿优化全流程.md:title: 【实战案例】UI卡顿优化全流程\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【教程】UI系统架构.md:title: 【教程】UI系统架构\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【最佳实践】UI性能优化速查.md:title: 【最佳实践】UI性能优化\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【片段】UGUI 性能优化规则清单.md:title: 【片段】UGUI 性能优化规则清单\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md:title: 【笔记】UGUI DrawCall影响因素全面测试\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【笔记】UGUI性能优化实战总览.md:title: 【笔记】UGUI性能优化实战总览\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【笔记】UGUI深度解析.md:title: 【笔记】UGUI深度解析\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【笔记】UI粒子特效实现方案.md:title: 【笔记】UI粒子特效实现方案\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【设计原理】UGUI合批机制深度解析.md:title: 【设计原理】UGUI合批机制深度解析\nD:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【踩坑】UGUI常见性能陷阱与根因分析.md:title: 【踩坑】UGUI常见性能陷阱与根因分析\nD:/GitHub/Doc/UnityKnowledge/UGUI/第12章 UI 资源与图集系统.md:title: \"第12章 UI 资源与图集系统\"\nD:/GitHub/Doc/UnityKnowledge/UGUI/第17章 UI Shader 机制.md:title: \"第17章 UI Shader 机制\"\nD:/GitHub/Doc/UnityKnowledge/UGUI/第18章 UI 特效实现.md:title: \"第18章 UI 特效实现\"\nD:/GitHub/Doc/UnityKnowledge/UGUI/第19章 UI 特效与性能.md:title: \"第19章 UI 特效与性能\"\nD:/GitHub/Doc/UnityKnowledge/UGUI/第20章 UI 性能分析基础.md:title: \"第20章 UI 性能分析基础\"\nD:/GitHub/Doc/UnityKnowledge/UGUI/第24章 大规模 UI 优化.md:title: \"第24章 大规模 UI 优化\"\nD:/GitHub/Doc/UnityKnowledge/UGUI/第25章 UI 架构设计.md:title: \"第25章 UI 架构设计\"\nD:/GitHub/Doc/UnityKnowledge/UGUI/第26章 UI 动画实现.md:title: \"第26章 UI 动画实现\"\nD:/GitHub/Doc/UnityKnowledge/UGUI/第27章 可扩展 UI 组件设计.md:title: \"第27章 可扩展 UI 组件设计\"\nD:/GitHub/Doc/UnityKnowledge/UGUI/第4章 UI 更新与重建系统.md:title: \"第4章 UI 更新与重建系统\"\nD:/GitHub/Doc/UnityKnowledge/UGUI/第9章 UI 与渲染管线.md:title: \"第9章 UI 与渲染管线\"\nD:/GitHub/Doc/UnityKnowledge/性能优化/Unity性能优化 — UI模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md:title: \"Unity性能优化 — UI模块 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技\"\nD:/GitHub/Doc/UnityKnowledge/性能优化/关于Unity中的UGUI优化，你可能遇到这些问题 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md:title: \"关于Unity中的UGUI优化，你可能遇到这些问题 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技\""
+          },
+          {
+            "id": "call_30a21441c7c344b6b0aa0bcb",
+            "name": "Bash",
+            "input": {
+              "command": "ls \"D:/GitHub/Doc/UnityKnowledge/UGUI/\"",
+              "description": "列出 UGUI 目录下所有文件"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "第12章 UI 资源与图集系统.md\n第15章 文本渲染系统.md\n第17章 UI Shader 机制.md\n第18章 UI 特效实现.md\n第19章 UI 特效与性能.md\n第20章 UI 性能分析基础.md\n第21章 Canvas 优化.md\n第22章 批处理优化.md\n第24章 大规模 UI 优化.md\n第25章 UI 架构设计.md\n第26章 UI 动画实现.md\n第27章 可扩展 UI 组件设计.md\n第28章 调试与分析工具.md\n第29章 综合案例分析.md\n第4章 UI 更新与重建系统.md\n第7章 CanvasRenderer 机制.md\n第9章 UI 与渲染管线.md"
+          },
+          {
+            "id": "call_8d991a7192d34dc388f8f341",
+            "name": "Bash",
+            "input": {
+              "command": "ls \"D:/GitHub/Doc/UnityKnowledge/性能优化/\"",
+              "description": "列出性能优化根目录下的文件"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂 1.md\n2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂 2.md\n2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂 3.md\n2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂.md\n5秒快速开玩：小游戏性能优化实战 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\nShader内存为何居高不下？变体管理是关键 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\nUnity小游戏优化简谱  吃透底层逻辑，告别掉帧与流失 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\nUnity性能优化 — UI模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\nUnity性能优化 — 动画模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\nUnity性能优化指南-笔记.md\nUnity性能优化系列 — 资源内存泄漏 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\nUnity性能优化系列—Lua代码优化 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\nUnity性能优化系列—渲染模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\nUnity移动端游戏性能优化简谱之 CPU耗时调优.md\n从64MB降至5MB，TMP字体Atlas内存优化实战 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n关于Unity中的UGUI优化，你可能遇到这些问题 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md"
+          },
+          {
+            "id": "call_6f5f8cf945a64236b17e8c6a",
+            "name": "Bash",
+            "input": {
+              "command": "# 获取 26_UI系统 目录下所有文件的 title 字段\nfor f in \"D:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/\"*.md; do\n  title=$(grep -m1 \"^title:\" \"$f\" 2>/dev/null | sed 's/^title:\\s*//')\n  echo \"FILE: $(basename \"$f\")\"\n  echo \"  TITLE: $title\"\n  echo \"\"\ndone",
+              "description": "提取 UI 系统目录下所有文件的 title"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "FILE: README.md\n  TITLE: \n\nFILE: UI系统专题索引.md\n  TITLE: 【教程】UI系统专题索引\n\nFILE: 【实战案例】UI卡顿优化全流程.md\n  TITLE: 【实战案例】UI卡顿优化全流程\n\nFILE: 【教程】UI系统架构.md\n  TITLE: 【教程】UI系统架构\n\nFILE: 【最佳实践】TextMeshPro性能优化实战.md\n  TITLE: 【最佳实践】TextMeshPro性能优化实战\n\nFILE: 【最佳实践】UI性能优化速查.md\n  TITLE: 【最佳实践】UI性能优化\n\nFILE: 【片段】UGUI 性能优化规则清单.md\n  TITLE: 【片段】UGUI 性能优化规则清单\n\nFILE: 【笔记】UGUI DrawCall影响因素全面测试.md\n  TITLE: 【笔记】UGUI DrawCall影响因素全面测试\n\nFILE: 【笔记】UGUI性能优化实战总览.md\n  TITLE: 【笔记】UGUI性能优化实战总览\n\nFILE: 【笔记】UGUI深度解析.md\n  TITLE: 【笔记】UGUI深度解析\n\nFILE: 【笔记】UI粒子特效实现方案.md\n  TITLE: 【笔记】UI粒子特效实现方案\n\nFILE: 【笔记】Unity事件系统实现机制.md\n  TITLE: 【笔记】Unity事件系统实现机制\n\nFILE: 【设计原理】UGUI合批机制深度解析.md\n  TITLE: 【设计原理】UGUI合批机制深度解析\n\nFILE: 【踩坑】UGUI常见性能陷阱与根因分析.md\n  TITLE: 【踩坑】UGUI常见性能陷阱与根因分析"
+          },
+          {
+            "id": "call_f13064496c454fbfbf5ae1b0",
+            "name": "Bash",
+            "input": {
+              "command": "# 获取 UGUI 目录下所有文件的 title 字段\nfor f in \"D:/GitHub/Doc/UnityKnowledge/UGUI/\"*.md; do\n  title=$(grep -m1 \"^title:\" \"$f\" 2>/dev/null | sed 's/^title:\\s*//')\n  echo \"FILE: $(basename \"$f\")\"\n  echo \"  TITLE: $title\"\n  echo \"\"\ndone",
+              "description": "提取 UGUI 目录下所有文件的 title"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "FILE: 第12章 UI 资源与图集系统.md\n  TITLE: \"第12章 UI 资源与图集系统\"\n\nFILE: 第15章 文本渲染系统.md\n  TITLE: \"第15章 文本渲染系统\"\n\nFILE: 第17章 UI Shader 机制.md\n  TITLE: \"第17章 UI Shader 机制\"\n\nFILE: 第18章 UI 特效实现.md\n  TITLE: \"第18章 UI 特效实现\"\n\nFILE: 第19章 UI 特效与性能.md\n  TITLE: \"第19章 UI 特效与性能\"\n\nFILE: 第20章 UI 性能分析基础.md\n  TITLE: \"第20章 UI 性能分析基础\"\n\nFILE: 第21章 Canvas 优化.md\n  TITLE: \"第21章 Canvas 优化\"\n\nFILE: 第22章 批处理优化.md\n  TITLE: \"第22章 批处理优化\"\n\nFILE: 第24章 大规模 UI 优化.md\n  TITLE: \"第24章 大规模 UI 优化\"\n\nFILE: 第25章 UI 架构设计.md\n  TITLE: \"第25章 UI 架构设计\"\n\nFILE: 第26章 UI 动画实现.md\n  TITLE: \"第26章 UI 动画实现\"\n\nFILE: 第27章 可扩展 UI 组件设计.md\n  TITLE: \"第27章 可扩展 UI 组件设计\"\n\nFILE: 第28章 调试与分析工具.md\n  TITLE: \"第28章 调试与分析工具\"\n\nFILE: 第29章 综合案例分析.md\n  TITLE: \"第29章 综合案例分析\"\n\nFILE: 第4章 UI 更新与重建系统.md\n  TITLE: \"第4章 UI 更新与重建系统\"\n\nFILE: 第7章 CanvasRenderer 机制.md\n  TITLE: \"第7章 CanvasRenderer 机制\"\n\nFILE: 第9章 UI 与渲染管线.md\n  TITLE: \"第9章 UI 与渲染管线\""
+          },
+          {
+            "id": "call_bbd24311a0134c64b9468fd8",
+            "name": "Bash",
+            "input": {
+              "command": "# 获取性能优化目录下文件的 title 字段\nfor f in \"D:/GitHub/Doc/UnityKnowledge/性能优化/\"*.md; do\n  title=$(grep -m1 \"^title:\" \"$f\" 2>/dev/null | sed 's/^title:\\s*//')\n  echo \"FILE: $(basename \"$f\")\"\n  echo \"  TITLE: $title\"\n  echo \"\"\ndone",
+              "description": "提取性能优化目录下文件的 title"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "FILE: 2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂 1.md\n  TITLE: \"2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂\"\n\nFILE: 2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂 2.md\n  TITLE: \"2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂\"\n\nFILE: 2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂 3.md\n  TITLE: \"2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂\"\n\nFILE: 2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂.md\n  TITLE: \"2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂\"\n\nFILE: 5秒快速开玩：小游戏性能优化实战 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n  TITLE: \"5秒快速开玩：小游戏性能优化实战 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技\"\n\nFILE: Shader内存为何居高不下？变体管理是关键 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n  TITLE: \"Shader内存为何居高不下？变体管理是关键 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技\"\n\nFILE: Unity小游戏优化简谱  吃透底层逻辑，告别掉帧与流失 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n  TITLE: \"Unity小游戏优化简谱 | 吃透底层逻辑，告别掉帧与流失 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技\"\n\nFILE: Unity性能优化 — UI模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n  TITLE: \"Unity性能优化 — UI模块 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技\"\n\nFILE: Unity性能优化 — 动画模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n  TITLE: \"Unity性能优化 — 动画模块 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技\"\n\nFILE: Unity性能优化指南-笔记.md\n  TITLE: \"Unity性能优化指南-笔记\"\n\nFILE: Unity性能优化系列 — 资源内存泄漏 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n  TITLE: \"Unity性能优化系列 — 资源内存泄漏 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技\"\n\nFILE: Unity性能优化系列—Lua代码优化 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n  TITLE: \"Unity性能优化系列—Lua代码优化 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技\"\n\nFILE: Unity性能优化系列—渲染模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n  TITLE: \"Unity性能优化系列—渲染模块 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技\"\n\nFILE: Unity移动端游戏性能优化简谱之 CPU耗时调优.md\n  TITLE: \"Unity移动端游戏性能优化简谱之 CPU耗时调优\"\n\nFILE: 从64MB降至5MB，TMP字体Atlas内存优化实战 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n  TITLE: \"从64MB降至5MB，TMP字体Atlas内存优化实战 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技\"\n\nFILE: 关于Unity中的UGUI优化，你可能遇到这些问题 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n  TITLE: \"关于Unity中的UGUI优化，你可能遇到这些问题 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技\""
+          },
+          {
+            "id": "call_9ba0bda7c26949e7859029ab",
+            "name": "Bash",
+            "input": {
+              "command": "# 获取其他目录中 UI 相关文档的 title\nfor f in \\\n  \"D:/GitHub/Doc/UnityKnowledge/10_架构设计/【架构决策】UI架构-MVP vs MVVM.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/100_项目实战/01_休闲游戏云存档系统/11-UI组件与集成.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/100_项目实战/02_休闲游戏框架/01-UI框架设计.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【最佳实践】TextMeshPro性能优化实战.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【笔记】Unity事件系统实现机制.md\"; do\n  title=$(grep -m1 \"^title:\" \"$f\" 2>/dev/null | sed 's/^title:\\s*//')\n  echo \"FILE: $f\"\n  echo \"  TITLE: $title\"\n  echo \"\"\ndone",
+              "description": "提取其他 UI 相关文档的 title"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "FILE: D:/GitHub/Doc/UnityKnowledge/10_架构设计/【架构决策】UI架构-MVP vs MVVM.md\n  TITLE: 【架构决策】UI 架构 - MVP vs MVVM\n\nFILE: D:/GitHub/Doc/UnityKnowledge/100_项目实战/01_休闲游戏云存档系统/11-UI组件与集成.md\n  TITLE: 【教程】UI组件与集成\n\nFILE: D:/GitHub/Doc/UnityKnowledge/100_项目实战/02_休闲游戏框架/01-UI框架设计.md\n  TITLE: 【教程】UI框架设计\n\nFILE: D:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【最佳实践】TextMeshPro性能优化实战.md\n  TITLE: 【最佳实践】TextMeshPro性能优化实战\n\nFILE: D:/GitHub/Doc/UnityKnowledge/20_核心系统/26_UI系统/【笔记】Unity事件系统实现机制.md\n  TITLE: 【笔记】Unity事件系统实现机制"
+          },
+          {
+            "id": "call_c6f21e4ab05e4138a75b1efa",
+            "name": "Bash",
+            "input": {
+              "command": "# 检查 35_高级主题 下有哪些文档涉及 UI\ngrep -rl -i --include=\"*.md\" -E \"\\bUI\\b|UGUI|Canvas|界面|DrawCall\" \"D:/GitHub/Doc/UnityKnowledge/35_高级主题/\" 2>/dev/null",
+              "description": "搜索高级主题目录中的 UI 相关内容"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "D:/GitHub/Doc/UnityKnowledge/35_高级主题/【实战案例】tolua热更新系统完整落地.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【实战案例】内存泄漏排查实战.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【教程】打包与热更新.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【片段】项目面试STAR话术.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【笔记】Unity客户端面试题.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【笔记】Unity资源依赖与打包陷阱.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【笔记】性能优化面试问答.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【笔记】渲染与Shader面试问答.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【笔记】热更新知识脑图.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【笔记】高级Unity游戏开发面试复习地图.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【设计原理】Unity内存管理.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【设计原理】热更新方案对比.md\nD:/GitHub/Doc/UnityKnowledge/35_高级主题/【踩坑】HybridCLR接入常见坑.md"
+          },
+          {
+            "id": "call_4f52a6dd9efd462fa6f7b2d7",
+            "name": "Bash",
+            "input": {
+              "command": "# 获取 35_高级主题 中涉及 UI 的文档 title\nfor f in \\\n  \"D:/GitHub/Doc/UnityKnowledge/35_高级主题/【片段】项目面试STAR话术.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/35_高级主题/【笔记】Unity客户端面试题.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/35_高级主题/【笔记】性能优化面试问答.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/35_高级主题/【笔记】高级Unity游戏开发面试复习地图.md\"; do\n  title=$(grep -m1 \"^title:\" \"$f\" 2>/dev/null | sed 's/^title:\\s*//')\n  echo \"FILE: $(basename \"$f\")\"\n  echo \"  TITLE: $title\"\n  echo \"\"\ndone",
+              "description": "提取高级主题中 UI 相关文档的 title"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "FILE: 【片段】项目面试STAR话术.md\n  TITLE: 【片段】项目面试STAR话术\n\nFILE: 【笔记】Unity客户端面试题.md\n  TITLE: 【笔记】Unity客户端面试题\n\nFILE: 【笔记】性能优化面试问答.md\n  TITLE: 【笔记】性能优化面试问答\n\nFILE: 【笔记】高级Unity游戏开发面试复习地图.md\n  TITLE: 【笔记】高级Unity游戏开发面试复习地图"
+          },
+          {
+            "id": "call_ad1200b552c34c6986967775",
+            "name": "Bash",
+            "input": {
+              "command": "# 获取 10_架构设计 中事件系统相关文档的 title\nfor f in \\\n  \"D:/GitHub/Doc/UnityKnowledge/10_架构设计/事件系统专题索引.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/10_架构设计/【教程】事件系统与观察者模式.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/10_架构设计/【架构决策】事件系统实现对比.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/10_架构设计/【设计原理】事件驱动本质.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/10_架构设计/【代码片段】事件总线.md\"; do\n  title=$(grep -m1 \"^title:\" \"$f\" 2>/dev/null | sed 's/^title:\\s*//')\n  echo \"FILE: $(basename \"$f\")\"\n  echo \"  TITLE: $title\"\n  echo \"\"\ndone",
+              "description": "提取事件系统相关文档的 title"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "FILE: 事件系统专题索引.md\n  TITLE: 【教程】事件系统专题索引\n\nFILE: 【教程】事件系统与观察者模式.md\n  TITLE: 【教程】事件系统与观察者模式\n\nFILE: 【架构决策】事件系统实现对比.md\n  TITLE: 【架构决策】事件系统实现对比\n\nFILE: 【设计原理】事件驱动本质.md\n  TITLE: 【设计原理】事件驱动本质\n\nFILE: 【代码片段】事件总线.md\n  TITLE: 【代码片段】事件总线"
+          },
+          {
+            "id": "call_caf5c87f8f6b41cc913269da",
+            "name": "Bash",
+            "input": {
+              "command": "# 获取 100_项目实战 中 UI 相关文档的 title\nfor f in \\\n  \"D:/GitHub/Doc/UnityKnowledge/100_项目实战/02_休闲游戏框架/02-事件系统设计.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/100_项目实战/02_休闲游戏框架/README.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/90_项目复盘/【实战案例】休闲游戏框架复盘.md\"; do\n  title=$(grep -m1 \"^title:\" \"$f\" 2>/dev/null | sed 's/^title:\\s*//')\n  echo \"FILE: $(basename \"$f\")\"\n  echo \"  TITLE: $title\"\n  echo \"\"\ndone",
+              "description": "提取项目实战中 UI 相关文档的 title"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "FILE: 02-事件系统设计.md\n  TITLE: 【教程】事件系统设计\n\nFILE: README.md\n  TITLE: \n\nFILE: 【实战案例】休闲游戏框架复盘.md\n  TITLE: 【实战案例】休闲游戏框架复盘"
+          },
+          {
+            "id": "call_80fc0776880041b7828646ad",
+            "name": "Bash",
+            "input": {
+              "command": "# 搜索 30_性能优化 中包含 UI 内容的文档\ngrep -rl -i --include=\"*.md\" -E \"\\bUI\\b|UGUI|Canvas|DrawCall|合批|界面\" \"D:/GitHub/Doc/UnityKnowledge/30_性能优化/\" 2>/dev/null | sort",
+              "description": "搜索性能优化目录中包含 UI 关键词的文档"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "D:/GitHub/Doc/UnityKnowledge/30_性能优化/31_代码优化/【最佳实践】Update优化清单.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/32_内存管理/【实战案例】内存泄漏排查实战.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/README.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【教程】Frame Debugger渲染诊断流程.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【最佳实践】3D渲染优化指南.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【最佳实践】LOD系统实战指南.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【最佳实践】Overdraw优化实战.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【最佳实践】遮挡剔除实战.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/33_渲染优化/【笔记】Shader性能优化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/34_启动时间优化/【实战案例】加载时间优化实战.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/34_启动时间优化/【最佳实践】Addressables性能优化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/34_启动时间优化/【最佳实践】资源预加载策略.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/34_启动时间优化/【笔记】优化措施效果对比.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/34_启动时间优化/【设计原理】Unity启动流程深度解析.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/README.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【教程】CPU优化技术.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【教程】性能优化学习路径.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【教程】性能分析工具.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【教程】渲染性能优化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【笔记】性能数据真实性检验.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/【笔记】手机游戏发热性能问题定位与优化.md\nD:/GitHub/Doc/UnityKnowledge/30_性能优化/性能优化专题索引.md"
+          },
+          {
+            "id": "call_0c1110224e6c480f9bf4c77a",
+            "name": "Bash",
+            "input": {
+              "command": "# 获取性能优化中涉及 UI 的文档 title\nfor f in \\\n  \"D:/GitHub/Doc/UnityKnowledge/30_性能优化/【教程】CPU优化技术.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/30_性能优化/【教程】性能优化学习路径.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/30_性能优化/【教程】渲染性能优化.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/30_性能优化/【笔记】手机游戏发热性能问题定位与优化.md\" \\\n  \"D:/GitHub/Doc/UnityKnowledge/30_性能优化/性能优化专题索引.md\"; do\n  title=$(grep -m1 \"^title:\" \"$f\" 2>/dev/null | sed 's/^title:\\s*//')\n  echo \"FILE: $(basename \"$f\")\"\n  echo \"  TITLE: $title\"\n  echo \"\"\ndone",
+              "description": "提取性能优化中涉及 UI 文档的 title"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "FILE: 【教程】CPU优化技术.md\n  TITLE: 【教程】CPU优化技术\n\nFILE: 【教程】性能优化学习路径.md\n  TITLE: 【教程】性能优化学习路径\n\nFILE: 【教程】渲染性能优化.md\n  TITLE: 【教程】渲染性能优化\n\nFILE: 【笔记】手机游戏发热性能问题定位与优化.md\n  TITLE: \"手机游戏发热性能问题定位与优化\"\n\nFILE: 性能优化专题索引.md\n  TITLE: 【教程】性能优化专题索引"
+          }
+        ],
+        "isExpanded": false,
+        "result": "搜索完成。以下是按目录组织的完整结果。\n\n---\n\n## 一、20_核心系统/26_UI系统/ -- UI 系统主目录（14 个文件）\n\n| 文件路径 | 标题 (title) |\n|---|---|\n| `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\README.md` | (无 title) |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\UI系统专题索引.md` | 【教程】UI系统专题索引 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【教程】UI系统架构.md` | 【教程】UI系统架构 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI深度解析.md` | 【笔记】UGUI深度解析 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI性能优化实战总览.md` | 【笔记】UGUI性能优化实战总览 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI DrawCall影响因素全面测试.md` | 【笔记】UGUI DrawCall影响因素全面测试 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【设计原理】UGUI合批机制深度解析.md` | 【设计原理】UGUI合批机制深度解析 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【踩坑】UGUI常见性能陷阱与根因分析.md` | 【踩坑】UGUI常见性能陷阱与根因分析 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【实战案例】UI卡顿优化全流程.md` | 【实战案例】UI卡顿优化全流程 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【最佳实践】UI性能优化速查.md` | 【最佳实践】UI性能优化 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【最佳实践】TextMeshPro性能优化实战.md` | 【最佳实践】TextMeshPro性能优化实战 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【片段】UGUI 性能优化规则清单.md` | 【片段】UGUI 性能优化规则清单 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UI粒子特效实现方案.md` | 【笔记】UI粒子特效实现方案 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】Unity事件系统实现机制.md` | 【笔记】Unity事件系统实现机制 |\n\n---\n\n## 二、UGUI/ -- UGUI 深度系列（17 个文件）\n\n这是一个章节式的 UGUI 深度解析系列文档。\n\n| 文件路径 | 标题 (title) |\n|---|---|\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第4章 UI 更新与重建系统.md` | 第4章 UI 更新与重建系统 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第7章 CanvasRenderer 机制.md` | 第7章 CanvasRenderer 机制 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第9章 UI 与渲染管线.md` | 第9章 UI 与渲染管线 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第12章 UI 资源与图集系统.md` | 第12章 UI 资源与图集系统 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第15章 文本渲染系统.md` | 第15章 文本渲染系统 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第17章 UI Shader 机制.md` | 第17章 UI Shader 机制 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第18章 UI 特效实现.md` | 第18章 UI 特效实现 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第19章 UI 特效与性能.md` | 第19章 UI 特效与性能 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第20章 UI 性能分析基础.md` | 第20章 UI 性能分析基础 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第21章 Canvas 优化.md` | 第21章 Canvas 优化 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第22章 批处理优化.md` | 第22章 批处理优化 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第24章 大规模 UI 优化.md` | 第24章 大规模 UI 优化 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第25章 UI 架构设计.md` | 第25章 UI 架构设计 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第26章 UI 动画实现.md` | 第26章 UI 动画实现 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第27章 可扩展 UI 组件设计.md` | 第27章 可扩展 UI 组件设计 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第28章 调试与分析工具.md` | 第28章 调试与分析工具 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第29章 综合案例分析.md` | 第29章 综合案例分析 |\n\n---\n\n## 三、性能优化/ -- 外部参考资料目录中的 UI 相关文档（3 个文件）\n\n| 文件路径 | 标题 (title) |\n|---|---|\n| `D:\\GitHub\\Doc\\UnityKnowledge\\性能优化\\Unity性能优化 — UI模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md` | Unity性能优化 -- UI模块 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\性能优化\\关于Unity中的UGUI优化，你可能遇到这些问题 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md` | 关于Unity中的UGUI优化，你可能遇到这些问题 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\性能优化\\从64MB降至5MB，TMP字体Atlas内存优化实战 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md` | 从64MB降至5MB，TMP字体Atlas内存优化实战 |\n\n---\n\n## 四、30_性能优化/ -- 性能优化目录中提及 UI 的文档（重点相关 5 个）\n\n以下文档内容中包含 UI 相关讨论（DrawCall、Canvas、合批、UI 性能等关键词）：\n\n| 文件路径 | 标题 (title) |\n|---|---|\n| `D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化\\【教程】CPU优化技术.md` | 【教程】CPU优化技术 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化\\【教程】渲染性能优化.md` | 【教程】渲染性能优化 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化\\【教程】性能优化学习路径.md` | 【教程】性能优化学习路径 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化\\【笔记】手机游戏发热性能问题定位与优化.md` | 手机游戏发热性能问题定位与优化 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化\\性能优化专题索引.md` | 【教程】性能优化专题索引 |\n\n此外，以下子目录文档也提及了 UI 相关内容（篇幅较小）：\n- `D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化\\31_代码优化\\【最佳实践】Update优化清单.md`\n- `D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化\\32_内存管理\\【实战案例】内存泄漏排查实战.md`\n- `D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化\\33_渲染优化\\README.md`\n- `D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化\\33_渲染优化\\【最佳实践】Overdraw优化实战.md`\n- `D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化\\34_启动时间优化\\【最佳实践】资源预加载策略.md`\n- `D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化\\34_启动时间优化\\【笔记】优化措施效果对比.md`\n- `D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化\\34_启动时间优化\\【设计原理】Unity启动流程深度解析.md`\n- `D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化\\34_启动时间优化\\【实战案例】加载时间优化实战.md`\n- `D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化\\34_启动时间优化\\【最佳实践】Addressables性能优化.md`\n\n---\n\n## 五、10_架构设计/ -- UI 架构与事件系统相关（6 个文件）\n\n| 文件路径 | 标题 (title) |\n|---|---|\n| `D:\\GitHub\\Doc\\UnityKnowledge\\10_架构设计\\【架构决策】UI架构-MVP vs MVVM.md` | 【架构决策】UI 架构 - MVP vs MVVM |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\10_架构设计\\事件系统专题索引.md` | 【教程】事件系统专题索引 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\10_架构设计\\【教程】事件系统与观察者模式.md` | 【教程】事件系统与观察者模式 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\10_架构设计\\【架构决策】事件系统实现对比.md` | 【架构决策】事件系统实现对比 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\10_架构设计\\【设计原理】事件驱动本质.md` | 【设计原理】事件驱动本质 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\10_架构设计\\【代码片段】事件总线.md` | 【代码片段】事件总线 |\n\n---\n\n## 六、100_项目实战/ -- UI 框架与组件实现（3 个文件）\n\n| 文件路径 | 标题 (title) |\n|---|---|\n| `D:\\GitHub\\Doc\\UnityKnowledge\\100_项目实战\\01_休闲游戏云存档系统\\11-UI组件与集成.md` | 【教程】UI组件与集成 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\100_项目实战\\02_休闲游戏框架\\01-UI框架设计.md` | 【教程】UI框架设计 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\100_项目实战\\02_休闲游戏框架\\02-事件系统设计.md` | 【教程】事件系统设计 |\n\n---\n\n## 七、35_高级主题/ -- 涉及 UI 内容的面试与综合文档（4 个文件）\n\n以下文档内容中包含 UI 相关的面试问答或综合讨论：\n\n| 文件路径 | 标题 (title) |\n|---|---|\n| `D:\\GitHub\\Doc\\UnityKnowledge\\35_高级主题\\【笔记】性能优化面试问答.md` | 【笔记】性能优化面试问答 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\35_高级主题\\【笔记】Unity客户端面试题.md` | 【笔记】Unity客户端面试题 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\35_高级主题\\【笔记】高级Unity游戏开发面试复习地图.md` | 【笔记】高级Unity游戏开发面试复习地图 |\n| `D:\\GitHub\\Doc\\UnityKnowledge\\35_高级主题\\【片段】项目面试STAR话术.md` | 【片段】项目面试STAR话术 |\n\n---\n\n## 八、90_项目复盘/ -- 涉及 UI 框架复盘（1 个文件）\n\n| 文件路径 | 标题 (title) |\n|---|---|\n| `D:\\GitHub\\Doc\\UnityKnowledge\\90_项目复盘\\【实战案例】休闲游戏框架复盘.md` | 【实战案例】休闲游戏框架复盘 |\n\n---\n\n## 汇总统计\n\n| 目录 | 文件数 | 说明 |\n|---|---|---|\n| 20_核心系统/26_UI系统/ | 14 | UI 系统主目录，核心文档 |\n| UGUI/ | 17 | UGUI 深度系列（章节式） |\n| 性能优化/ (根) | 3 | UWA 外部参考（UI 模块、UGUI 优化、TMP 字体） |\n| 30_性能优化/ | 5+12 | 性能优化中重点/次要提及 UI 的文档 |\n| 10_架构设计/ | 6 | UI 架构决策 + 事件系统 |\n| 100_项目实战/ | 3 | UI 框架设计与组件集成 |\n| 35_高级主题/ | 4 | 面试问答中涉及 UI |\n| 90_项目复盘/ | 1 | 休闲游戏框架复盘 |\n| **合计** | **65 个文件** | |"
+      },
+      "call_a91b1469d67847e8842b8d14": {
+        "id": "call_a91b1469d67847e8842b8d14",
+        "description": "搜索UI适配相关文档内容",
+        "prompt": "在 D:\\GitHub\\Doc\\UnityKnowledge 中搜索所有与 UI 适配、CanvasScaler、Anchor、锚点、SafeArea、分辨率适配、自适应相关的内容。重点查找：\n1. 包含 \"CanvasScaler\" / \"ScaleMode\" / \"MatchWidthOrHeight\" 的文件和内容\n2. 包含 \"锚点\" / \"Anchor\" / \"SafeArea\" / \"安全区\" / \"刘海\" 的内容\n3. UGUI 深度系列文档中关于适配的章节\n\n请返回找到的文件路径和相关内容摘要。",
+        "status": "completed",
+        "toolCalls": [
+          {
+            "id": "call_97ff740e0d9946b4810880be",
+            "name": "Grep",
+            "input": {
+              "pattern": "CanvasScaler|ScaleMode|ScaleWithScreenSize|MatchWidthOrHeight|ConstantPixelSize",
+              "path": "D:\\GitHub\\Doc\\UnityKnowledge",
+              "output_mode": "files_with_matches"
+            },
+            "status": "error",
+            "isExpanded": false,
+            "result": "spawn C:\\Users\\Keynes\\AppData\\Roaming\\npm\\node_modules\\@anthropic-ai\\claude-code\\vendor\\ripgrep\\ia32-win32\\rg.exe ENOENT"
+          },
+          {
+            "id": "call_bd5f14c17d2445b895e7d9b7",
+            "name": "Grep",
+            "input": {
+              "pattern": "锚点|Anchor|SafeArea|安全区|刘海|适配|自适应|分辨率适配",
+              "path": "D:\\GitHub\\Doc\\UnityKnowledge",
+              "output_mode": "files_with_matches"
+            },
+            "status": "error",
+            "isExpanded": false,
+            "result": "spawn C:\\Users\\Keynes\\AppData\\Roaming\\npm\\node_modules\\@anthropic-ai\\claude-code\\vendor\\ripgrep\\ia32-win32\\rg.exe ENOENT"
+          },
+          {
+            "id": "call_7d28ac44dd8445598c861762",
+            "name": "Glob",
+            "input": {
+              "pattern": "**/*UGUI*",
+              "path": "D:\\GitHub\\Doc\\UnityKnowledge"
+            },
+            "status": "error",
+            "isExpanded": false,
+            "result": "spawn C:\\Users\\Keynes\\AppData\\Roaming\\npm\\node_modules\\@anthropic-ai\\claude-code\\vendor\\ripgrep\\ia32-win32\\rg.exe ENOENT"
+          },
+          {
+            "id": "call_90850825b8bb486db9336855",
+            "name": "Glob",
+            "input": {
+              "pattern": "**/*UI*",
+              "path": "D:\\GitHub\\Doc\\UnityKnowledge"
+            },
+            "status": "error",
+            "isExpanded": false,
+            "result": "spawn C:\\Users\\Keynes\\AppData\\Roaming\\npm\\node_modules\\@anthropic-ai\\claude-code\\vendor\\ripgrep\\ia32-win32\\rg.exe ENOENT"
+          },
+          {
+            "id": "call_30817f211a074c4a9531fdcc",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && grep -rl \"CanvasScaler\\|ScaleMode\\|ScaleWithScreenSize\\|MatchWidthOrHeight\\|ConstantPixelSize\" --include=\"*.md\" .",
+              "description": "搜索包含 CanvasScaler/ScaleMode 等关键词的文件"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "./20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md\n./20_核心系统/26_UI系统/【笔记】UGUI性能优化实战总览.md\n./20_核心系统/26_UI系统/【笔记】UI系统知识脑图.md\n./20_核心系统/26_UI系统/【设计原理】UGUI合批机制深度解析.md\n./40_工具链/41_编辑器扩展/【教程】EditorWindow开发.md"
+          },
+          {
+            "id": "call_3e5d68924c0d4ae49c28976c",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && grep -rl \"锚点\\|Anchor\\|SafeArea\\|安全区\\|刘海\\|适配\\|自适应\\|分辨率适配\" --include=\"*.md\" .",
+              "description": "搜索包含锚点/SafeArea/适配等关键词的文件"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "./00_元数据与模板/【方案】知识库完善.md\n./00_元数据与模板/【方案】缺失知识点补全文档清单.md\n./00_元数据与模板/【模板】代码审查清单.md\n./00_元数据与模板/【模板】代码片段.md\n./00_元数据与模板/【模板】通用编程笔记.md\n./00_元数据与模板/元数据规范.md\n./00_元数据与模板/标签体系.md\n./100_项目实战/01_休闲游戏云存档系统/01-需求分析与架构.md\n./100_项目实战/01_休闲游戏云存档系统/03-平台检测系统.md\n./100_项目实战/01_休闲游戏云存档系统/08-本地缓存与离线.md\n./100_项目实战/02_休闲游戏框架/01-UI框架设计.md\n./100_项目实战/02_休闲游戏框架/README.md\n./10_架构设计/【代码片段】对象池通用实现.md\n./10_架构设计/【架构决策】UI架构-MVP vs MVVM.md\n./10_架构设计/对象池专题索引.md\n./10_架构设计/设计模式专题索引.md\n./20_核心系统/21_动画系统/【笔记】IK系统实现.md\n./20_核心系统/22_渲染系统/【教程】后处理.md\n./20_核心系统/24_输入系统/README.md\n./20_核心系统/24_输入系统/【实战案例】多平台输入统一架构设计.md\n./20_核心系统/24_输入系统/【设计原理】新输入系统架构深度解析.md\n./20_核心系统/24_输入系统/输入系统专题索引.md\n./20_核心系统/26_UI系统/UI系统专题索引.md\n./20_核心系统/26_UI系统/【教程】UI系统架构.md\n./20_核心系统/26_UI系统/【最佳实践】UI性能优化速查.md\n./20_核心系统/26_UI系统/【笔记】UGUI性能优化实战总览.md\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md\n./20_核心系统/26_UI系统/【笔记】UI粒子特效实现方案.md\n./20_核心系统/26_UI系统/【笔记】UI系统知识脑图.md\n./20_核心系统/26_UI系统/【踩坑】UGUI常见性能陷阱与根因分析.md\n./20_核心系统/28_存档系统/【实战案例】云端存档冲突解决架构.md\n./20_核心系统/28_存档系统/【系统架构】存档系统.md\n./20_核心系统/31_AI导航系统/【架构决策】行为树 vs 状态机 vs GOAP.md\n./25_DOTS技术栈/【笔记】Burst SIMD原理详解.md\n./25_DOTS技术栈/【笔记】RVO避障算法原理.md\n./30_性能优化/33_渲染优化/【最佳实践】LOD系统实战指南.md\n./30_性能优化/【笔记】手机游戏发热性能问题定位与优化.md\n./30_性能优化/性能优化专题索引.md\n./35_高级主题/【教程】打包与热更新.md\n./35_高级主题/【笔记】HybridCLR构建管线与Generate工具链.md\n./35_高级主题/【笔记】Unity客户端面试题.md\n./35_高级主题/【笔记】热更新知识脑图.md\n./35_高级主题/【笔记】热更新面试问答.md\n./35_高级主题/【设计原理】热更新方案对比.md\n./40_工具链/41_编辑器扩展/【教程】自定义Inspector.md\n./50_平台适配/【教程】WebGL限制与方案.md\n./50_平台适配/【教程】主机平台.md\n./50_平台适配/【最佳实践】Android专项.md\n./50_平台适配/【最佳实践】iOS专项.md\n./50_平台适配/【踩坑】Android常见问题清单.md\n./50_平台适配/【踩坑】iOS常见问题清单.md\n./60_第三方库/【代码片段】DOTween常用动画.md\n./60_第三方库/【教程】DOTween深度使用.md\n./90_项目复盘/【实战案例】休闲游戏云存档系统复盘.md\n./Clippings/独立开发一款类杀戮尖塔游戏，我是如何设计16个系统之间的耦合的.md\n./index.md\n./log.md\n./README.md\n./UGUI/第17章 UI Shader 机制.md\n./UGUI/第19章 UI 特效与性能.md\n./UGUI/第22章 批处理优化.md\n./UGUI/第25章 UI 架构设计.md\n./UGUI/第26章 UI 动画实现.md\n./UGUI/第27章 可扩展 UI 组件设计.md\n./UGUI/第4章 UI 更新与重建系统.md\n./UGUI/第7章 CanvasRenderer 机制.md\n./性能优化/2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂 3.md\n./性能优化/2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂.md\n./性能优化/5秒快速开玩：小游戏性能优化实战 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n./性能优化/Unity小游戏优化简谱  吃透底层逻辑，告别掉帧与流失 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md"
+          },
+          {
+            "id": "call_82edb2c789d44652a2c84c0b",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && find . -name \"*UGUI*\" -o -name \"*ui*\" -o -name \"*UI*\" | grep -i \"\\.md$\"",
+              "description": "查找 UGUI 和 UI 相关文件"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "./100_项目实战/01_休闲游戏云存档系统/11-UI组件与集成.md\n./100_项目实战/02_休闲游戏框架/01-UI框架设计.md\n./10_架构设计/【架构决策】UI架构-MVP vs MVVM.md\n./20_核心系统/26_UI系统/UI系统专题索引.md\n./20_核心系统/26_UI系统/【实战案例】UI卡顿优化全流程.md\n./20_核心系统/26_UI系统/【教程】UI系统架构.md\n./20_核心系统/26_UI系统/【最佳实践】UI性能优化速查.md\n./20_核心系统/26_UI系统/【片段】UGUI 性能优化规则清单.md\n./20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md\n./20_核心系统/26_UI系统/【笔记】UGUI性能优化实战总览.md\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md\n./20_核心系统/26_UI系统/【笔记】UI粒子特效实现方案.md\n./20_核心系统/26_UI系统/【笔记】UI系统知识脑图.md\n./20_核心系统/26_UI系统/【设计原理】UGUI合批机制深度解析.md\n./20_核心系统/26_UI系统/【踩坑】UGUI常见性能陷阱与根因分析.md\n./UGUI/第12章 UI 资源与图集系统.md\n./UGUI/第17章 UI Shader 机制.md\n./UGUI/第18章 UI 特效实现.md\n./UGUI/第19章 UI 特效与性能.md\n./UGUI/第20章 UI 性能分析基础.md\n./UGUI/第24章 大规模 UI 优化.md\n./UGUI/第25章 UI 架构设计.md\n./UGUI/第26章 UI 动画实现.md\n./UGUI/第27章 可扩展 UI 组件设计.md\n./UGUI/第4章 UI 更新与重建系统.md\n./UGUI/第9章 UI 与渲染管线.md\n./性能优化/Unity性能优化 — UI模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n./性能优化/关于Unity中的UGUI优化，你可能遇到这些问题 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md"
+          },
+          {
+            "id": "call_e5f3986b2177488b939d2920",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && grep -n \"CanvasScaler\\|ScaleMode\\|ScaleWithScreenSize\\|MatchWidthOrHeight\\|ConstantPixelSize\\|ScreenMatchMode\\|ReferenceResolution\" --include=\"*.md\" -r .",
+              "description": "搜索 CanvasScaler 相关的具体内容及行号"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "./20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md:533:public class CanvasScalerTest : MonoBehaviour\n./20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md:535:    [SerializeField] private CanvasScaler scaler;\n./20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md:537:    private void TestScaleMode(CanvasScaler.ScaleMode mode)\n./20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md:539:        scaler.uiScaleMode = mode;\n./20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md:541:        if (mode == CanvasScaler.ScaleMode.ConstantPixelSize)\n./20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md:545:        else if (mode == CanvasScaler.ScaleMode.ScaleWithScreenSize)\n./20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md:549:        else if (mode == CanvasScaler.ScaleMode.ConstantPhysicalSize)\n./20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md:551:            scaler.physicalUnit = CanvasScaler.Unit.Centimeters;\n./20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md:856:Root (Canvas + CanvasScaler + ScreenSpace-Overlay)\n./20_核心系统/26_UI系统/【笔记】UGUI性能优化实战总览.md:293:- 同时修改 UI 全局根节点 `CanvasScaler`：\n./20_核心系统/26_UI系统/【笔记】UGUI性能优化实战总览.md:333:- [ ] 横竖屏切换改 `CanvasScaler` + fade 遮罩\n./20_核心系统/26_UI系统/【笔记】UI系统知识脑图.md:188:      CanvasScaler\n./20_核心系统/26_UI系统/【笔记】UI系统知识脑图.md:197:        改 CanvasScaler 参数\n./20_核心系统/26_UI系统/【笔记】UI系统知识脑图.md:539:├── CanvasScaler\n./20_核心系统/26_UI系统/【笔记】UI系统知识脑图.md:558:│   ├── 切换 CanvasScaler 参数\n./20_核心系统/26_UI系统/【设计原理】UGUI合批机制深度解析.md:814:    private CanvasScaler scaler;\n./20_核心系统/26_UI系统/【设计原理】UGUI合批机制深度解析.md:818:        scaler = GetComponent<CanvasScaler>();\n./20_核心系统/26_UI系统/【设计原理】UGUI合批机制深度解析.md:819:        scaler.uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;\n./40_工具链/41_编辑器扩展/【教程】EditorWindow开发.md:436:        canvas.AddComponent<UnityEngine.UI.CanvasScaler>();"
+          },
+          {
+            "id": "call_127650e5888244488691397f",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && grep -n \"锚点\\|Anchor\\|SafeArea\\|安全区\\|刘海\\|notch\\|分辨率适配\\|自适应\\|Aspect\\|Screen\\.width\\|Screen\\.height\" --include=\"*.md\" -r .",
+              "description": "搜索锚点/SafeArea/适配相关的具体内容及行号"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "./00_元数据与模板/【模板】代码审查清单.md:90:- [ ] **分辨率适配**：UI是否在不同分辨率下正常显示？\n./20_核心系统/21_动画系统/【笔记】IK系统实现.md:21:深入解析Unity IK系统的底层实现，对比FK与IK、CCD与FABRIK算法原理，提供手部IK、脚部自适应地形、抓取系统等完整实战代码。\n./20_核心系统/21_动画系统/【笔记】IK系统实现.md:265:### 2. 角色脚部 IK（自适应地形）\n./20_核心系统/21_动画系统/【笔记】IK系统实现.md:538:- 为脚部 IK 添加自适应地形\n./20_核心系统/26_UI系统/【教程】UI系统架构.md:21:讲解游戏UI系统的架构设计，包括Canvas分层策略、UI面板管理系统、MVVM模式在UI中的应用、UI动画系统和分辨率适配方案。\n./20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md:699:        Debug.Log($\"Resolution: {Screen.width}x{Screen.height}, Time: {sw.ElapsedMilliseconds / 100f:F2}ms\");\n./20_核心系统/26_UI系统/【笔记】UGUI性能优化实战总览.md:29:它的价值在于**广度 + 速查**：图集打包、合批、Mask 取舍、动静分离、界面切换、字体、特效混合、刘海屏/横竖屏适配——一条线串起来。深度机制不在本页展开，而是指向真相层笔记：\n./20_核心系统/26_UI系统/【笔记】UGUI性能优化实战总览.md:280:### 12.1 刘海屏适配\n./20_核心系统/26_UI系统/【笔记】UGUI性能优化实战总览.md:286:3. 改**锚点**。\n./20_核心系统/26_UI系统/【笔记】UGUI性能优化实战总览.md:299:### 12.3 自适应背景\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md:156:   └── ContentSizeFitter.cs     // 自适应尺寸\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md:2252:            // 设置锚点为左上角（axis=0 水平，axis=1 垂直）\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md:2357:5. SetChildAlongAxis() 设置子物体的锚点和位置\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md:2559:    /// ContentSizeFitter - 内容自适应尺寸控制器\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md:2609:            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size);\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md:2626:            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, size);\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md:2721:4. SetSizeWithCurrentAnchors 设置 RectTransform 大小\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md:2728:- 配合 LayoutGroup 实现自适应布局\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md:3538:        [SerializeField] private bool m_PreserveAspect = false;\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md:3724:        private Rect GetDrawingDimensions(bool shouldPreserveAspect)\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md:3733:            if (shouldPreserveAspect && spriteSize.sqrMagnitude > 0.001f)\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md:4361:| **ContentSizeFitter** | 自适应尺寸 | `SetLayoutHorizontal()`, `SetLayoutVertical()` | `UI/Layout/ContentSizeFitter.cs` |\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md:4374:| **ScrollRect** | 滚动视图 | `OnScroll()`, `SetContentAnchoredPosition()` | `UI/Controls/ScrollRect.cs` |\n./20_核心系统/26_UI系统/【笔记】UI粒子特效实现方案.md:126:    [SerializeField] private Transform effectAnchor;       // 粒子挂载点\n./20_核心系统/26_UI系统/【笔记】UI系统知识脑图.md:192:      刘海屏\n./20_核心系统/26_UI系统/【笔记】UI系统知识脑图.md:195:        改锚点\n./20_核心系统/26_UI系统/【笔记】UI系统知识脑图.md:199:      自适应背景\n./20_核心系统/26_UI系统/【笔记】UI系统知识脑图.md:551:├── 刘海屏适配\n./20_核心系统/26_UI系统/【笔记】UI系统知识脑图.md:554:│   └── 方案3：改锚点避开安全区\n./20_核心系统/26_UI系统/【笔记】UI系统知识脑图.md:563:└── 自适应背景\n./20_核心系统/26_UI系统/【设计原理】UGUI合批机制深度解析.md:826:        float screenRatio = (float)Screen.width / Screen.height;\n./20_核心系统/26_UI系统/【设计原理】UGUI合批机制深度解析.md:831:            return (float)Screen.height / ReferenceHeight;\n./20_核心系统/26_UI系统/【设计原理】UGUI合批机制深度解析.md:836:            return (float)Screen.width / ReferenceWidth;\n./20_核心系统/26_UI系统/【踩坑】UGUI常见性能陷阱与根因分析.md:153:        get { return m_AnchoredPosition; }\n./20_核心系统/26_UI系统/【踩坑】UGUI常见性能陷阱与根因分析.md:156:            if (m_AnchoredPosition != value)\n./20_核心系统/26_UI系统/【踩坑】UGUI常见性能陷阱与根因分析.md:158:                m_AnchoredPosition = value;\n./20_核心系统/26_UI系统/【踩坑】UGUI常见性能陷阱与根因分析.md:400:        layoutGroup.childAlignment = TextAnchor.UpperLeft; // 对齐方式\n./25_DOTS技术栈/DOTS专题索引.md:32:3. [【笔记】Entities 1.4 与 Entities Graphics 1.4 官方文档](./【笔记】Entities 1.4 与 Entities Graphics 1.4 官方文档.md) - 综合 Unity 官方手册，补全 Baking 烘焙管线、SubScene/内容管理、ECS 渲染与现代 1.4 编程模型（含 IAspect 废弃、TransformUsageFlags、MaterialMeshInfo）。\n./25_DOTS技术栈/【笔记】Entities 1.4 与 Entities Graphics 1.4 官方文档.md:42:本文综合两份官方手册补全这三块，并修正若干 1.4 版本要点（如 **`IAspect` 在 1.4 已废弃**）。ECS 基础概念不重复，需要请回 [[【教程】ECS架构入门]]。\n./25_DOTS技术栈/【笔记】Entities 1.4 与 Entities Graphics 1.4 官方文档.md:44:> ⚠️ 来源诚实声明：Baking / SubScene / Content Management / Entities Graphics / `ISystem` 对比 / 托管组件 / Aspects 废弃 等，均据上述官方手册页面编译（见 `sources`）。`SystemAPI` 与「系统更新顺序」两页抓取时官方站点持续 500，相关小节据其它页引用与 ECS 通用机制归纳，已在该小节标注，引用前建议对照原文。\n./25_DOTS技术栈/【笔记】Entities 1.4 与 Entities Graphics 1.4 官方文档.md:158:### 1.5 Aspects（`IAspect`）—— 1.4 已废弃，仅作了解\n./25_DOTS技术栈/【笔记】Entities 1.4 与 Entities Graphics 1.4 官方文档.md:160:> ⚠️ **版本要点**：官方 `aspects-concepts.html` 明确 `IAspect` 在 Entities 1.4 已 **deprecated（废弃）**，计划在后续主版本移除，转而直接用 `SystemAPI.Query<RefRW<T>, RefRO<U>>()` 组件访问。\n./25_DOTS技术栈/【笔记】Entities 1.4 与 Entities Graphics 1.4 官方文档.md:162:它原本是「把一个实体若干相关组件打包成 `readonly partial struct`」的封装层（字段为 `Entity`/`RefRW<T>`/`RefRO<T>`/`DynamicBuffer<T>` 等），用于简化跨组件只读访问、提升可读性。**新代码不要再引入 Aspects**；维护旧代码时见到 `SystemAPI.Query<MyAspect>()` 知道是其含义即可，逐步迁移回裸组件查询。\n./25_DOTS技术栈/【笔记】Entities 1.4 与 Entities Graphics 1.4 官方文档.md:496:- **不要再引入 `IAspect`**（1.4 已废弃），新代码用裸组件查询。\n./25_DOTS技术栈/【笔记】RVO避障算法原理.md:223:  安全区域 = half-plane 中 dot(v - point, normal) ≥ 0 的那侧\n./30_性能优化/33_渲染优化/【最佳实践】LOD系统实战指南.md:21:Unity LOD(Level of Detail)系统的完整实战指南，涵盖LOD Group配置、基于帧率的自适应LOD、CrossFade过渡优化、Billboard LOD配置，以及移动端和PC端的LOD配置建议。100棵树场景实测：LOD+批处理可将三角形从50万降至5万、GPU时间从12ms降至1.5ms。\n./30_性能优化/33_渲染优化/【最佳实践】Overdraw优化实战.md:342:        int width = Screen.width;\n./30_性能优化/33_渲染优化/【最佳实践】Overdraw优化实战.md:343:        int height = Screen.height;\n./30_性能优化/33_渲染优化/【最佳实践】Overdraw优化实战.md:463:        float screenArea = Screen.width * Screen.height;\n./30_性能优化/【笔记】手机游戏发热性能问题定位与优化.md:887:**进阶：温度驱动的自适应分辨率**\n./30_性能优化/【笔记】手机游戏发热性能问题定位与优化.md:1906:更进一步，可以做自适应画质：监控设备温度，温度超过阈值时自动降级画质参数。温度回落后逐步恢复。这比固定分档更智能，也是主流手游的标配做法。\n./40_工具链/41_编辑器扩展/【教程】自定义Inspector.md:399:            GUIStyle centeredStyle = new GUIStyle(EditorStyles.label) { alignment = TextAnchor.MiddleCenter };\n./50_平台适配/【最佳实践】Android专项.md:21:从最佳实践角度总结Unity Android平台的专项优化要点，涵盖分辨率适配、ABI架构选择、运行时权限管理、返回键处理、触屏输入适配、存储路径方案、网络状态检测以及发热/启动慢等常见问题的解决方案。\n./50_平台适配/【最佳实践】Android专项.md:29:## 分辨率适配\n./50_平台适配/【最佳实践】Android专项.md:32:// 安全区域适配\n./50_平台适配/【踩坑】Android常见问题清单.md:21:记录Android平台开发中的常见问题与解决方案，涵盖设备兼容性、分辨率适配、运行时权限、返回键处理、触屏输入、存储路径、网络状态检测以及黑屏/启动慢/发热等高频问题的排查方法。\n./50_平台适配/【踩坑】Android常见问题清单.md:27:### 分辨率适配\n./50_平台适配/【踩坑】Android常见问题清单.md:41:        float aspectRatio = (float)Screen.width / Screen.height;\n./50_平台适配/【踩坑】Android常见问题清单.md:64:### 安全区域\n./50_平台适配/【踩坑】Android常见问题清单.md:67:public class SafeAreaAdapter : MonoBehaviour\n./50_平台适配/【踩坑】Android常见问题清单.md:73:        ApplySafeArea();\n./50_平台适配/【踩坑】Android常见问题清单.md:76:    private void ApplySafeArea()\n./50_平台适配/【踩坑】Android常见问题清单.md:80:        // 转换为锚点\n./50_平台适配/【踩坑】Android常见问题清单.md:84:        anchorMin.x /= Screen.width;\n./50_平台适配/【踩坑】Android常见问题清单.md:85:        anchorMin.y /= Screen.height;\n./50_平台适配/【踩坑】Android常见问题清单.md:86:        anchorMax.x /= Screen.width;\n./50_平台适配/【踩坑】Android常见问题清单.md:87:        anchorMax.y /= Screen.height;\n./60_第三方库/【代码片段】DOTween常用动画.md:461:        return rect.DOAnchorPos(targetPos, duration).SetEase(Ease.OutQuad);\n./60_第三方库/【代码片段】DOTween常用动画.md:471:        return rect.DOAnchorPos(targetPos, duration).SetEase(Ease.OutQuad);\n./60_第三方库/【代码片段】DOTween常用动画.md:481:        return rect.DOAnchorPos(targetPos, duration).SetEase(Ease.OutQuad);\n./60_第三方库/【代码片段】DOTween常用动画.md:491:        return rect.DOAnchorPos(targetPos, duration).SetEase(Ease.OutQuad);\n./60_第三方库/【教程】DOTween深度使用.md:92:| `DOAnchorPos` | 锚点位置 | `rectTransform.DOAnchorPos(Vector2.zero, 1f)` |\n./Clippings/独立开发一款类杀戮尖塔游戏，我是如何设计16个系统之间的耦合的.md:80:本科是引擎型，回合越多连锁转得越充分，精英战变长对它反而是利好——前提是战斗不拖到手牌空间溢出。保留制下上限10张，本科出牌速度快、抽牌多，大约第5回合开始面临手牌淤积。精英血量的安全区间是\"本科引擎能在4-5回合内解决\"。\n./log.md:19:- 新增主题：图集/SpriteAtlas 打包冗余规则、RawImage 陷阱、图集尺寸策略、Mask vs RectMask2D 数量决策、动静分离、界面切换开销数据、刘海屏/横竖屏适配、UI 混合粒子、字体加粗与 Font Texture\n./log.md:133:- 关键版本事实：**IAspect 在 Entities 1.4 已废弃**（据 aspects-concepts.html），新代码用裸组件查询；Entity Scene 文件格式变更需重建缓存\n./log.md:134:- 诚实标注：Baking/SubScene/Graphics/ISystem对比/托管组件/Aspects废弃 据官方页面编译；SystemAPI 与系统更新顺序两页官方站点持续 500 抓取失败，相关小节据其它页引用与 ECS 通用机制归纳并已在文内标注「建议对照原文」\n./UGUI/第19章 UI 特效与性能.md:1234:- AnchoredPosition\n./UGUI/第25章 UI 架构设计.md:586:4. 分辨率适配\n./UGUI/第26章 UI 动画实现.md:287:2. 修改 Anchor\n./UGUI/第4章 UI 更新与重建系统.md:360:- RectTransform 尺寸或锚点变化\n./UGUI/第4章 UI 更新与重建系统.md:469:- RectTransform 尺寸或锚点变化\n./UGUI/第4章 UI 更新与重建系统.md:884:- RectTransform —— 根据 Anchor 规则计算最终位置"
+          },
+          {
+            "id": "call_ef6cdcc95ff34df2a8bbc163",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI性能优化实战总览.md",
+              "offset": 270,
+              "limit": 80
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "   270→  - ⚠️ 该插件按 `ParticleSystem.MaxParticles` 数量初始化数组，**要特别注意 MaxParticles 数量**。\n   271→- **Render Texture**\n   272→- **World Space Canvas**\n   273→- **Screen Space – Camera**\n   274→- **多相机**\n   275→\n   276→---\n   277→\n   278→## 十二、适配\n   279→\n   280→### 12.1 刘海屏适配\n   281→\n   282→三种技术方案：\n   283→\n   284→1. 改相机 **ViewPort**；\n   285→2. **缩放**；\n   286→3. 改**锚点**。\n   287→\n   288→### 12.2 横屏 / 竖屏切换\n   289→\n   290→横屏游戏中个别玩法切到竖屏的实践方案：\n   291→\n   292→- 修改 `Screen.orientation`；\n   293→- 同时修改 UI 全局根节点 `CanvasScaler`：\n   294→  - **竖屏**：`referenceResolution = (1080, 1920)`，`matchWidthOrHeight = 0`；\n   295→  - **横屏**：`referenceResolution = (1920, 1080)`，`matchWidthOrHeight = 1`；\n   296→  - `matchWidthOrHeight` 与项目适配策略相关；\n   297→- 切换时加一个**全屏遮罩 fade**，避免切换瞬间显示错误。\n   298→\n   299→### 12.3 自适应背景\n   300→\n   301→- **CPU 角度**：分两种——拉伸（图片变形）与不拉伸（图片被裁切）。\n   302→- **GPU 角度**：通过**修改采样矩阵**实现背景填充。\n   303→\n   304→---\n   305→\n   306→## 十三、其它战术要点\n   307→\n   308→- **`CanvasRenderer.setColor` / Alpha=0**：Alpha 设为 0 时 DrawCall 和顶点数更少（做了不绘制的特殊处理）。\n   309→- **Cull Transparent Mesh**：勾选后，Image 的 Alpha 为 0 时不渲染。\n   310→- **Scale = 0 / 1 替代 DeActive/Active**：降低 CPU 消耗。\n   311→- **非静态 Canvas**：严格控制其中 UI 元素数量——Canvas 所有元素合并到一个 Mesh，任一元素变化都会引发整个 Mesh 变化。\n   312→- **Mesh 多线程合并**：`RuntimeMeshUtility` 性能优于 `ProceduralMeshLibrary`。\n   313→- **事件检测优化**：过滤不需检测的 Canvas / Graphic；一个 Item 只需一个 Target 检测。\n   314→- **灵活滑动列表动画**：可用 **FancyScrollView** 通用组件。\n   315→- **`SendWillRenderCanvases` 高的排查**：画布会重算 UV、重并图集；RectMask2D 持续每帧算子节点裁剪区域。优化思路：降频繁更新 UI 频率、让复杂 UI 不变动、关注 `Font.CacheFontForText`。\n   316→\n   317→---\n   318→\n   319→## 综合优化检查清单\n   320→\n   321→> 需要可直接落地的团队 Code Review 规则集（R1–R6 + ROI 优先级 + 运行时监控阈值），见 [[【片段】UGUI 性能优化规则清单]]。本清单偏全景速查，二者互补。\n   322→\n   323→- [ ] 图集：SpriteAtlas 与 AssetBundle 打包策略一致，无 `sactx` / 小 Sprite 冗余\n   324→- [ ] `RawImage` 不引用图集中的 Sprite\n   325→- [ ] 高频变动 UI 与静态 UI 分离 Canvas（动静分离）\n   326→- [ ] 单个非静态 Canvas 内元素数量受控\n   327→- [ ] Mask 数量决策正确（1→RectMask2D，>2→Mask）\n   328→- [ ] 滚动列表独立 Canvas、拖动时关 Pixel Perfect\n   329→- [ ] 界面软隐藏用 CullingMask，避免 SetActive 抖动\n   330→- [ ] `OnEnable/OnDisable` 内无重要逻辑\n   331→- [ ] 字体字号种类收敛，粗体提供 `bd` 字面\n   332→- [ ] 特效混合时注意 `MaxParticles` 数组初始化\n   333→- [ ] 横竖屏切换改 `CanvasScaler` + fade 遮罩\n   334→\n   335→---\n   336→\n   337→## 证据来源\n   338→\n   339→- 外部原文：[Unity性能优化总结-UI（知乎 / DragonL, 2025-08）](https://zhuanlan.zhihu.com/p/1941865546690827415)\n   340→- [[【设计原理】UGUI合批机制深度解析]] — Rebuild/Rebatch、合批底层机制\n   341→- [[【笔记】UGUI DrawCall影响因素全面测试]] — DrawCall 影响因子量化\n   342→- [[【踩坑】UGUI常见性能陷阱与根因分析]] — SendWill / Layout 风暴根因\n   343→- [[【最佳实践】TextMeshPro性能优化实战]] — TMP 字体专项\n   344→\n   345→## 相关链接\n   346→\n   347→- [[【片段】UGUI 性能优化规则清单]]\n   348→- [[【设计原理】UGUI合批机制深度解析]]\n   349→- [[【笔记】UGUI DrawCall影响因素全面测试]]\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_fc53db10f2394cc39fd934c8",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UI系统知识脑图.md",
+              "offset": 180,
+              "limit": 50
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "   180→        每帧修改触发 Graphic Rebuild\n   181→      TextMeshPro\n   182→        SDF 渲染清晰可缩放\n   183→        SetText 避免字符串分配\n   184→        Fallback 字体链\n   185→        Atlas 内存优化 64MB 降至 5MB\n   186→        静态字体避免动态生成\n   187→    适配\n   188→      CanvasScaler\n   189→        Scale With Screen Size\n   190→        Match Width Or Height\n   191→        常量分辨率策略\n   192→      刘海屏\n   193→        改 ViewPort\n   194→        缩放\n   195→        改锚点\n   196→      横竖屏切换\n   197→        改 CanvasScaler 参数\n   198→        全屏遮罩 fade 过渡\n   199→      自适应背景\n   200→        拉伸 vs 裁切\n   201→        修改采样矩阵\n   202→    UI 特效混合\n   203→      Particle Effect For UGUI 插件\n   204→      UIEffect 插件\n   205→      UI Particle 组件\n   206→        注意 MaxParticles 数组\n   207→      Render Texture 方案\n   208→      World Space Canvas\n   209→      Screen Space Camera\n   210→      多相机分层\n   211→    面试要点\n   212→      Canvas 三种模式与选型\n   213→      合批七大条件\n   214→      DrawCall 中断原因排查\n   215→      Rebuild vs Rebatch 区别\n   216→      动静分离原理\n   217→      Mask vs RectMask2D 决策\n   218→      图集与 AB 打包冗余\n   219→      Raycast Target 优化\n   220→      TMP vs UGUI Text 差异\n   221→      MVP 模式在 UI 中的应用\n   222→```\n   223→\n   224→---\n   225→\n   226→## 文字版知识树\n   227→\n   228→### 1. UGUI 核心架构\n   229→\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_f0707c45da124a75b8fb7cb9",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【教程】UI系统架构.md",
+              "offset": 1,
+              "limit": 50
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "     1→---\n     2→title: 【教程】UI系统架构\n     3→tags: [\"Unity\", \"游戏系统\", \"UI\", \"教程\", \"架构\"]\n     4→category: 核心系统/游戏系统\n     5→created: \"2026-03-05 08:32\"\n     6→updated: \"2026-05-29 00:00\"\n     7→description: 游戏UI系统架构设计\n     8→unity_version: 2021.3+\n     9→status: 待验证\n    10→validation: Demo验证\n    11→related: [\"【笔记】UGUI深度解析\"]\n    12→author: llm\n    13→---\n    14→\n    15→# 【教程】UI系统架构\n    16→\n    17→> 第1课 | 游戏系统开发模块\n    18→\n    19→## 文档定位\n    20→\n    21→讲解游戏UI系统的架构设计，包括Canvas分层策略、UI面板管理系统、MVVM模式在UI中的应用、UI动画系统和分辨率适配方案。\n    22→\n    23→**相关文档**：[[【笔记】UGUI深度解析]]\n    24→\n    25→---\n    26→\n    27→## 1. UGUI核心概念\n    28→\n    29→### Canvas渲染模式\n    30→\n    31→```\n    32→┌─────────────────────────────────────────────────────────────┐\n    33→│                    Canvas 渲染模式                            │\n    34→│                                                             │\n    35→│  ┌─────────────────────────────────────────────────────┐   │\n    36→│  │ Screen Space - Overlay                               │   │\n    37→│  │ ├── 覆盖在场景最上层                                   │   │\n    38→│  │ ├── 不受相机影响                                      │   │\n    39→│  │ └── 适合：HUD、固定UI                                 │   │\n    40→│  └─────────────────────────────────────────────────────┘   │\n    41→│                                                             │\n    42→│  ┌─────────────────────────────────────────────────────┐   │\n    43→│  │ Screen Space - Camera                                │   │\n    44→│  │ ├── 相对于相机渲染                                    │   │\n    45→│  │ ├── 可设置距离（产生透视效果）                         │   │\n    46→│  │ └── 适合：需要3D效果的UI                              │   │\n    47→│  └─────────────────────────────────────────────────────┘   │\n    48→│                                                             │\n    49→│  ┌─────────────────────────────────────────────────────┐   │\n    50→│  │ World Space                                          │   │\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_80fd81ccbe4c4fd2aa50b992",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\50_平台适配\\【最佳实践】Android专项.md",
+              "offset": 21,
+              "limit": 80
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "    21→从最佳实践角度总结Unity Android平台的专项优化要点，涵盖分辨率适配、ABI架构选择、运行时权限管理、返回键处理、触屏输入适配、存储路径方案、网络状态检测以及发热/启动慢等常见问题的解决方案。\n    22→\n    23→---\n    24→\n    25→## 概述\n    26→\n    27→Android平台碎片化严重，需要特别注意兼容性。\n    28→\n    29→## 分辨率适配\n    30→\n    31→```csharp\n    32→// 安全区域适配\n    33→Rect safeArea = Screen.safeArea;\n    34→// 调整UI布局\n    35→```\n    36→\n    37→## 性能分级\n    38→\n    39→```csharp\n    40→// 根据设备性能调整画质\n    41→public enum PerformanceLevel\n    42→{\n    43→    Low,\n    44→    Medium,\n    45→    High\n    46→}\n    47→\n    48→public PerformanceLevel DetectPerformance()\n    49→{\n    50→    int processorCount = SystemInfo.processorCount;\n    51→    int memory = SystemInfo.systemMemorySize;\n    52→\n    53→    if (processorCount >= 8 && memory >= 6000)\n    54→        return PerformanceLevel.High;\n    55→    else if (processorCount >= 4 && memory >= 3000)\n    56→        return PerformanceLevel.Medium;\n    57→    else\n    58→        return PerformanceLevel.Low;\n    59→}\n    60→```\n    61→\n    62→## 注意事项\n    63→\n    64→1. **权限** - 在AndroidManifest.xml中声明\n    65→2. **64位** - Google Play要求64位支持\n    66→3. **ABI** - 注意arm64-v8a和armeabi-v7a\n    67→\n    68→## 相关链接\n    69→\n    70→- [性能优化](../30_性能优化/)\n    71→\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_4de4a6b279de43eb867e342f",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\50_平台适配\\【踩坑】Android常见问题清单.md",
+              "offset": 21,
+              "limit": 80
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "    21→记录Android平台开发中的常见问题与解决方案，涵盖设备兼容性、分辨率适配、运行时权限、返回键处理、触屏输入、存储路径、网络状态检测以及黑屏/启动慢/发热等高频问题的排查方法。\n    22→\n    23→---\n    24→\n    25→## 设备兼容性\n    26→\n    27→### 分辨率适配\n    28→\n    29→```csharp\n    30→public class ResolutionAdapter : MonoBehaviour\n    31→{\n    32→    [SerializeField] private Canvas canvas;\n    33→\n    34→    private void Start()\n    35→    {\n    36→        AdaptToScreen();\n    37→    }\n    38→\n    39→    private void AdaptToScreen()\n    40→    {\n    41→        float aspectRatio = (float)Screen.width / Screen.height;\n    42→\n    43→        // 常见比例\n    44→        // 16:9 = 1.778 (1920x1080)\n    45→        // 18:9 = 2.000 (2160x1080)\n    46→        // 19.5:9 = 2.167 (2340x1080)\n    47→        // 20:9 = 2.222 (2400x1080)\n    48→\n    49→        if (aspectRatio > 2.0f)\n    50→        {\n    51→            // 长屏适配\n    52→            canvas.scaleFactor = CalculateLongScreenScale(aspectRatio);\n    53→        }\n    54→    }\n    55→\n    56→    private float CalculateLongScreenScale(float aspectRatio)\n    57→    {\n    58→        // 根据实际需求调整\n    59→        return 1f + (aspectRatio - 1.778f) * 0.1f;\n    60→    }\n    61→}\n    62→```\n    63→\n    64→### 安全区域\n    65→\n    66→```csharp\n    67→public class SafeAreaAdapter : MonoBehaviour\n    68→{\n    69→    [SerializeField] private RectTransform panel;\n    70→\n    71→    private void Start()\n    72→    {\n    73→        ApplySafeArea();\n    74→    }\n    75→\n    76→    private void ApplySafeArea()\n    77→    {\n    78→        Rect safeArea = Screen.safeArea;\n    79→\n    80→        // 转换为锚点\n    81→        Vector2 anchorMin = safeArea.position;\n    82→        Vector2 anchorMax = safeArea.position + safeArea.size;\n    83→\n    84→        anchorMin.x /= Screen.width;\n    85→        anchorMin.y /= Screen.height;\n    86→        anchorMax.x /= Screen.width;\n    87→        anchorMax.y /= Screen.height;\n    88→\n    89→        panel.anchorMin = anchorMin;\n    90→        panel.anchorMax = anchorMax;\n    91→    }\n    92→}\n    93→```\n    94→\n    95→### 性能分级\n    96→\n    97→```csharp\n    98→public class DevicePerformance\n    99→{\n   100→    public enum Level\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_a99d3b02ba5d4ccdbbf3b415",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第25章 UI 架构设计.md",
+              "offset": 580,
+              "limit": 60
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "   580→\n   581→一个成熟的 UI 管理系统通常还会扩展以下能力：\n   582→\n   583→1. UI 动画统一管理\n   584→2. UI 音效控制\n   585→3. 多语言支持\n   586→4. 分辨率适配\n   587→5. 输入拦截（遮罩管理）\n   588→\n   589→这些功能通常不直接耦合在 UIManager 中，而是通过子系统或组件扩展实现。\n   590→\n   591→### 25.2.9 常见问题分析\n   592→\n   593→一、UI 重复打开\n   594→\n   595→未做存在性判断，导致多个实例。\n   596→\n   597→二、层级混乱\n   598→\n   599→未统一管理父节点，导致遮挡错误。\n   600→\n   601→三、内存泄漏\n   602→\n   603→UI 未正确销毁或资源未释放。\n   604→\n   605→四、频繁 Rebuild\n   606→\n   607→UI 频繁激活/隐藏，触发 Canvas 重建。\n   608→\n   609→### 25.2.10 小结\n   610→\n   611→UI 管理系统是 UI 架构的核心调度中心，其设计直接影响：\n   612→\n   613→1. UI 系统的可维护性\n   614→2. 性能表现\n   615→3. 扩展能力\n   616→\n   617→一个良好的 UI 管理系统，应具备：\n   618→\n   619→1. 清晰的层级结构\n   620→2. 完整的生命周期控制\n   621→3. 合理的缓存与加载策略\n   622→4. 可扩展的架构设计\n   623→\n   624→在此基础上，下一节将进一步深入 UI 生命周期管理机制，从执行时序角度分析 UI 行为。\n   625→\n   626→### 25.3 界面生命周期管理\n   627→\n   628→在 UI 管理系统中，生命周期管理是保证界面行为一致性与可控性的关键。若缺乏统一的生命周期规范，不同界面之间将出现初始化混乱、重复执行逻辑、资源未释放等问题。\n   629→\n   630→界面生命周期的本质，是对 UI 从“创建到销毁”的全过程进行标准化定义与调度。\n   631→\n   632→### 25.3.1 生命周期设计的核心目标\n   633→\n   634→生命周期设计的核心目标在于：\n   635→\n   636→1. 明确阶段边界 将 UI 的不同执行阶段进行划分，避免逻辑混杂。\n   637→2. 控制执行时机 确保逻辑在正确的时间点执行。\n   638→3. 避免重复初始化 区分“一次性初始化”与“多次打开逻辑”。\n   639→4. 统一管理资源 在合适阶段加载与释放资源。\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_defac3dc2354424fb4272bd8",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UI系统知识脑图.md",
+              "limit": 40,
+              "offset": 530
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "   530→\n   531→> TMP 专项：[[【最佳实践】TextMeshPro性能优化实战]] · 字体 Atlas 优化实战（UWA 外部参考）\n   532→\n   533→---\n   534→\n   535→### 7. 适配\n   536→\n   537→```\n   538→适配\n   539→├── CanvasScaler\n   540→│   ├── Scale With Screen Size（最常用）\n   541→│   │   ├── 参考分辨率 Reference Resolution\n   542→│   │   ├── Match Width Or Height（0~1 权重）\n   543→│   │   └── Shrink/Snap 补充模式\n   544→│   │\n   545→│   ├── Constant Pixel Size\n   546→│   │   └── 固定像素，手动算 scaleFactor\n   547→│   │\n   548→│   └── Constant Physical Size\n   549→│       └── 按 DPI 缩放\n   550→│\n   551→├── 刘海屏适配\n   552→│   ├── 方案1：改相机 ViewPort Rect\n   553→│   ├── 方案2：缩放 UI 根节点\n   554→│   └── 方案3：改锚点避开安全区\n   555→│\n   556→├── 横竖屏切换\n   557→│   ├── 修改 Screen.orientation\n   558→│   ├── 切换 CanvasScaler 参数\n   559→│   │   ├── 竖屏：(1080, 1920), match = 0\n   560→│   │   └── 横屏：(1920, 1080), match = 1\n   561→│   └── 全屏遮罩 fade 过渡\n   562→│\n   563→└── 自适应背景\n   564→    ├── CPU：拉伸（变形）vs 裁切\n   565→    └── GPU：修改采样矩阵填充\n   566→```\n   567→\n   568→---\n   569→\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_740eef40d1034cd190e77966",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI DrawCall影响因素全面测试.md",
+              "limit": 40,
+              "offset": 525
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "   525→---\n   526→\n   527→## 测试7: Canvas Scaler影响\n   528→\n   529→### 测试配置\n   530→\n   531→```csharp\n   532→// 测试不同Scaler设置\n   533→public class CanvasScalerTest : MonoBehaviour\n   534→{\n   535→    [SerializeField] private CanvasScaler scaler;\n   536→\n   537→    private void TestScaleMode(CanvasScaler.ScaleMode mode)\n   538→    {\n   539→        scaler.uiScaleMode = mode;\n   540→\n   541→        if (mode == CanvasScaler.ScaleMode.ConstantPixelSize)\n   542→        {\n   543→            scaler.scaleFactor = 1.0f;\n   544→        }\n   545→        else if (mode == CanvasScaler.ScaleMode.ScaleWithScreenSize)\n   546→        {\n   547→            scaler.referenceResolution = new Vector2(1920, 1080);\n   548→        }\n   549→        else if (mode == CanvasScaler.ScaleMode.ConstantPhysicalSize)\n   550→        {\n   551→            scaler.physicalUnit = CanvasScaler.Unit.Centimeters;\n   552→            scaler.fallbackScreenDPI = 96;\n   553→        }\n   554→    }\n   555→}\n   556→```\n   557→\n   558→### 测试结果\n   559→\n   560→| Scale Mode | 分辨率 | DrawCall | 渲染时间 | CPU时间 |\n   561→|------------|--------|----------|----------|---------|\n   562→| **Constant Pixel Size** | 1920x1080 | 2 | 0.85ms | 1.2ms |\n   563→| **Scale With Screen Size** | 1920x1080 | 2 | 1.4ms | 2.3ms |\n   564→| **Constant Physical Size** | 1920x1080 | 2 | 1.8ms | 3.1ms |\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_c43d0b90be624196aaedc15c",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【教程】UI系统架构.md",
+              "limit": 100,
+              "offset": 50
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "    50→│  │ World Space                                          │   │\n    51→│  │ ├── 作为3D物体存在于场景中                            │   │\n    52→│  │ ├── 可被遮挡、有深度                                  │   │\n    53→│  │ └── 适合：血条、对话框、物品标签                       │   │\n    54→│  └─────────────────────────────────────────────────────┘   │\n    55→└─────────────────────────────────────────────────────────────┘\n    56→```\n    57→\n    58→### UI事件系统\n    59→\n    60→```csharp\n    61→using UnityEngine;\n    62→using UnityEngine.EventSystems;\n    63→\n    64→/// <summary>\n    65→/// UI事件监听器 - 扩展UGUI事件\n    66→/// </summary>\n    67→public class UIEventListener : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler\n    68→{\n    69→    public System.Action<PointerEventData> OnClick;\n    70→    public System.Action<PointerEventData> OnEnter;\n    71→    public System.Action<PointerEventData> OnExit;\n    72→\n    73→    public static UIEventListener Get(GameObject go)\n    74→    {\n    75→        var listener = go.GetComponent<UIEventListener>();\n    76→        if (listener == null) listener = go.AddComponent<UIEventListener>();\n    77→        return listener;\n    78→    }\n    79→\n    80→    public void OnPointerClick(PointerEventData eventData) => OnClick?.Invoke(eventData);\n    81→    public void OnPointerEnter(PointerEventData eventData) => OnEnter?.Invoke(eventData);\n    82→    public void OnPointerExit(PointerEventData eventData) => OnExit?.Invoke(eventData);\n    83→}\n    84→\n    85→// 使用示例\n    86→public class ExampleUsage : MonoBehaviour\n    87→{\n    88→    public Button button;\n    89→\n    90→    private void Start()\n    91→    {\n    92→        UIEventListener.Get(button.gameObject).OnClick += (data) =>\n    93→        {\n    94→            Debug.Log($\"点击了按钮: {data.pointerCurrentRaycast.gameObject.name}\");\n    95→        };\n    96→    }\n    97→}\n    98→```\n    99→\n   100→---\n   101→\n   102→## 2. UI管理器设计\n   103→\n   104→### 基础UI管理器\n   105→\n   106→```csharp\n   107→using UnityEngine;\n   108→using System.Collections.Generic;\n   109→\n   110→/// <summary>\n   111→/// UI层级\n   112→/// </summary>\n   113→public enum UILayer\n   114→{\n   115→    Background = 0,   // 背景层\n   116→    Game = 100,       // 游戏主界面\n   117→    Popup = 200,      // 弹窗\n   118→    Top = 300,        // 顶层UI（提示、Toast）\n   119→    System = 400      // 系统UI（加载、网络）\n   120→}\n   121→\n   122→/// <summary>\n   123→/// UI基类\n   124→/// </summary>\n   125→public abstract class UIScreen : MonoBehaviour\n   126→{\n   127→    public UILayer Layer = UILayer.Game;\n   128→    public bool IsOpen { get; protected set; }\n   129→\n   130→    public virtual void Open(object param = null)\n   131→    {\n   132→        IsOpen = true;\n   133→        gameObject.SetActive(true);\n   134→        OnOpen(param);\n   135→    }\n   136→\n   137→    public virtual void Close()\n   138→    {\n   139→        IsOpen = false;\n   140→        OnClose();\n   141→        gameObject.SetActive(false);\n   142→    }\n   143→\n   144→    protected virtual void OnOpen(object param) { }\n   145→    protected virtual void OnClose() { }\n   146→}\n   147→\n   148→/// <summary>\n   149→/// UI管理器 - 管理所有UI界面\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_981802cbb84a4474882aad77",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【设计原理】UGUI合批机制深度解析.md",
+              "limit": 50,
+              "offset": 808
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "   808→// 固定分辨率缩放\n   809→public class FixedResolutionScaler : MonoBehaviour\n   810→{\n   811→    private const int ReferenceWidth = 1920;\n   812→    private const int ReferenceHeight = 1080;\n   813→\n   814→    private CanvasScaler scaler;\n   815→\n   816→    private void Awake()\n   817→    {\n   818→        scaler = GetComponent<CanvasScaler>();\n   819→        scaler.uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;\n   820→        scaler.scaleFactor = GetScaleFactor();\n   821→    }\n   822→\n   823→    private float GetScaleFactor()\n   824→    {\n   825→        float referenceRatio = (float)ReferenceWidth / ReferenceHeight;\n   826→        float screenRatio = (float)Screen.width / Screen.height;\n   827→\n   828→        if (screenRatio > referenceRatio)\n   829→        {\n   830→            // 宽屏，基于高度缩放\n   831→            return (float)Screen.height / ReferenceHeight;\n   832→        }\n   833→        else\n   834→        {\n   835→            // 窄屏，基于宽度缩放\n   836→            return (float)Screen.width / ReferenceWidth;\n   837→        }\n   838→    }\n   839→}\n   840→```\n   841→\n   842→### 坑4: 多Canvas的Sorting Layer切换开销\n   843→\n   844→**现象：** 动态修改Canvas sortingOrder导致卡顿\n   845→\n   846→**根因：** Sorting Order改变会触发整个渲染队列重组\n   847→\n   848→**解决方案：**\n   849→```csharp\n   850→// 错误做法\n   851→canvas.sortingOrder = ++counter;\n   852→\n   853→// 正确做法：使用父子层级控制深度\n   854→public class DepthManager : MonoBehaviour\n   855→{\n   856→    private Transform[] depthLayers;\n   857→\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_e652e0d2c9274bc0b8ea6f9c",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第4章 UI 更新与重建系统.md",
+              "limit": 30,
+              "offset": 875
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "   875→- SetLayoutHorizontal\n   876→- SetLayoutVertical\n   877→\n   878→由 LayoutGroup 或相关组件统一计算子节点位置与尺寸，并更新 RectTransform。\n   879→\n   880→在这一阶段中，不同组件承担不同职责：\n   881→\n   882→- LayoutGroup —— 控制子节点排列\n   883→- ContentSizeFitter —— 根据内容调整自身尺寸\n   884→- RectTransform —— 根据 Anchor 规则计算最终位置\n   885→\n   886→该阶段的最终结果是所有参与布局的 RectTransform 都达到最终状态。\n   887→\n   888→需要注意的是Layout Rebuild 具有严格的层级依赖，父节点必须先于子节点执行。\n   889→\n   890→因此系统通常会对队列进行排序，确保执行顺序正确。\n   891→\n   892→**4.7.4 Graphic Rebuild 执行流程**\n   893→\n   894→在 Layout Rebuild 完成之后，系统进入 Graphic Rebuild 阶段。\n   895→\n   896→该阶段主要负责生成 UI 的渲染数据。\n   897→\n   898→对于所有标记为 Vertices Dirty 的 Graphic 组件，系统会执行：\n   899→\n   900→- Graphic.Rebuild\n   901→- OnPopulateMesh\n   902→\n   903→其核心流程包括：\n   904→\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_35571ca5dff542f2a991009b",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第26章 UI 动画实现.md",
+              "limit": 30,
+              "offset": 280
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "   280→其中：\n   281→\n   282→Layout Rebuild 开销最大，因为涉及递归计算与子节点更新。\n   283→\n   284→常见触发条件：\n   285→\n   286→1. 修改 sizeDelta\n   287→2. 修改 Anchor\n   288→3. 使用 LayoutGroup 的 UI 动画\n   289→\n   290→示例问题：\n   291→\n   292→```csharp\n   293→// 每帧修改尺寸，触发 Layout 重建\n   294→rectTransform.sizeDelta = new Vector2(width, height);\n   295→```\n   296→\n   297→优化建议：\n   298→\n   299→1. 避免在 Layout 系统中做动画\n   300→2. 使用独立节点承载动画\n   301→3. 减少 LayoutGroup 嵌套\n   302→\n   303→二、顶点重建（Graphic Rebuild）\n   304→\n   305→修改以下属性会触发顶点更新：\n   306→\n   307→1. color\n   308→2. fillAmount（Image）\n   309→3. text 内容\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_4ab51a9a070441bc880e16fd",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && grep -n \"适配\\|CanvasScaler\\|SafeArea\\|安全区\\|刘海\\|分辨率\\|Anchor\\|锚点\\|ScaleMode\\|scaleFactor\" \"20_核心系统/26_UI系统/【教程】UI系统架构.md\"",
+              "description": "搜索 UI 系统架构文档中所有适配相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "21:讲解游戏UI系统的架构设计，包括Canvas分层策略、UI面板管理系统、MVVM模式在UI中的应用、UI动画系统和分辨率适配方案。"
+          },
+          {
+            "id": "call_dbc5b8ec2a034d7b8d38a967",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && grep -n \"适配\\|CanvasScaler\\|SafeArea\\|安全区\\|刘海\\|notch\\|分辨率\\|Anchor\\|锚点\\|ScaleMode\\|scaleFactor\" \"50_平台适配/【最佳实践】iOS专项.md\"",
+              "description": "搜索 iOS 专项文档中适配相关内容"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "3:tags: [\"Unity\", \"平台适配\", \"iOS\", \"最佳实践\"]\n4:category: 平台适配"
+          },
+          {
+            "id": "call_34dc073f056f4373809c599a",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && grep -n \"适配\\|CanvasScaler\\|SafeArea\\|安全区\\|刘海\\|分辨率\\|Anchor\\|锚点\" \"50_平台适配/【踩坑】iOS常见问题清单.md\"",
+              "description": "搜索 iOS 常见问题清单中适配相关内容"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "3:tags: [\"Unity\", \"平台适配\", \"iOS\", \"踩坑记录\"]\n4:category: 平台适配\n17:> iOS平台开发常见问题与解决方案 `#iOS` `#平台适配` `#踩坑记录`\n21:记录iOS平台开发中的常见问题与解决方案，涵盖内存管理限制、触屏输入适配、后台音频配置、网络ATS策略、文件存储路径以及App Store审核被拒的典型原因。"
+          },
+          {
+            "id": "call_b039da4de25a4d229f916952",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && grep -n \"适配\\|CanvasScaler\\|SafeArea\\|安全区\\|刘海\\|分辨率\\|Anchor\\|锚点\" \"100_项目实战/02_休闲游戏框架/01-UI框架设计.md\"",
+              "description": "搜索休闲游戏框架 UI 框架设计文档中适配相关内容"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "21:休闲游戏UI框架的完整设计，基于MVP模式实现热更友好的View/Presenter分离架构。支持代码生成自动绑定、Prefab纯净设计、页面栈管理和多平台适配，适用于休闲游戏快速开发。"
+          },
+          {
+            "id": "call_c952d3c576fb49de83ee3601",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && grep -n \"适配\\|CanvasScaler\\|SafeArea\\|安全区\\|刘海\\|分辨率\\|Anchor\\|锚点\\|ScaleMode\\|scaleFactor\\|Screen\\.\" \"100_项目实战/01_休闲游戏云存档系统/11-UI组件与集成.md\"",
+              "description": "搜索 UI 组件与集成文档中适配相关内容"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "(Bash completed with no output)"
+          },
+          {
+            "id": "call_64d5dc89f1ed4556a40072c8",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && grep -n \"适配\\|CanvasScaler\\|SafeArea\\|安全区\\|刘海\\|分辨率\\|Anchor\\|锚点\\|ScaleMode\\|scaleFactor\\|Viewport\\|Camera\\.rect\" \"20_核心系统/26_UI系统/【笔记】UGUI深度解析.md\"",
+              "description": "搜索 UGUI 深度解析文档中适配相关内容"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "2252:            // 设置锚点为左上角（axis=0 水平，axis=1 垂直）\n2357:5. SetChildAlongAxis() 设置子物体的锚点和位置\n2609:            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, size);\n2626:            rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, size);\n2721:4. SetSizeWithCurrentAnchors 设置 RectTransform 大小\n3398:    - 支持多分辨率\n4374:| **ScrollRect** | 滚动视图 | `OnScroll()`, `SetContentAnchoredPosition()` | `UI/Controls/ScrollRect.cs` |"
+          },
+          {
+            "id": "call_de42b2b31a0041829f22cdb1",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI深度解析.md",
+              "limit": 40,
+              "offset": 2550
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "  2550→#### 3.3.3 ContentSizeFitter 源码\n  2551→\n  2552→```csharp\n  2553→// ===== 源码文件: UnityEngine.UI/Layout/ContentSizeFitter.cs =====\n  2554→// ContentSizeFitter - 根据子物体调整自身大小\n  2555→\n  2556→namespace UnityEngine.UI\n  2557→{\n  2558→    /// <summary>\n  2559→    /// ContentSizeFitter - 内容自适应尺寸控制器\n  2560→    /// 源码路径: UnityEngine.UI/Layout/ContentSizeFitter.cs\n  2561→    /// </summary>\n  2562→    public class ContentSizeFitter : UIBehaviour, ILayoutSelfController\n  2563→    {\n  2564→        // ========== 配置枚举 ==========\n  2565→\n  2566→        public enum FitMode\n  2567→        {\n  2568→            Unconstrained,  // 不约束，使用原始大小\n  2569→            MinSize,        // 使用最小尺寸\n  2570→            PreferredSize   // 使用首选尺寸（最常用）\n  2571→        }\n  2572→\n  2573→        // ========== 配置项 ==========\n  2574→\n  2575→        [SerializeField] private FitMode m_HorizontalFit = FitMode.Unconstrained;\n  2576→        [SerializeField] private FitMode m_VerticalFit = FitMode.Unconstrained;\n  2577→\n  2578→        // ========== 属性 ==========\n  2579→\n  2580→        public FitMode horizontalFit\n  2581→        {\n  2582→            get => m_HorizontalFit;\n  2583→            set { m_HorizontalFit = value; SetDirty(); }\n  2584→        }\n  2585→\n  2586→        public FitMode verticalFit\n  2587→        {\n  2588→            get => m_VerticalFit;\n  2589→            set { m_VerticalFit = value; SetDirty(); }\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_e30a0485bc7b4ccda22f3d43",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI深度解析.md",
+              "limit": 30,
+              "offset": 2240
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "  2240→        }\n  2241→\n  2242→        // ========== 辅助方法 ==========\n  2243→\n  2244→        /// <summary>\n  2245→        /// 设置子物体在轴上的位置和大小\n  2246→        /// </summary>\n  2247→        protected void SetChildAlongAxis(RectTransform rect, int axis, float pos, float size)\n  2248→        {\n  2249→            if (rect == null)\n  2250→                return;\n  2251→\n  2252→            // 设置锚点为左上角（axis=0 水平，axis=1 垂直）\n  2253→            if (axis == 0)\n  2254→            {\n  2255→                rect.anchorMin = new Vector2(0, rect.anchorMin.y);\n  2256→                rect.anchorMax = new Vector2(0, rect.anchorMax.y);\n  2257→                rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, pos + m_Padding.left, size);\n  2258→            }\n  2259→            else\n  2260→            {\n  2261→                rect.anchorMin = new Vector2(rect.anchorMin.x, 1);\n  2262→                rect.anchorMax = new Vector2(rect.anchorMax.x, 1);\n  2263→                rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, pos + m_Padding.top, size);\n  2264→            }\n  2265→        }\n  2266→    }\n  2267→}\n  2268→\n  2269→// ===== HorizontalOrVerticalLayoutGroup 源码片段 =====\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_723b7ece6dbd49a7801201a2",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && wc -l \"20_核心系统/26_UI系统/【教程】UI系统架构.md\"",
+              "description": "查看 UI 系统架构文档总行数"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "1020 20_核心系统/26_UI系统/【教程】UI系统架构.md"
+          },
+          {
+            "id": "call_8bda31557f714a3c90bafa02",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && grep -n \"分辨率\\|Resolution\\|CanvasScaler\\|适配\\|SafeArea\\|Safe Area\\|安全区\\|刘海\\|Anchor\\|锚点\\|ScaleMode\\|Scale\" \"20_核心系统/26_UI系统/【教程】UI系统架构.md\"",
+              "description": "搜索 UI 系统架构文档中所有适配与缩放相关内容"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "21:讲解游戏UI系统的架构设计，包括Canvas分层策略、UI面板管理系统、MVVM模式在UI中的应用、UI动画系统和分辨率适配方案。"
+          },
+          {
+            "id": "call_c96eeb46146a46f8b4949115",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && grep -n \"^##\\|^###\\|^# \" \"20_核心系统/26_UI系统/【教程】UI系统架构.md\"",
+              "description": "查看 UI 系统架构文档的章节结构"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "15:# 【教程】UI系统架构\n19:## 文档定位\n27:## 1. UGUI核心概念\n29:### Canvas渲染模式\n58:### UI事件系统\n102:## 2. UI管理器设计\n104:### 基础UI管理器\n275:## 3. MVP模式在UI中的应用\n277:### MVP架构\n300:### 实战示例：背包界面\n613:## 4. UI优化策略\n615:### 4.1 图集优化\n643:### 4.2 DrawCall优化\n725:### 4.3 UI对象池\n852:## 5. 三消游戏UI架构\n854:### 完整的UI层级设计\n889:### 游戏HUD界面\n989:## 本课小结\n991:### 核心知识点\n1003:### UI架构最佳实践\n1016:## 相关链接"
+          },
+          {
+            "id": "call_4f1aaf3ab0ae49eebc029634",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && grep -n \"^##\\|^###\\|^# \" \"UGUI/第25章 UI 架构设计.md\"",
+              "description": "查看 UGUI 第25章架构设计的章节结构"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "24:### 25.1 UI 分层与模块化\n28:### 25.1.1 分层设计的核心目的\n39:### 25.1.2 UI 常见分层结构\n190:### 25.1.3 分层之间的依赖关系\n217:### 25.1.4 模块化设计\n245:### 25.1.5 UI 模块通信方式\n287:### 25.1.6 模块化与 UGUI 的关系\n301:### 25.1.7 常见设计误区\n319:### 25.1.8 小结\n329:### 25.2 UI 管理系统设计\n335:### 25.2.1 UI 管理系统的核心职责\n348:### 25.2.2 UI 分层结构设计（显示层级）\n385:### 25.2.3 UI 打开与关闭流程\n439:### 25.2.4 UI 缓存策略\n484:### 25.2.5 UI 栈（Stack）机制\n525:### 25.2.6 UI 生命周期设计\n550:### 25.2.7 异步加载与资源管理\n579:### 25.2.8 UI 管理系统扩展方向\n591:### 25.2.9 常见问题分析\n609:### 25.2.10 小结\n626:### 25.3 界面生命周期管理\n632:### 25.3.1 生命周期设计的核心目标\n642:### 25.3.2 生命周期阶段划分\n721:### 25.3.3 生命周期接口定义\n744:### 25.3.4 生命周期执行顺序\n769:### 25.3.5 UIManager 中的生命周期调度\n826:### 25.3.6 生命周期与动画系统的配合\n854:### 25.3.7 生命周期与数据更新\n877:### 25.3.8 生命周期与资源管理\n891:### 25.3.9 常见设计问题\n909:### 25.3.10 小结\n927:### 本章小结"
+          },
+          {
+            "id": "call_15c0f23a44d5458781998769",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【教程】UI系统架构.md",
+              "limit": 40,
+              "offset": 989
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "   989→## 本课小结\n   990→\n   991→### 核心知识点\n   992→\n   993→| 知识点 | 核心要点 |\n   994→|--------|----------|\n   995→| Canvas渲染模式 | Overlay/Camera/World Space |\n   996→| UI事件系统 | IPointerClickHandler等接口 |\n   997→| UI管理器 | 层级管理、界面栈、统一入口 |\n   998→| MVP模式 | Model-View-Presenter分离 |\n   999→| 图集优化 | 打包规则、格式选择 |\n  1000→| DrawCall优化 | 层级排序、Raycast Target关闭 |\n  1001→| UI对象池 | 频繁创建销毁的UI元素复用 |\n  1002→\n  1003→### UI架构最佳实践\n  1004→\n  1005→```\n  1006→1. 分层管理：按功能划分UI层级\n  1007→2. MVP模式：逻辑与视图分离\n  1008→3. 事件驱动：使用EventBus解耦\n  1009→4. 对象池：列表项复用\n  1010→5. 图集打包：减少DrawCall\n  1011→6. Raycast Target：按需开启\n  1012→```\n  1013→\n  1014→---\n  1015→\n  1016→## 相关链接\n  1017→\n  1018→- [Unity UGUI优化指南](https://docs.unity3d.com/Manual/BestPracticeUnderstandingPerformanceInUnity7.html)\n  1019→- [Unity UI Extensions](https://github.com/Unity-UI-Extensions/com.unity.ui.extensions)\n  1020→- [MVP Pattern](https://en.wikipedia.org/wiki/Model–view–presenter)\n  1021→\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_15c84d09a82c4659b2f62063",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI深度解析.md",
+              "limit": 30,
+              "offset": 3390
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "  3390→public class AtlasManager : MonoBehaviour\n  3391→{\n  3392→    /*\n  3393→    ========== Sprite Atlas ==========\n  3394→\n  3395→    优点：\n  3396→    - 自动合并Sprite\n  3397→    - 减少DrawCall\n  3398→    - 支持多分辨率\n  3399→    - 运行时加载\n  3400→\n  3401→    配置：\n  3402→    - Include in Build: 是\n  3403→    - Allow Rotation: 否（避免旋转问题）\n  3404→    - Tight Packing: 是（节省空间）\n  3405→    - Padding: 2-4像素（防止 bleeding）\n  3406→    */\n  3407→\n  3408→    [Header(\"Atlases\")]\n  3409→    [SerializeField] private SpriteAtlas uiAtlas;\n  3410→    [SerializeField] private SpriteAtlas iconAtlas;\n  3411→\n  3412→    private Dictionary<string, Sprite> spriteCache = new Dictionary<string, Sprite>();\n  3413→\n  3414→    /// <summary>\n  3415→    /// 获取Sprite\n  3416→    /// </summary>\n  3417→    public Sprite GetSprite(string spriteName)\n  3418→    {\n  3419→        if (spriteCache.TryGetValue(spriteName, out var sprite))\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_27d8bd33b3ec4e239018311f",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:/GitHub/Doc/UnityKnowledge\" && grep -rn \"Screen\\.safeArea\\|safeArea\\|SafeArea\" --include=\"*.md\" .",
+              "description": "搜索所有文件中 Screen.safeArea 的使用"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "./50_平台适配/【最佳实践】Android专项.md:33:Rect safeArea = Screen.safeArea;\n./50_平台适配/【踩坑】Android常见问题清单.md:67:public class SafeAreaAdapter : MonoBehaviour\n./50_平台适配/【踩坑】Android常见问题清单.md:73:        ApplySafeArea();\n./50_平台适配/【踩坑】Android常见问题清单.md:76:    private void ApplySafeArea()\n./50_平台适配/【踩坑】Android常见问题清单.md:78:        Rect safeArea = Screen.safeArea;\n./50_平台适配/【踩坑】Android常见问题清单.md:81:        Vector2 anchorMin = safeArea.position;\n./50_平台适配/【踩坑】Android常见问题清单.md:82:        Vector2 anchorMax = safeArea.position + safeArea.size;"
+          }
+        ],
+        "isExpanded": false,
+        "result": "现在我已经搜集到了所有相关信息。以下是完整的搜索结果汇总。\n\n---\n\n## 搜索结果汇总\n\n### 一、核心适配知识 -- UGUI 性能优化实战总览\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI性能优化实战总览.md`\n\n这是适配内容最集中、最实用的文件。第278-303行有完整的\"十二、适配\"章节：\n\n- **12.1 刘海屏适配** -- 三种技术方案：(1) 改相机 ViewPort；(2) 缩放；(3) 改锚点\n- **12.2 横屏/竖屏切换** -- 实践方案：\n  - 修改 `Screen.orientation`\n  - 同时修改 `CanvasScaler`：竖屏 `referenceResolution = (1080, 1920)`、`matchWidthOrHeight = 0`；横屏 `referenceResolution = (1920, 1080)`、`matchWidthOrHeight = 1`\n  - 切换时加全屏遮罩 fade 避免切换瞬间显示错误\n- **12.3 自适应背景** -- CPU 角度（拉伸 vs 裁切）、GPU 角度（修改采样矩阵实现背景填充）\n\n第333行检查清单中也有：\"横竖屏切换改 `CanvasScaler` + fade 遮罩\"\n\n---\n\n### 二、UI 系统知识脑图 -- 适配知识树\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UI系统知识脑图.md`\n\n第535-566行有完整的适配知识树状图，结构清晰：\n\n```\n适配\n├── CanvasScaler\n│   ├── Scale With Screen Size（最常用）\n│   │   ├── 参考分辨率 Reference Resolution\n│   │   ├── Match Width Or Height（0~1 权重）\n│   │   └── Shrink/Snap 补充模式\n│   ├── Constant Pixel Size\n│   │   └── 固定像素，手动算 scaleFactor\n│   └── Constant Physical Size\n│       └── 按 DPI 缩放\n├── 刘海屏适配\n│   ├── 方案1：改相机 ViewPort Rect\n│   ├── 方案2：缩放 UI 根节点\n│   └── 方案3：改锚点避开安全区\n├── 横竖屏切换\n│   ├── 修改 Screen.orientation\n│   ├── 切换 CanvasScaler 参数\n│   │   ├── 竖屏：(1080, 1920), match = 0\n│   │   └── 横屏：(1920, 1080), match = 1\n│   └── 全屏遮罩 fade 过渡\n└── 自适应背景\n    ├── CPU：拉伸（变形）vs 裁切\n    └── GPU：修改采样矩阵填充\n```\n\n同时第187-201行有脑图格式的同样内容。\n\n---\n\n### 三、CanvasScaler 性能测试数据\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI DrawCall影响因素全面测试.md`\n\n第527-564行包含\"测试7: Canvas Scaler影响\"，有完整的测试代码和性能对比表：\n\n| Scale Mode | 分辨率 | DrawCall | 渲染时间 | CPU时间 |\n|---|---|---|---|---|\n| Constant Pixel Size | 1920x1080 | 2 | 0.85ms | 1.2ms |\n| Scale With Screen Size | 1920x1080 | 2 | 1.4ms | 2.3ms |\n| Constant Physical Size | 1920x1080 | 2 | 1.8ms | 3.1ms |\n\n结论：Scale Mode 不影响 DrawCall 数量，但影响渲染时间/CPU 时间。Constant Pixel Size 性能最优。\n\n---\n\n### 四、UGUI 合批机制中的固定分辨率缩放方案\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【设计原理】UGUI合批机制深度解析.md`\n\n第808-838行包含 `FixedResolutionScaler` 类的完整实现代码 -- 使用 `CanvasScaler.ScaleMode.ConstantPixelSize`，根据屏幕宽高比动态计算 `scaleFactor`：\n- 宽屏（screenRatio > referenceRatio）：基于高度缩放 `Screen.height / ReferenceHeight`\n- 窄屏：基于宽度缩放 `Screen.width / ReferenceWidth`\n\n---\n\n### 五、Android 平台 -- 分辨率适配与安全区完整代码\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\50_平台适配\\【踩坑】Android常见问题清单.md`\n\n第27-93行包含两段完整的实战代码：\n\n1. **分辨率适配** (`ResolutionAdapter` 类，第30-61行)：\n   - 根据 `Screen.width / Screen.height` 判断屏幕比例\n   - 支持 16:9 (1.778)、18:9 (2.000)、19.5:9 (2.167)、20:9 (2.222)\n   - 长屏时调整 `canvas.scaleFactor`\n\n2. **安全区域适配** (`SafeAreaAdapter` 类，第67-92行)：\n   - 使用 `Screen.safeArea` 获取安全区\n   - 将安全区转换为锚点坐标，设置 `panel.anchorMin` 和 `panel.anchorMax`\n   - 完整的 `ApplySafeArea()` 实现\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\50_平台适配\\【最佳实践】Android专项.md`\n\n第29-35行有简洁的安全区域适配代码片段：`Rect safeArea = Screen.safeArea;`\n\n---\n\n### 六、UGUI 深度解析中的自适应组件源码\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI深度解析.md`\n\n- 第2550-2630行：`ContentSizeFitter` 完整源码解析，包含 `SetSizeWithCurrentAnchors` 的调用逻辑\n- 第2240-2265行：`SetChildAlongAxis` 方法源码，展示锚点设置（axis=0 水平，axis=1 垂直）\n- 第4361行：ContentSizeFitter 被归类为\"自适应尺寸\"组件\n\n---\n\n### 七、UGUI 系列书籍中的相关章节\n\n1. **`D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第25章 UI 架构设计.md`** -- 第586行提到\"分辨率适配\"作为 UI 管理系统的核心扩展能力之一\n\n2. **`D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第4章 UI 更新与重建系统.md`** -- 第884行：RectTransform 根据 Anchor 规则计算最终位置；第360、469行：锚点变化会触发重建\n\n3. **`D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第26章 UI 动画实现.md`** -- 第287行：修改 Anchor 会触发 Layout Rebuild，建议避免在 Layout 系统中做动画\n\n---\n\n### 八、其他相关文件\n\n- **`D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【教程】UI系统架构.md`** -- description 中提到\"分辨率适配方案\"，文档内主要涉及 Canvas 渲染模式（Overlay/Camera/World Space）选择，但未展开 CanvasScaler 适配细节\n- **`D:\\GitHub\\Doc\\UnityKnowledge\\50_平台适配\\【踩坑】iOS常见问题清单.md`** -- 涉及 iOS 平台触屏输入适配\n- **`D:\\GitHub\\Doc\\UnityKnowledge\\40_工具链\\41_编辑器扩展\\【教程】EditorWindow开发.md`** -- 第436行展示了如何在代码中添加 `CanvasScaler` 组件\n\n---\n\n### 总结：适配内容密度排名\n\n| 排名 | 文件 | 内容丰富度 |\n|---|---|---|\n| 1 | `20_核心系统\\26_UI系统\\【笔记】UGUI性能优化实战总览.md` | 高 -- 完整的刘海屏/横竖屏/自适应背景实战方案 |\n| 2 | `20_核心系统\\26_UI系统\\【笔记】UI系统知识脑图.md` | 高 -- CanvasScaler 三种模式 + 适配知识树 |\n| 3 | `50_平台适配\\【踩坑】Android常见问题清单.md` | 高 -- 完整的 ResolutionAdapter 和 SafeAreaAdapter 代码 |\n| 4 | `20_核心系统\\26_UI系统\\【笔记】UGUI DrawCall影响因素全面测试.md` | 中 -- CanvasScaler 三种 ScaleMode 性能测试数据 |\n| 5 | `20_核心系统\\26_UI系统\\【设计原理】UGUI合批机制深度解析.md` | 中 -- FixedResolutionScaler 完整实现代码 |\n| 6 | `20_核心系统\\26_UI系统\\【笔记】UGUI深度解析.md` | 中 -- ContentSizeFitter 自适应源码解析 |\n| 7 | `50_平台适配\\【最佳实践】Android专项.md` | 低 -- 简要 safeArea 代码片段 |\n\n**注意事项**：当前知识库中尚未发现独立的\"UI 适配专题\"文档，适配知识分散在性能优化、平台适配、脑图等文档中。如需系统化查阅，建议以 `UGUI性能优化实战总览.md` 第278-303行为主入口，辅以 `UI系统知识脑图.md` 第535-566行的知识树做导航。"
+      },
+      "call_17449041c6d7450f86bf5e7f": {
+        "id": "call_17449041c6d7450f86bf5e7f",
+        "description": "搜索图集相关文档内容",
+        "prompt": "在 D:\\GitHub\\Doc\\UnityKnowledge 中搜索所有与图集（Sprite Atlas、Sprite Packer、Texture Packer、Atlas、sactx、图集打包、图集冗余、图集优化）相关的文档内容。\n\n重点查找：\n1. 包含 \"SpriteAtlas\" / \"Sprite Packer\" / \"图集\" / \"sactx\" 的文件和关键段落\n2. UGUI 深度系列（UGUI/ 目录）中关于资源与图集的章节，特别是第12章\n3. 性能优化文档中关于图集的部分\n4. 任何涉及图集打包策略、图集与 AB 交互的内容\n\n请返回文件路径和内容摘要。特别注意找到原文中的关键结论和数据。",
+        "status": "completed",
+        "toolCalls": [
+          {
+            "id": "call_3cffa19dd6f74d459fe302c4",
+            "name": "Grep",
+            "input": {
+              "pattern": "SpriteAtlas|Sprite Packer|SpritePacker|图集|sactx|Texture Packer|TexturePacker",
+              "path": "D:\\GitHub\\Doc\\UnityKnowledge",
+              "output_mode": "files_with_matches"
+            },
+            "status": "error",
+            "isExpanded": false,
+            "result": "spawn C:\\Users\\Keynes\\AppData\\Roaming\\npm\\node_modules\\@anthropic-ai\\claude-code\\vendor\\ripgrep\\ia32-win32\\rg.exe ENOENT"
+          },
+          {
+            "id": "call_33ab547fe09b4e1fa322aef4",
+            "name": "Grep",
+            "input": {
+              "pattern": "Atlas|图集打包|图集冗余|图集优化",
+              "path": "D:\\GitHub\\Doc\\UnityKnowledge",
+              "output_mode": "files_with_matches"
+            },
+            "status": "error",
+            "isExpanded": false,
+            "result": "spawn C:\\Users\\Keynes\\AppData\\Roaming\\npm\\node_modules\\@anthropic-ai\\claude-code\\vendor\\ripgrep\\ia32-win32\\rg.exe ENOENT"
+          },
+          {
+            "id": "call_d42ac0458ab744478175a272",
+            "name": "Glob",
+            "input": {
+              "pattern": "**/*UGUI*",
+              "path": "D:\\GitHub\\Doc\\UnityKnowledge"
+            },
+            "status": "error",
+            "isExpanded": false,
+            "result": "spawn C:\\Users\\Keynes\\AppData\\Roaming\\npm\\node_modules\\@anthropic-ai\\claude-code\\vendor\\ripgrep\\ia32-win32\\rg.exe ENOENT"
+          },
+          {
+            "id": "call_3239418e32a54a329a983688",
+            "name": "Glob",
+            "input": {
+              "pattern": "**/*图集*",
+              "path": "D:\\GitHub\\Doc\\UnityKnowledge"
+            },
+            "status": "error",
+            "isExpanded": false,
+            "result": "spawn C:\\Users\\Keynes\\AppData\\Roaming\\npm\\node_modules\\@anthropic-ai\\claude-code\\vendor\\ripgrep\\ia32-win32\\rg.exe ENOENT"
+          },
+          {
+            "id": "call_42d5031eb981429786164fed",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -rl \"SpriteAtlas\\|Sprite Packer\\|SpritePacker\\|图集\\|sactx\\|Texture Packer\\|TexturePacker\\|Atlas\" --include=\"*.md\" . 2>/dev/null",
+              "description": "搜索包含图集相关关键词的所有 Markdown 文件"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "./20_核心系统/26_UI系统/UI系统专题索引.md\n./20_核心系统/26_UI系统/【实战案例】UI卡顿优化全流程.md\n./20_核心系统/26_UI系统/【教程】UI系统架构.md\n./20_核心系统/26_UI系统/【最佳实践】TextMeshPro性能优化实战.md\n./20_核心系统/26_UI系统/【最佳实践】UI性能优化速查.md\n./20_核心系统/26_UI系统/【片段】UGUI 性能优化规则清单.md\n./20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md\n./20_核心系统/26_UI系统/【笔记】UGUI性能优化实战总览.md\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md\n./20_核心系统/26_UI系统/【笔记】UI系统知识脑图.md\n./20_核心系统/26_UI系统/【设计原理】UGUI合批机制深度解析.md\n./20_核心系统/26_UI系统/【踩坑】UGUI常见性能陷阱与根因分析.md\n./20_核心系统/27_场景系统/【设计原理】场景加载底层机制.md\n./25_DOTS技术栈/【笔记】同屏大规模单位渲染方案.md\n./30_性能优化/33_渲染优化/README.md\n./30_性能优化/33_渲染优化/【教程】Frame Debugger渲染诊断流程.md\n./30_性能优化/33_渲染优化/【最佳实践】3D渲染优化指南.md\n./30_性能优化/33_渲染优化/【最佳实践】光照与烘焙优化.md\n./30_性能优化/34_启动时间优化/【实战案例】加载时间优化实战.md\n./30_性能优化/34_启动时间优化/【最佳实践】Addressables性能优化.md\n./30_性能优化/【教程】性能优化学习路径.md\n./30_性能优化/【教程】渲染性能优化.md\n./30_性能优化/【笔记】性能数据真实性检验.md\n./30_性能优化/【笔记】手机游戏发热性能问题定位与优化.md\n./35_高级主题/【片段】项目面试STAR话术.md\n./35_高级主题/【笔记】Unity客户端面试题.md\n./35_高级主题/【笔记】Unity资源依赖与打包陷阱.md\n./35_高级主题/【笔记】性能优化面试问答.md\n./35_高级主题/【笔记】高级Unity游戏开发面试复习地图.md\n./35_高级主题/【设计原理】Unity内存管理.md\n./40_工具链/【最佳实践】Addressables性能优化.md\n./index.md\n./log.md\n./UGUI/第12章 UI 资源与图集系统.md\n./UGUI/第15章 文本渲染系统.md\n./UGUI/第17章 UI Shader 机制.md\n./UGUI/第18章 UI 特效实现.md\n./UGUI/第19章 UI 特效与性能.md\n./UGUI/第20章 UI 性能分析基础.md\n./UGUI/第21章 Canvas 优化.md\n./UGUI/第22章 批处理优化.md\n./UGUI/第24章 大规模 UI 优化.md\n./UGUI/第26章 UI 动画实现.md\n./UGUI/第28章 调试与分析工具.md\n./UGUI/第29章 综合案例分析.md\n./UGUI/第7章 CanvasRenderer 机制.md\n./UGUI/第9章 UI 与渲染管线.md\n./性能优化/2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂 1.md\n./性能优化/2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂.md\n./性能优化/Unity小游戏优化简谱  吃透底层逻辑，告别掉帧与流失 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n./性能优化/Unity性能优化 — UI模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n./性能优化/Unity性能优化指南-笔记.md\n./性能优化/Unity性能优化系列—渲染模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n./性能优化/Unity移动端游戏性能优化简谱之 CPU耗时调优.md\n./性能优化/从64MB降至5MB，TMP字体Atlas内存优化实战 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n./性能优化/关于Unity中的UGUI优化，你可能遇到这些问题 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md"
+          },
+          {
+            "id": "call_9e24f22b293c4cd5b2e55774",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && find . -name \"*UGUI*\" -o -name \"*图集*\" -o -name \"*Atlas*\" 2>/dev/null | head -30",
+              "description": "查找文件名包含 UGUI、图集、Atlas 的文件"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "./20_核心系统/26_UI系统/【片段】UGUI 性能优化规则清单.md\n./20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md\n./20_核心系统/26_UI系统/【笔记】UGUI性能优化实战总览.md\n./20_核心系统/26_UI系统/【笔记】UGUI深度解析.md\n./20_核心系统/26_UI系统/【笔记】UGUI自适应机制深度解析.md\n./20_核心系统/26_UI系统/【设计原理】UGUI合批机制深度解析.md\n./20_核心系统/26_UI系统/【踩坑】UGUI常见性能陷阱与根因分析.md\n./UGUI\n./UGUI/第12章 UI 资源与图集系统.md\n./性能优化/从64MB降至5MB，TMP字体Atlas内存优化实战 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\n./性能优化/关于Unity中的UGUI优化，你可能遇到这些问题 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md"
+          },
+          {
+            "id": "call_c95b571928634c1792e620d6",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第12章 UI 资源与图集系统.md"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "     1→---\n     2→title: \"第12章 UI 资源与图集系统\"\n     3→source: \"https://zhuanlan.zhihu.com/p/2038208490594886760\"\n     4→author:\n     5→  - \"[[黑客不黑]]\"\n     6→published:\n     7→created: 2026-06-25\n     8→description: \"第12章 UI 资源与图集系统在 UGUI 的整体架构中，资源系统与图集系统是决定 UI 性能上限的核心模块之一。UI 的渲染效率并不单纯取决于组件数量或层级复杂度，而是取决于底层资源如何组织以及 GPU 在渲染时如何进行…\"\n     9→tags:\n    10→  - \"clippings\"\n    11→---\n    12→[收录于 · Unity UGUI 完全剖析](https://www.zhihu.com/column/c_2034641784601568982)\n    13→\n    14→5 人赞同了该文章\n    15→\n    16→在 [UGUI](https://zhida.zhihu.com/search?content_id=274825716&content_type=Article&match_order=1&q=UGUI&zhida_source=entity) 的整体架构中，资源系统与图集系统是决定 UI 性能上限的核心模块之一。UI 的渲染效率并不单纯取决于组件数量或层级复杂度，而是取决于底层资源如何组织以及 GPU 在渲染时如何进行纹理切换与批处理。\n    17→\n    18→在实际项目中，很多 UI 性能问题并不是出现在布局计算或逻辑更新上，而是集中在资源加载方式不合理、图集使用不规范以及纹理切换过于频繁等底层问题上。例如同一界面中使用了大量独立 [Texture2D](https://zhida.zhihu.com/search?content_id=274825716&content_type=Article&match_order=1&q=Texture2D&zhida_source=entity) 、图集拆分不合理、动态图集频繁创建、或者 UI 生命周期与资源释放策略不一致，这些都会直接影响 [DrawCall](https://zhida.zhihu.com/search?content_id=274825716&content_type=Article&match_order=1&q=DrawCall&zhida_source=entity) 、内存占用以及首次打开卡顿等关键指标。\n    19→\n    20→从渲染管线的角度来看，UGUI 的最终输出依赖于 Texture2D，而 [Sprite](https://zhida.zhihu.com/search?content_id=274825716&content_type=Article&match_order=1&q=Sprite&zhida_source=entity) 只是对 Texture2D 的使用方式描述。图集系统的本质，就是通过重新组织 Sprite 与 Texture2D 的关系，将多个独立纹理合并为更少的 GPU 纹理绑定，从而减少渲染状态切换，提高 [Batch 合并](https://zhida.zhihu.com/search?content_id=274825716&content_type=Article&match_order=1&q=Batch+%E5%90%88%E5%B9%B6&zhida_source=entity) 概率。\n    21→\n    22→因此，理解 UI 资源体系并不仅仅是理解“图片如何加载”，而是要理解从资源导入、Sprite 生成、图集打包，到运行时动态图集补充，再到 UI 生命周期中的加载与释放之间的完整链路。这一链路决定了 UI 系统的整体性能表现，也决定了项目在中后期是否会出现资源膨胀与性能衰减问题。\n    23→\n    24→本章将从 Sprite 与 Texture2D 的底层关系开始，逐步深入 [SpriteAtlas](https://zhida.zhihu.com/search?content_id=274825716&content_type=Article&match_order=1&q=SpriteAtlas&zhida_source=entity) 的打包机制、动态图集的运行时行为、图集对合批的实际影响，以及 UI 生命周期与资源加载之间的整体关系，从而建立起完整的 UGUI 资源系统认知框架。\n    25→\n    26→**12.1 Sprite 与 Texture2D 关系**\n    27→\n    28→在 UGUI 中，开发者最常接触的图片资源通常是 Sprite，但真正被 GPU 使用的资源并不是 Sprite，而是 Texture2D。很多初学者会误认为 Sprite 是一种图片资源类型，实际上并不是，Sprite 本质上只是对 Texture2D 某一块区域的描述数据，它自身并不保存真正的像素内容。理解 Sprite 与 Texture2D 的关系，是理解 UGUI 图集系统、合批机制以及资源管理的基础。\n    29→\n    30→**12.1.1 Texture2D 的本质**\n    31→\n    32→Texture2D 是 Unity 中最基础的二维纹理对象，其底层对应 GPU 中的一块纹理资源。无论是 UI 图片、角色贴图、地形纹理还是 RenderTexture 的结果，最终都会以纹理的形式上传到 GPU。\n    33→\n    34→Texture2D 内部真正保存的是像素数据，例如 RGBA 颜色信息、纹理宽高、Mipmap 数据、压缩格式以及 GPU 上传状态。\n    35→\n    36→在 Unity 中，一张 PNG 图片导入后最终会变成 Texture2D，例如 Texture2D tex = Resources.Load\\<Texture2D>(\"Icon\"); 此时加载的是真正的纹理资源。\n    37→\n    38→GPU 并不认识 Sprite，它只认识 Texture，因此无论 UGUI 如何渲染，最终都会转化为对 Texture 的采样。\n    39→\n    40→**12.1.2 Sprite 的本质**\n    41→\n    42→Sprite 可以理解为 Texture2D 某一块区域的描述对象，例如一张图集 Atlas.png 内部可能包含按钮、头像、道具图标以及技能图标，这些元素实际上都共享同一个 Texture2D。\n    43→\n    44→Sprite 的作用就是描述使用哪张 Texture2D、使用纹理中的哪个区域、Pivot 在哪里、Mesh 如何生成以及 Border 如何切片。\n    45→\n    46→Sprite 自身并不保存像素，真正的像素始终存在于 Texture2D 中，因此 Sprite 更像是 UI 层对纹理使用方式的描述层，而不是图像数据本身。\n    47→\n    48→**12.1.3 Sprite 的核心数据结构**\n    49→\n    50→Sprite 的核心结构可以从四个关键部分理解。\n    51→\n    52→1. sprite.texture  \n    53→\t它表示当前 Sprite 所属的纹理，多个 Sprite 可以共享同一个 Texture2D，例如 ButtonSprite、IconSprite、HeadSprite 都可能来自同一张 UIAtlas.png，因此多个 Sprite 实际共享同一个 Texture2D，这也是图集能够减少 DrawCall 的基础。\n    54→2. sprite.rect  \n    55→\t它表示 Sprite 在 Texture 中的矩形区域，比如 x=128、y=256、w=64、h=64，UGUI 在生成 UV 时会根据 rect 自动计算纹理坐标。\n    56→3. sprite.pivot  \n    57→\t它表示 Sprite 的中心点，它会影响 UI 对齐、旋转中心、缩放中心以及九宫格拉伸行为，例如 Pivot 为 0.5,0.5 表示中心点位于图片中心。\n    58→4. sprite.border\n    59→\n    60→它用于九宫格切片，当 Image.Type 为 Sliced 时会根据 Border 数据生成九宫格 Mesh。\n    61→\n    62→**12.1.4 Image 为什么使用 Sprite 而不是 Texture2D**\n    63→\n    64→UGUI 的 Image 组件使用的是 Image.sprite 而不是 Image.texture，因为 UI 不仅需要显示纹理，还需要自动生成 UV、支持图集、支持九宫格、支持裁剪区域、支持 Pivot 以及支持 Mesh 生成，这些能力都依赖 Sprite。\n    65→\n    66→因此 Texture2D 负责提供像素数据，而 Sprite 负责描述如何使用这些像素数据，两者职责完全不同，一个是数据层，一个是规则层。\n    67→\n    68→**12.1.5 RawImage 为什么直接使用 Texture**\n    69→\n    70→RawImage 使用的是 RawImage.texture，因为它不需要 Sprite 提供的 Rect、Border、Atlas、九宫格以及 Tight Mesh 等能力，它只是单纯显示一张纹理。\n    71→\n    72→因此 RawImage 更轻量，但也因此无法参与 SpriteAtlas，从而更容易打断合批，所以 UI 中通常普通界面使用 Image，而视频、摄像机输出以及动态图像使用 RawImage。\n    73→\n    74→**12.1.6 Sprite 的 Mesh 生成机制**\n    75→\n    76→很多开发者认为 UI 图片永远是矩形，但实际上 Sprite 存在两种 Mesh 生成方式。\n    77→\n    78→1. Full Rect  \n    79→\t它始终生成矩形 Mesh，即使图片是圆形透明区域也会生成完整四边形，这种方式顶点少、CPU 开销低，但透明区域仍然参与 Overdraw。\n    80→2. Tight Mesh\n    81→\n    82→它会根据 Alpha 区域生成贴合形状的 Mesh，例如圆形头像会生成接近圆形的结构，这种方式可以减少 Overdraw，但顶点数量增加、CPU 开销更高，并且在某些情况下会影响 Batch，因此 Tight Mesh 并不一定更快，在大量 UI 中 Full Rect 往往更稳定。\n    83→\n    84→**12.1.7 Sprite.Create 的运行时创建**\n    85→\n    86→Unity 支持运行时创建 Sprite，例如 Sprite.Create(tex, new Rect(0,0,128,128), new Vector2(0.5f,0.5f))，其本质只是基于 Texture2D 创建区域描述对象，并不会复制纹理数据，因此 Sprite.Create 的开销通常很小。\n    87→\n    88→真正昂贵的是 Texture2D 上传 GPU 的过程，而不是 Sprite 创建本身，因此运行时生成 Sprite 并不会显著增加性能负担。\n    89→\n    90→**12.1.8 Sprite 与内存关系**\n    91→\n    92→Sprite 本身内存占用极小，因为它只保存 Rect、UV、Pivot、Border 以及 Texture 引用，而真正占用内存的是 Texture2D。\n    93→\n    94→例如 2048×2048 RGBA32 的纹理，其内存约为 2048×2048×4 约等于 16MB，即使从中切出一千个 Sprite，纹理内存依然是 16MB，不会发生变化。\n    95→\n    96→因此 Sprite 数量多并不代表内存大，真正影响内存的是图集尺寸、压缩格式、Mipmap、是否可读以及 GPU 格式。\n    97→\n    98→**12.1.9 UGUI 渲染时如何使用 Sprite**\n    99→\n   100→当 Image 进行渲染时，UGUI 会先获取 Sprite，然后获取 Sprite.texture 与 Sprite.rect，再根据 rect 生成 UV，随后生成 Vertex 数据并提交给 CanvasRenderer，进入 BatchBuilder，最终由 GPU 使用 Texture 进行绘制。\n   101→\n   102→因此 Sprite 只参与 CPU 侧数据生成，而 Texture 才参与 GPU 渲染，GPU 永远只关心 Texture，而不会关心 Sprite 的存在。\n   103→\n   104→**12.1.10 Sprite 与 Texture2D 的关系总结**\n   105→\n   106→Sprite 与 Texture2D 的关系可以理解为 Texture2D 是真正的像素资源，Sprite 是 Texture 的区域描述对象，UGUI 根据 Sprite 生成 Mesh 与 UV，最终 GPU 只采样 Texture。\n   107→\n   108→因此 Sprite 属于逻辑层资源，而 Texture 属于渲染层资源，这也是 Unity 图集系统能够成立的根本原因。\n   109→\n   110→**12.2 SpriteAtlas 打包机制**\n   111→\n   112→在早期版本的 Unity 中，UI 图集通常依赖第三方工具进行管理，例如 NGUI 的 UIAtlas 或 TexturePacker 等外部打包工具，开发者需要手动维护图集、切图信息以及资源引用关系，整个流程十分繁琐。\n   113→\n   114→从 Unity 引入 SpriteAtlas 系统开始，UGUI 开始拥有官方的图集打包方案。SpriteAtlas 不仅负责纹理合并，同时还深度参与 UI 合批、资源加载以及运行时纹理管理。\n   115→\n   116→很多开发者虽然知道图集可以减少 DrawCall，但并不了解 SpriteAtlas 在底层究竟做了什么。本节将从资源导入、图集生成、运行时替换、渲染绑定等多个角度，彻底分析 SpriteAtlas 的工作机制。\n   117→\n   118→**12.2.1 SpriteAtlas 的本质**\n   119→\n   120→SpriteAtlas 本质上是一个图集资源管理器，它的核心作用并不是存储图片，而是管理 Sprite 与图集之间的映射关系，在构建时自动合并纹理，在运行时替换 Sprite 的 Texture，并让多个 UI 元素共享同一张 GPU 纹理。\n   121→\n   122→开发者在 Project 中看到的 SpriteAtlas 文件，本质上只是一个配置资源，真正的图集纹理通常会在构建阶段自动生成。因此 SpriteAtlas 更像是一套图集规则系统，而不是单纯的一张图片。\n   123→\n   124→**12.2.2 SpriteAtlas 的打包流程**\n   125→\n   126→当开发者将多个 Sprite 拖入 SpriteAtlas 后，Unity 会在构建阶段执行图集打包。\n   127→\n   128→首先，Unity 会收集所有加入图集的 Sprite，然后读取每个 Sprite 对应的 TextureImporter 设置，包括压缩格式、是否包含 Alpha、Mipmap 设置、FilterMode 以及平台纹理格式。\n   129→\n   130→随后 Unity 会尝试将这些 Sprite 排列到同一张大纹理中，这个过程称为 Packing。Packing 本质上是一种矩形区域排列算法，Unity 会尽可能减少空白区域，提高纹理利用率。\n   131→\n   132→在 Packing 完成后，Unity 会重新生成 Sprite Rect、UV 坐标以及图集映射关系，最后生成真正的图集 Texture。\n   133→\n   134→运行时加载 Sprite 时，Unity 会自动将原始纹理替换为图集纹理。因此虽然开发者引用的是原始 Sprite，但最终渲染使用的实际上是 Atlas Texture。\n   135→\n   136→**12.2.3 SpriteAtlas 如何替换 Texture**\n   137→\n   138→这是 SpriteAtlas 最核心的机制之一。\n   139→\n   140→很多开发者以为 Sprite 被打进图集后，Sprite 本身会发生变化，但实际上并不是。Sprite 资源本身通常不会改变，真正发生变化的是 Sprite 内部引用的 Texture。\n   141→\n   142→例如原本一个 Sprite 使用的是单独纹理，在进入图集后，运行时会自动替换为图集中的 Texture，同时 Sprite 的 UV 区域也会重新映射。\n   143→\n   144→因此 UI 系统仍然认为自己在渲染原始 Sprite，但 GPU 实际采样的已经是图集纹理中的对应区域。\n   145→\n   146→这也是为什么开发者不需要修改 Image.sprite，因为图集系统会自动接管纹理绑定。\n   147→\n   148→**12.2.4 图集为什么能够减少 DrawCall**\n   149→\n   150→UGUI 的 Batch 合并有一个核心条件，那就是多个 UI 必须使用同一张 Texture，因为 GPU 在一次 DrawCall 中只能绑定有限的纹理状态。\n   151→\n   152→如果两个 Image 分别使用不同纹理，那么 GPU 就必须切换 Texture，这会导致 Batch 中断。\n   153→\n   154→但如果它们都来自同一个 SpriteAtlas，那么最终绑定的就是同一张图集纹理，这样 UGUI 就可以将多个 Image 合并到同一次 DrawCall 中。\n   155→\n   156→因此图集真正减少的并不是图片数量，而是 GPU 的纹理切换次数。\n   157→\n   158→**12.2.5 SpriteAtlas 的 Padding**\n   159→\n   160→图集系统中有一个非常重要但经常被忽略的概念，就是 Padding。\n   161→\n   162→Padding 指的是 Sprite 之间额外保留的空白边距。很多开发者会疑惑为什么图集里图片之间会有缝隙，原因就在于 GPU 纹理采样。\n   163→\n   164→GPU 在采样纹理时，并不一定只采样当前像素，尤其在双线性过滤、Mipmap、缩放以及旋转等情况下，GPU 会同时采样周围区域。\n   165→\n   166→如果两个 Sprite 紧贴在一起，就可能出现纹理串色，例如按钮边缘出现其他图标颜色。\n   167→\n   168→Padding 的作用就是隔离 Sprite，防止纹理采样污染。因此 Padding 并不是浪费空间，而是图集系统中的必要保护机制。\n   169→\n   170→**12.2.6 Tight Packing 与矩形 Packing**\n   171→\n   172→SpriteAtlas 支持两种主要打包方式，分别是矩形 Packing 与 Tight Packing。\n   173→\n   174→矩形 Packing 会让每个 Sprite 按照完整矩形区域排列，其优点是 UV 规则简单、Batch 更稳定、GPU 兼容性更好，但缺点是透明区域可能浪费空间。\n   175→\n   176→Tight Packing 则会根据 Sprite 的不透明区域进行裁剪，例如圆形头像不会再占据完整矩形区域，这样能够显著提高图集利用率。\n   177→\n   178→但 Tight Packing 也存在问题，由于 Sprite Mesh 会变复杂，因此会导致顶点数量增加、CPU 开销增加，并且某些 Shader 兼容性也会变差。\n   179→\n   180→因此在大型 UI 项目中，大多数情况下仍然优先使用矩形 Packing。\n   181→\n   182→**12.2.7 SpriteAtlas Variant 机制**\n   183→\n   184→Unity 支持 Variant Atlas，其作用是基于同一套 Sprite 生成不同分辨率的图集，例如高清图集、中清图集以及低清图集。\n   185→\n   186→移动端可以加载较低分辨率版本，而高端设备则使用高清版本，这样能够有效降低 GPU 内存占用、带宽消耗以及纹理上传压力。\n   187→\n   188→Variant Atlas 本质上并不会重新切图，而是对原始图集进行缩放，因此它更像是一套纹理质量管理方案。\n   189→\n   190→**12.2.8 Include In Build 的作用**\n   191→\n   192→SpriteAtlas 有一个非常关键的选项，叫作 Include In Build。\n   193→\n   194→开启后，图集会直接被打进 Player，运行时无需额外加载。\n   195→\n   196→关闭后，图集不会自动进入包体，这通常用于 Addressables、 [AssetBundle](https://zhida.zhihu.com/search?content_id=274825716&content_type=Article&match_order=1&q=AssetBundle&zhida_source=entity) 以及热更新系统。\n   197→\n   198→很多项目在热更新中会关闭 Include In Build，然后通过资源系统动态加载图集，否则会出现包体中已有一份图集，而热更新又下载一份图集，最终导致纹理重复的问题。\n   199→\n   200→**12.2.9 SpriteAtlas 与 AssetBundle**\n   201→\n   202→SpriteAtlas 与 AssetBundle 的关系非常特殊，因为 Sprite 资源与图集资源是分离的。\n   203→\n   204→开发者引用的是 Sprite，但真正运行时需要的却是 Atlas Texture。\n   205→\n   206→因此如果 Sprite 位于一个 Bundle，而 Atlas 位于另一个 Bundle，并且 Atlas 未提前加载，那么运行时可能会发生 Sprite 找不到图集的问题，最终退回原始纹理，这会直接破坏 Batch。\n   207→\n   208→因此在大型项目中，通常需要保证 Sprite 与 Atlas 生命周期一致，并确保图集优先加载，否则很容易出现 DrawCall 激增的问题。\n   209→\n   210→**12.2.10 SpriteAtlas 的运行时绑定**\n   211→\n   212→Unity 在运行时会维护一套 Sprite 到 Atlas 的映射表。\n   213→\n   214→当 Image 请求 Sprite.texture 时，Unity 会先检查当前 Sprite 是否属于 Atlas，如果属于，则返回 Atlas Texture，否则返回原始 Texture。\n   215→\n   216→因此开发者看到的 sprite.texture，在运行时未必是真正导入时的纹理，这一点非常重要，因为很多调试问题都与此相关。\n   217→\n   218→**12.2.11 图集并不是越大越好**\n   219→\n   220→很多开发者会误认为所有 UI 全部塞进一个大图集性能最好，但实际上并不是。\n   221→\n   222→超大图集会带来很多问题，例如 GPU 内存占用增加、纹理上传时间增加、首次加载卡顿、Mipmap 开销增加以及热更新粒度变差。\n   223→\n   224→尤其在移动端，4096 图集往往会直接造成显存压力。\n   225→\n   226→因此大型项目通常会按功能拆分图集，例如主界面图集、商城图集、战斗图集、活动图集以及通用图标图集。\n   227→\n   228→这样既能保持 Batch，又能降低资源压力。\n   229→\n   230→**12.2.12 SpriteAtlas 打包机制总结**\n   231→\n   232→SpriteAtlas 的核心并不是简单地把图片拼接到一起，真正重要的是它在运行时接管了 Sprite 的纹理绑定关系。\n   233→\n   234→UGUI 能够减少 DrawCall，本质上依赖的是多个 Sprite 最终共享同一张 GPU Texture。\n   235→\n   236→因此图集系统实际上是资源系统、渲染系统以及 Batch 系统之间的重要桥梁。\n   237→\n   238→理解这一点后，开发者才能真正掌握为什么有时图集能够提升性能，为什么有时图集反而会造成内存与加载问题，以及 UGUI 的底层资源体系究竟是如何运作的。\n   239→\n   240→**12.3 动态图集原理**\n   241→\n   242→在 UGUI 中，除了开发者手动配置的 SpriteAtlas 之外，Unity 还存在另一套十分重要的图集机制，那就是动态图集系统。很多开发者在 Frame Debugger 中经常会看到 Dynamic Atlas，但却并不了解它究竟是如何工作的。有些 UI 明明没有加入 SpriteAtlas，却依然发生了合批；而有些 UI 虽然使用了同样的图片，却依然无法进入同一个 Batch，这背后往往都与动态图集有关。\n   243→\n   244→动态图集的本质，是 Unity 在运行时自动将多个小纹理临时合并到一张更大的 Texture 中，从而减少 GPU 纹理切换，提高 UI Batch 合并效率。与 SpriteAtlas 不同，动态图集并不是构建阶段生成的，而是在运行时动态创建的。\n   245→\n   246→**12.3.1 为什么需要动态图集**\n   247→\n   248→在真实项目中，并不是所有图片都会提前进入 SpriteAtlas。例如动态下载头像、热更新图片、小型临时 UI、Runtime 创建的 Texture、第三方插件生成的图片、Emoji 表情以及富文本内嵌图片等资源，往往无法提前参与静态图集打包。\n   249→\n   250→如果每张图片都单独作为 Texture 渲染，那么 GPU 将频繁切换纹理状态，从而导致 DrawCall 急剧增加。因此 Unity 引入了动态图集机制，其核心目标是在运行时自动合并小纹理，从而提升 Batch 成功率。\n   251→\n   252→**12.3.2 动态图集的基本流程**\n   253→\n   254→动态图集的工作流程本质上与 SpriteAtlas 十分相似，只不过它发生在运行时。\n   255→\n   256→当 UGUI 准备渲染一个纹理时，Unity 会先检查当前纹理是否满足动态图集条件。如果满足，则会尝试将该纹理拷贝到动态图集中，随后重新生成对应的 UV 坐标，最终多个原本独立的小纹理会共享同一张动态图集 Texture。\n   257→\n   258→这样 GPU 在渲染时就不再需要频繁切换纹理。\n   259→\n   260→整个过程中最关键的步骤包括纹理合法性检查、动态图集空间分配、纹理复制以及 UV 重映射。\n   261→\n   262→**12.3.3 动态图集并不是真正合并纹理**\n   263→\n   264→很多开发者会误认为动态图集会永久修改原始 Texture，但实际上并不会。\n   265→\n   266→动态图集只是运行时创建了一张新的临时 Texture，然后把多个小纹理复制进去，原始纹理依然存在。因此动态图集更像是 GPU 渲染优化缓存，而不是资源层面的真正图集。\n   267→\n   268→这意味着动态图集会额外增加一次纹理复制过程，因此它虽然能够减少 DrawCall，但也会带来 CPU 与内存开销。\n   269→\n   270→**12.3.4 动态图集的创建时机**\n   271→\n   272→动态图集通常在 UI 渲染阶段动态创建。\n   273→\n   274→当 CanvasRenderer 提交渲染数据时，Unity 会尝试进行 Batch 合并。如果发现多个元素使用不同 Texture，但满足动态图集条件，那么 Unity 就可能创建动态图集。\n   275→\n   276→需要注意的是，动态图集并不是项目启动时一次性生成的，而是运行过程中按需创建。\n   277→\n   278→因此很多 UI 在第一次打开时，会出现明显卡顿，原因往往并不是 UI 创建本身，而是动态图集正在进行纹理复制。\n   279→\n   280→**12.3.5 动态图集的大小限制**\n   281→\n   282→动态图集通常存在尺寸限制，因为动态图集本质上仍然是一张 GPU Texture。\n   283→\n   284→如果无限增大，会导致 GPU 内存暴涨、上传耗时增加以及渲染带宽压力增加，因此 Unity 会限制动态图集大小，例如 1024×1024 或 2048×2048。\n   285→\n   286→当图集空间不足时，Unity 会创建新的动态图集。\n   287→\n   288→这意味着过多零散小纹理，可能会导致运行时生成大量动态图集，最终不仅无法减少 DrawCall，反而会增加内存压力。\n   289→\n   290→**12.3.6 哪些纹理无法进入动态图集**\n   291→\n   292→并不是所有 Texture 都能进入动态图集。\n   293→\n   294→Unity 对动态图集有大量限制条件，例如 Texture 尺寸过大、使用 Mipmap、使用 Crunch 压缩、Read/Write 状态异常、非 2D Texture、RenderTexture、不同 FilterMode、不同 WrapMode、使用特殊 Shader 以及 Texture 格式不兼容等情况，通常都无法进入动态图集。\n   295→\n   296→此外，RawImage 通常比 Image 更容易打断动态图集，因为 RawImage 直接使用 Texture，而不是 Sprite。\n   297→\n   298→很多运行时 Texture 由于格式问题，也无法参与动态图集。\n   299→\n   300→因此开发者经常会看到明明是同一张图片，却没有发生合批，真正原因通常并不是 Batch 系统失效，而是纹理未能进入动态图集。\n   301→\n   302→**12.3.7 动态图集与 SpriteAtlas 的区别**\n   303→\n   304→很多开发者容易混淆 SpriteAtlas 与动态图集，但实际上它们属于完全不同的系统。\n   305→\n   306→SpriteAtlas 属于构建阶段静态图集，而动态图集属于运行时临时图集。\n   307→\n   308→SpriteAtlas 更稳定、更高效，并且不会产生运行时纹理复制，而动态图集则更灵活，可以处理运行时资源。\n   309→\n   310→因此静态图集是主要方案，而动态图集只是补充方案。\n   311→\n   312→在大型项目中，通常会尽量减少对动态图集的依赖，因为动态图集本身存在较大的运行时成本。\n   313→\n   314→**12.3.8 动态图集与 CPU 开销**\n   315→\n   316→动态图集最大的隐藏问题，就是 CPU 开销。\n   317→\n   318→因为动态图集需要检查纹理状态、分配图集空间、拷贝纹理数据、重建 UV 以及更新 Batch，这些操作都会消耗 CPU 时间。\n   319→\n   320→尤其在 UI 第一次打开时，动态图集可能造成明显卡顿。\n   321→\n   322→因此很多大型项目会采用“预热 UI 图集”的方案，例如提前打开一次界面，这样动态图集会提前生成，后续再次打开时就不会出现明显卡顿。\n   323→\n   324→**12.3.9 动态图集与内存碎片**\n   325→\n   326→动态图集本质上属于运行时临时资源，因此它会频繁创建、扩容以及销毁，这容易造成 GPU 内存碎片。\n   327→\n   328→尤其在 UI 频繁切换、动态头像大量变化、聊天系统以及表情系统等场景中，动态图集问题会非常明显。\n   329→\n   330→因此很多大型项目会限制动态图集使用范围，避免运行时生成过多临时纹理。\n   331→\n   332→**12.3.10 动态图集为什么会失效**\n   333→\n   334→这是开发中非常常见的问题。\n   335→\n   336→很多开发者会发现某些图片有时能合批，有时却突然失效。\n   337→\n   338→常见原因包括材质不同、Shader 不同、Texture 超尺寸、Alpha 格式不同、FilterMode 不一致、图集空间不足、Canvas 不同、Mask 打断 Batch 以及 RectMask2D 打断 Batch 等。\n   339→\n   340→其中很多问题表面上看像是 Batch 问题，但实际上真正原因是动态图集未成功参与。\n   341→\n   342→因此在优化 UI 时，必须结合 Frame Debugger、Profiler 以及 Dynamic Atlas 状态进行综合分析。\n   343→\n   344→**12.3.11 动态图集的适用场景**\n   345→\n   346→动态图集最适合小型项目、临时 UI、动态下载资源、头像系统、Emoji 系统、富文本图片以及运行时生成图片等场景。\n   347→\n   348→而对于大型商业项目，通常仍然以 SpriteAtlas 为主，因为 SpriteAtlas 更稳定、更可控、没有运行时复制、更容易管理内存，也更容易控制资源生命周期。\n   349→\n   350→动态图集更多是作为运行时补充机制，而不是主力图集方案。\n   351→\n   352→**12.3.12 动态图集原理总结**\n   353→\n   354→动态图集本质上是 Unity 在运行时自动创建的一套临时纹理合并系统，它通过动态复制纹理、重新映射 UV 以及统一 Texture 绑定来提高 UI Batch 合并率。\n   355→\n   356→但动态图集并不是没有代价，它会带来 CPU 开销、内存压力、GPU 上传成本以及图集碎片问题。\n   357→\n   358→因此动态图集真正适合的，是那些无法提前进入 SpriteAtlas 的运行时资源，而在大型 UI 项目中，真正决定性能上限的，依然是静态图集系统。\n   359→\n   360→**12.4 图集对合批的影响**\n   361→\n   362→在 UGUI 的性能优化中，图集最核心的价值并不是减少资源数量，而是提升 UI 合批成功率。很多开发者虽然知道图集可以减少 DrawCall，但并不理解为什么图集能够影响 Batch，也不理解为什么有时使用了图集却依然无法合批。实际上，图集系统与 UGUI Batch 系统之间存在极其紧密的关系，很多 UI 性能问题，本质上都不是代码问题，而是资源组织方式导致的合批失败。\n   363→\n   364→**12.4.1 UGUI 合批的本质**\n   365→\n   366→要理解图集为什么会影响合批，首先必须理解 UGUI Batch 的本质。\n   367→\n   368→UGUI 在渲染时，并不会每个 Image 单独发送一次 DrawCall，而是会尝试将多个 UI 元素合并到同一个渲染批次中。Batch 的核心目标，是减少 GPU 状态切换。\n   369→\n   370→GPU 在渲染过程中最昂贵的操作之一，就是状态切换，例如切换 Texture、切换 Material、切换 Shader、切换 Blend 状态以及切换 Stencil 状态。每一次状态变化，都可能导致当前 Batch 被打断。\n   371→\n   372→因此 UGUI 会尽可能将渲染状态相同的 UI 合并到同一个 DrawCall 中，而在所有渲染状态中，对 UI 影响最大的，往往就是 Texture。\n   373→\n   374→**12.4.2 为什么不同 Texture 无法合批**\n   375→\n   376→GPU 在一次 DrawCall 中，通常只能绑定有限数量的纹理资源。\n   377→\n   378→因此如果两个 UI Image 分别使用不同纹理，那么 GPU 在绘制时必须先绑定第一张纹理，绘制完成后再切换到第二张纹理，这意味着 GPU 状态发生变化，Batch 会被直接打断。\n   379→\n   380→因此即使 Material、Shader 以及 Canvas 完全相同，只要 Texture 不同，通常就无法进入同一个 Batch。\n   381→\n   382→这也是为什么 UI 合批本质上高度依赖图集。\n   383→\n   384→**12.4.3 图集如何提升 Batch 成功率**\n   385→\n   386→图集系统最核心的作用，就是让多个 Sprite 最终共享同一张 Texture。\n   387→\n   388→例如按钮、头像、图标以及背景等多个 UI 元素，原本可能分别属于不同纹理，但进入 SpriteAtlas 后，它们会被合并到同一张 Atlas Texture 中。\n   389→\n   390→此时 GPU 渲染时只需要绑定一次图集纹理，这样多个 UI 元素就有机会进入同一个 Batch。\n   391→\n   392→因此图集真正减少的并不是图片数量，而是 GPU Texture 切换次数，这才是 DrawCall 能够下降的根本原因。\n   393→\n   394→**12.4.4 图集与 Material 的关系**\n   395→\n   396→很多开发者认为，只要进入同一个图集，就一定能够合批，但实际上并不是。\n   397→\n   398→Texture 只是 Batch 条件之一，Material 同样十分重要。\n   399→\n   400→即使多个 Image 使用同一张图集，但如果 Material、Shader 或 Stencil 参数不同，那么依然无法合批，因为 GPU 仍然需要切换渲染状态。\n   401→\n   402→例如一个 Image 使用默认 UI Material，另一个 Image 使用灰度 Shader，即使它们来自同一个 SpriteAtlas，也仍然会产生两个 DrawCall。\n   403→\n   404→因此图集只能解决 Texture 合并问题，而无法解决 Material 分裂问题。\n   405→\n   406→**12.4.5 Mask 对图集 Batch 的影响**\n   407→\n   408→Mask 是 UGUI 中最容易打断 Batch 的系统之一，因为 Mask 会修改 Stencil 状态、Material 参数以及裁剪规则，而这些变化都会导致 Batch 中断。\n   409→\n   410→因此很多开发者会发现，即使所有图片都来自同一个图集，DrawCall 依然非常高，真正原因往往并不是图集失效，而是 Mask 打断了 Batch。\n   411→\n   412→尤其在 ScrollView 中，Mask、RectMask2D 以及嵌套裁剪都会严重影响合批。\n   413→\n   414→因此 UI 优化时，不能只看图集，还必须分析 Stencil 状态变化。\n   415→\n   416→**12.4.6 Canvas 对合批的影响**\n   417→\n   418→Canvas 是 UGUI 的 Batch 边界。\n   419→\n   420→不同 Canvas 之间默认不会进行合批。\n   421→\n   422→即使 Texture、Material 以及 Shader 完全相同，只要属于不同 Canvas，就仍然会产生独立 DrawCall。\n   423→\n   424→因此很多项目虽然使用了统一图集，但由于 Canvas 拆分不合理，最终依然出现大量 Batch。\n   425→\n   426→这也是为什么 UI 拆 Canvas 必须谨慎，因为 Canvas 提升的是重建性能，但代价是 Batch 被隔离。\n   427→\n   428→**12.4.7 动态图集与合批**\n   429→\n   430→动态图集的本质，同样是为了提升 Batch 成功率。\n   431→\n   432→它会在运行时将多个小纹理复制到同一张临时 Texture 中，随后重新映射 UV，这样多个原本无法合批的小纹理，就能够共享同一个 Texture。\n   433→\n   434→但动态图集存在很多限制，例如 Texture 格式必须兼容、尺寸不能过大、Shader 必须匹配以及 Material 必须一致，因此动态图集并不是万能的。\n   435→\n   436→很多开发者看到 Dynamic Atlas 后误以为一定会减少 DrawCall，但实际上是否成功合批，还取决于整个渲染状态。\n   437→\n   438→**12.4.8 图集过大为什么反而影响性能**\n   439→\n   440→很多开发者误认为所有 UI 全塞进一个大图集性能最好，但实际上这是非常危险的做法。\n   441→\n   442→超大图集虽然能够提升 Batch，但同时也会带来 GPU 内存压力、纹理上传卡顿、加载耗时增加、热更新粒度变差以及图集利用率下降等问题。\n   443→\n   444→尤其在移动端，一张 4096 图集可能占据数十 MB 显存。\n   445→\n   446→如果某个界面只用了其中几个按钮，却仍然必须加载整张图集，那么资源浪费会非常严重。\n   447→\n   448→因此大型项目通常会采用“局部合批优先”策略，也就是说只保证同一界面内的 UI 能够共享图集，而不是让全项目共用一个超级图集。\n   449→\n   450→**12.4.9 图集拆分策略**\n   451→\n   452→合理的图集拆分策略，是 UI 性能优化中的核心内容。\n   453→\n   454→大型项目通常会按功能划分图集，例如登录界面图集、主界面图集、商城图集、战斗图集、活动图集以及通用图标图集。\n   455→\n   456→这样做首先可以减少无意义纹理加载，其次能够降低单张 Texture 大小，同时还能减少热更新资源体积。\n   457→\n   458→最重要的是，同一个界面的 UI 仍然能够保持较高 Batch 成功率。\n   459→\n   460→因此图集优化真正的核心目标，并不是图集越少越好，而是让真正需要同时渲染的 UI 使用同一张 Texture。\n   461→\n   462→**12.4.10 图集失效导致的典型问题**\n   463→\n   464→开发中最常见的问题之一，就是“明明使用了图集，但 DrawCall 依然很高”。\n   465→\n   466→常见原因包括 Image 使用了不同 Material、Shader 不一致、Mask 打断 Batch、不同 Canvas、动态字体插入、RawImage 使用独立 Texture、粒子系统插入 UI、图集未正确加载以及 Sprite 回退到原始 Texture 等。\n   467→\n   468→其中很多问题并不是图集本身的问题，而是 UI 渲染状态发生了变化。\n   469→\n   470→因此真正优化 Batch 时，必须结合 Frame Debugger、Canvas Batch Viewer、Profiler 以及 Atlas 状态进行综合分析。\n   471→\n   472→**12.4.11 图集与 Overdraw 的关系**\n   473→\n   474→很多开发者只关注 DrawCall，却忽略了另一个重要问题，那就是 Overdraw。\n   475→\n   476→即使图集成功减少 DrawCall，也不意味着 GPU 压力一定降低。\n   477→\n   478→例如多个半透明 UI 大量重叠，即使它们全部来自同一个图集，GPU 依然会反复进行像素混合。\n   479→\n   480→因此图集优化解决的是 Batch 问题，而不是 FillRate 问题。\n   481→\n   482→在移动端项目中，Overdraw 往往比 DrawCall 更危险，因此真正的 UI 优化，必须同时考虑 Batch、Overdraw、Texture Memory 以及 CPU Rebuild，而不能只盯着图集。\n   483→\n   484→**12.4.12 图集对合批影响总结**\n   485→\n   486→图集系统本质上影响的是 GPU Texture 状态切换，而这正是 UGUI Batch 系统最核心的合并条件之一。\n   487→\n   488→多个 Sprite 进入同一图集后，最终会共享同一张 GPU Texture，从而提高 DrawCall 合并成功率。\n   489→\n   490→但图集并不是万能的，因为真正决定 Batch 的，还包括 Material、Shader、Stencil、Canvas、Mask 以及渲染顺序等因素。\n   491→\n   492→因此 UI 优化真正重要的，并不是单纯使用图集，而是理解整个 UGUI 渲染状态究竟是如何影响 Batch 的。\n   493→\n   494→**12.5 资源加载与 UI 生命周期**\n   495→\n   496→在大型 UI 项目中，真正复杂的问题往往并不是界面绘制，而是资源生命周期管理。很多项目在开发初期运行十分流畅，但随着 UI 数量越来越多，逐渐开始出现内存暴涨、GC 卡顿、界面打开缓慢以及资源无法释放等问题，而这些问题的根源，往往都来自错误的资源生命周期设计。\n   497→\n   498→很多开发者会误认为 UI 关闭后资源就会自动释放，但实际上 Unity 的资源系统远比表面复杂。UI 的创建、显示、隐藏、销毁以及资源引用之间存在大量隐式关系，如果不了解底层机制，很容易造成资源长期驻留内存。\n   499→\n   500→本节将从 UGUI 底层运行流程出发，深入分析 UI 生命周期与资源加载系统之间的关系。\n   501→\n   502→**12.5.1 UI 生命周期的本质**\n   503→\n   504→一个 UI 界面从创建到销毁，通常会经历资源加载、GameObject 实例化、Awake、OnEnable、Canvas 注册、Mesh 构建、Batch 构建、渲染提交、界面隐藏、资源卸载以及内存释放等阶段。\n   505→\n   506→很多开发者只关注界面显示逻辑，但实际上真正影响性能的，往往是资源加载与销毁阶段。\n   507→\n   508→因为 UI 本身并不只是一个 GameObject，它背后往往还关联 Texture、SpriteAtlas、Font、Material、Shader、AnimationClip、Prefab 以及 AssetBundle 等资源。\n   509→\n   510→这些资源之间形成了复杂的引用链，因此 UI 生命周期本质上也是资源引用关系的生命周期。\n   511→\n   512→**12.5.2 UI 打开时发生了什么**\n   513→\n   514→当一个 UI 被打开时，Unity 并不仅仅是简单激活一个对象，而是会发生大量底层操作。\n   515→\n   516→首先资源系统会尝试加载 UI Prefab 以及依赖资源，包括 SpriteAtlas、Texture、Material、Font 以及 Shader。\n   517→\n   518→随后 Unity 会实例化 Prefab，并生成完整 GameObject 层级。\n   519→\n   520→接下来会触发 Awake、OnEnable、Graphic 注册以及 CanvasUpdateRegistry 注册。\n   521→\n   522→随后 UGUI 开始执行 Layout Rebuild、Graphic Rebuild、Mesh 生成以及 Batch 构建，最后才真正进入 GPU 渲染阶段。\n   523→\n   524→因此 UI 打开卡顿很多时候并不是 Instantiate 慢，而是资源加载与 Rebuild 造成的。\n   525→\n   526→**12.5.3 为什么第一次打开 UI 最卡**\n   527→\n   528→这是大型项目中非常典型的问题。\n   529→\n   530→很多 UI 第一次打开明显卡顿，但第二次打开却十分流畅。\n   531→\n   532→原因通常包括资源首次加载，例如 Texture 上传 GPU、Shader 编译、SpriteAtlas 加载以及动态图集生成等操作都会在第一次使用时发生。\n   533→\n   534→其次是 UI 第一次 Rebuild。\n   535→\n   536→UGUI 在首次显示时需要重新计算 Layout、Vertex、Batch、Mask 以及 Stencil，尤其复杂 ScrollView 往往会产生大量 CPU 开销。\n   537→\n   538→此外首次打开时还可能发生动态字体图集构建、TMP Atlas 扩容、动态材质生成以及 AssetBundle 解压等操作。\n   539→\n   540→因此第一次 UI 打开卡顿，本质上是多个系统首次初始化叠加导致的。\n   541→\n   542→**12.5.4 SetActive(false) 并不会释放资源**\n   543→\n   544→这是很多开发者最容易误解的问题。\n   545→\n   546→当 UI 执行 gameObject.SetActive(false) 时，仅仅只是停止参与更新与渲染，资源本身通常不会被释放。\n   547→\n   548→例如 Texture 仍在内存、Atlas 仍在内存、Material 仍然存在，并且 Mesh 缓存可能依然保留。\n   549→\n   550→因为对象引用关系仍然存在，只要 Prefab 实例仍然存在，Unity 的资源引用链就不会断开。\n   551→\n   552→因此隐藏 UI 并不等于释放 UI，这也是很多项目内存不断上涨的重要原因。\n   553→\n   554→**12.5.5 Destroy 才会断开引用链**\n   555→\n   556→真正释放 UI，通常需要执行 Destroy。\n   557→\n   558→Destroy 后，GameObject 会被销毁，Component 被移除，UI 引用链开始断开。\n   559→\n   560→但需要注意，Destroy 并不等于立刻释放内存，因为 Unity 使用的是延迟销毁机制。\n   561→\n   562→真正资源是否释放，还取决于是否仍存在其他引用，例如静态变量引用、缓存池引用、AssetBundle 引用以及 SpriteAtlas 引用等。\n   563→\n   564→只要引用仍然存在，资源就不会释放。\n   565→\n   566→**12.5.6 Resources.UnloadUnusedAssets 的原理**\n   567→\n   568→Unity 提供了 Resources.UnloadUnusedAssets 用于释放未使用资源。\n   569→\n   570→它的本质是扫描当前资源引用链，如果某个资源没有任何对象引用，则会被标记为可回收资源。\n   571→\n   572→随后 Unity 会尝试释放 Texture、Mesh、AudioClip 以及 Material 等资源。\n   573→\n   574→但这个过程非常昂贵，因为它需要遍历整个资源引用图，因此 UnloadUnusedAssets 通常会造成明显卡顿，大型项目一般不会频繁调用。\n   575→\n   576→**12.5.7 SpriteAtlas 为什么不会立即释放**\n   577→\n   578→很多开发者发现 UI 明明已经关闭，但图集内存依然存在。\n   579→\n   580→原因在于 SpriteAtlas 通常属于共享资源。\n   581→\n   582→例如主界面与商城界面可能同时引用同一张图集，因此即使关闭其中一个 UI，只要仍有其他对象引用 Atlas，那么图集就不会释放。\n   583→\n   584→此外 Unity 对 Texture 通常存在缓存机制，即使引用断开，也未必会立刻释放 GPU 资源。\n   585→\n   586→因此大型项目中，图集生命周期通常独立于 UI 生命周期。\n   587→\n   588→**12.5.8 UI 缓存池与资源生命周期**\n   589→\n   590→为了减少频繁 Instantiate 与 Destroy 带来的 GC，很多项目会采用 UI 缓存池。\n   591→\n   592→例如界面关闭后并不销毁，而是进入缓存池，再次打开时直接复用。\n   593→\n   594→这种方式能够显著降低 GC Alloc、Instantiate 开销以及 Layout Rebuild 开销。\n   595→\n   596→但问题在于资源会长期驻留内存，因此缓存池本质上是“用内存换性能”。\n   597→\n   598→大型项目通常需要区分高频 UI 与低频 UI，高频 UI 常驻缓存池，而低频 UI 则真正销毁，否则缓存池会逐渐变成内存黑洞。\n   599→\n   600→**12.5.9 Addressables 与 UI 生命周期**\n   601→\n   602→现代 Unity 项目通常使用 Addressables 管理 UI 资源。\n   603→\n   604→Addressables 最大的特点是资源引用计数管理。\n   605→\n   606→例如加载 UI 时引用计数加一，关闭 UI 时引用计数减一，当引用计数归零时，资源才真正允许释放。\n   607→\n   608→这比传统 Resources 系统更加安全。\n   609→\n   610→但很多开发者容易犯一个错误，那就是只释放 UI 实例，而没有 Release Addressables Handle，最终导致 AssetBundle 永远无法卸载。\n   611→\n   612→因此 Addressables 生命周期管理，本质上是 Handle 生命周期管理。\n   613→\n   614→**12.5.10 UI 生命周期中的 GPU 问题**\n   615→\n   616→很多开发者只关注 CPU 内存，却忽略了 GPU 生命周期。\n   617→\n   618→实际上 Texture 上传 GPU 往往比 CPU 内存更昂贵。\n   619→\n   620→例如一张 2048×2048 RGBA32 图集，CPU 内存可能十几 MB，而 GPU 显存同样也要占用十几 MB。\n   621→\n   622→如果 UI 频繁打开关闭，那么 Texture Upload 会不断发生，这会造成 GPU Stall、RenderThread 卡顿以及首帧掉帧等问题。\n   623→\n   624→因此大型项目通常会提前预加载 UI 图集，避免运行时频繁上传 GPU。\n   625→\n   626→**12.5.11 UI 生命周期中的常见错误**\n   627→\n   628→实际项目中，最常见的问题包括 UI 隐藏但未释放、图集长期驻留、Addressables 未 Release、静态缓存持有引用、动态字体图集无限增长、TMP Atlas 不断扩容、ScrollView 子节点长期缓存以及 RawImage 动态纹理未销毁等。\n   629→\n   630→这些问题都会逐渐导致内存上涨、GPU 占用增加、GC 频率升高以及 UI 打开越来越慢。\n   631→\n   632→因此真正的 UI 优化，并不仅仅是减少 DrawCall，而是管理整个资源生命周期。\n   633→\n   634→**12.5.12 资源加载与 UI 生命周期总结**\n   635→\n   636→UI 生命周期本质上不仅仅是 GameObject 的生命周期，更是整个资源引用链的生命周期。\n   637→\n   638→一个 UI 从打开到关闭，背后涉及 Texture 加载、Atlas 管理、Material 生命周期、Batch 重建、GPU 上传、AssetBundle 引用以及 Addressables 引用计数等多个系统。\n   639→\n   640→因此大型 UI 系统真正复杂的地方，并不是界面绘制，而是资源管理。\n   641→\n   642→只有真正理解资源何时加载、资源何时引用以及资源何时释放，才能构建出稳定、高性能、可扩展的大型 UI 架构。\n   643→\n   644→**本章小结**\n   645→\n   646→本章围绕 UGUI 中最核心的资源体系与图集系统展开，从 Sprite 与 Texture2D 的底层关系出发，逐步分析了 SpriteAtlas 的打包机制、动态图集的运行时行为、图集对合批的实际影响，以及 UI 生命周期与资源加载之间的整体联系。\n   647→\n   648→可以看到，在 UGUI 渲染体系中，真正决定性能结构的并不是 UI 组件本身，而是资源如何被组织与管理。Texture2D 承担了最终的 GPU 纹理数据载体角色，而 Sprite 则负责在 CPU 层描述纹理的使用方式，两者共同构成了 UI 渲染的基础数据结构。\n   649→\n   650→SpriteAtlas 通过在构建阶段将多个 Sprite 合并到同一张 Texture2D 中，从根源上减少 GPU 纹理切换，从而提升 Batch 成功率，是 UI 性能优化中最稳定、最可控的方案。而动态图集则是在运行时对未进入静态图集的资源进行补充优化，但其代价是额外的 CPU 开销与内存行为不可控，因此更适合作为补充机制而非核心方案。\n   651→\n   652→图集对合批的影响，本质上并不是“是否使用图集”，而是“是否减少了 GPU 状态切换”。Texture 是否统一只是其中一个条件，真正决定 Batch 是否成立的，还包括 Material、Shader、Canvas、Mask 等多个渲染状态因素。因此图集只能提升合批概率，而无法保证绝对合批。\n   653→\n   654→与此同时，UI 生命周期与资源加载体系决定了整个系统的稳定性。UI 的打开与关闭并不等于资源的创建与释放，资源的真正生命周期由引用关系与资源管理策略决定。错误的生命周期设计往往会导致内存长期增长、GPU 资源无法释放以及首次打开卡顿等问题。\n   655→\n   656→综合来看，本章的核心结论可以归纳为三点：第一，Sprite 是 Texture2D 的逻辑描述层而非数据层；第二，图集的本质是减少 GPU 纹理切换从而提升合批；第三，UI 性能问题的根源往往不在组件，而在资源组织与生命周期管理。\n   657→\n   658→理解这一层结构之后，才能真正从“界面开发”进入到“UI 系统设计”的层级，为后续深入理解 UGUI 的批处理机制与底层渲染流程打下基础。\n   659→\n   660→还没有人送礼物，鼓励一下作者吧\n   661→\n   662→发布于 2026-05-14 10:46・北京[一文告诉你人工智能纯小白学习路线！](https://zhuanlan.zhihu.com/p/31863323446)\n   663→\n   664→[\n   665→\n   666→全文5196字，按照我这个路线坚持完，你会变成一个人工智能的牛人的。它是假定一个没有人工智能基础的程序员学习路线。写在前面：我觉的从deepseek开源以后，会有更多的企业和开发者争...\n   667→\n   668→](https://zhuanlan.zhihu.com/p/31863323446)\n   669→\n   670→赞同 5\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_2c230f811dc8423a950eaca6",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\\|图集优化\" \"20_核心系统/26_UI系统/【笔记】UGUI深度解析.md\" 2>/dev/null | head -40",
+              "description": "搜索 UGUI 深度解析中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "192:│           ├── 相同纹理（图集）                                │\n270:    2. 相同纹理（图集）\n271:       - 同一Sprite Atlas\n950:           - 使用 Sprite Atlas 时，多个 Sprite 共享同一图集纹理\n1066:1. 使用 Sprite Atlas\n1067:   - 同一 Atlas 下的 Sprite 共享纹理\n3379:## 5. 图集与Sprite优化\n3388:/// 图集管理\n3390:public class AtlasManager : MonoBehaviour\n3393:    ========== Sprite Atlas ==========\n3408:    [Header(\"Atlases\")]\n3409:    [SerializeField] private SpriteAtlas uiAtlas;\n3410:    [SerializeField] private SpriteAtlas iconAtlas;\n3422:        // 从图集获取\n3423:        sprite = uiAtlas.GetSprite(spriteName);\n3425:            sprite = iconAtlas.GetSprite(spriteName);\n3455:/// 动态图集（运行时合并）\n3457:public class DynamicAtlas\n3464:    public DynamicAtlas(int size)\n3472:    /// 添加Sprite到动态图集\n3488:            return false; // 图集已满\n3500:    public Texture2D GetAtlasTexture() => atlasTexture;\n3781:========== 合批与图集的关系 ==========\n3783:1. 同一 Sprite Atlas 下的 Sprite 共享同一纹理\n3786:4. Sprite.texture 指向图集纹理，不是原始纹理\n3790:### 5.3 SpriteAtlas 运行时行为\n3793:// ===== SpriteAtlas 运行时行为分析 =====\n3794:// SpriteAtlas 是 Unity 2017.2+ 引入的图集系统\n3799:    /// SpriteAtlas 运行时行为分析\n3801:    public static class SpriteAtlasAnalysis\n3804:        ========== SpriteAtlas 编译时行为 ==========\n3806:        1. 打包时，Unity 将 SpriteAtlas 内的 Sprite 合并到一张纹理\n3808:        3. 原始 Sprite 引用被重定向到图集纹理\n3812:        1. SpriteAtlas 作为 AssetBundle 或 Resources 加载\n3814:        3. 返回的 Sprite.texture 指向图集纹理\n3815:        4. Sprite.rect 指定在图集中的区域\n3819:        不使用图集：\n3825:        使用图集：\n3833:        /// 演示图集对纹理的影响\n3850:            // 检查是否来自图集"
+          },
+          {
+            "id": "call_7bd1da42c2624c40af156203",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\\|图集优化\" \"20_核心系统/26_UI系统/【笔记】UGUI DrawCall影响因素全面测试.md\" 2>/dev/null | head -30",
+              "description": "搜索 DrawCall 测试文档中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "51:## 测试1: 图集对DrawCall的影响\n56:// 测试场景1: 单图集\n57:public class SingleAtlasTest : MonoBehaviour\n59:    [SerializeField] private Sprite[] sprites;  // 全部来自同一图集\n73:// 测试场景2: 多图集\n74:public class MultipleAtlasTest : MonoBehaviour\n76:    [SerializeField] private List<Sprite[]> atlasGroups;  // 5个不同图集\n116:| 场景 | 图集数量 | DrawCall | 渲染时间 | 内存占用 | GPU时间 |\n118:| **单图集** | 1 | 2 | 0.85ms | 12.4MB | 1.2ms |\n119:| **多图集(5个)** | 5 | 10 | 4.2ms | 14.1MB | 5.8ms |\n126:单图集:  1x → 2 DC\n127:多图集:  5x → 10 DC (线性增长)\n130:结论: 图集数量与DrawCall呈正相关\n137:| **单图集** | 2 DC | 2 DC | 2 DC |\n138:| **多图集(5个)** | 10 DC | 10 DC | 10 DC |\n772:| **图集数量** | ⭐⭐⭐⭐ | 很大 | 影响批次大小 |\n782:| 合并图集 | 10-50x | 低 | ⭐⭐⭐⭐⭐ |\n794:├─> 单图集\n801:├─> 2-3个图集 (按功能)\n808:├─> 2个图集 (核心+次要)\n824:- **Canvas 内合批**：同 Canvas、同材质、同图集的元素自动合批，可压到 1~2 个 DC\n825:- **Canvas 间不合批**：不同 Canvas 即使材质图集完全相同也无法合批（见测试3）\n1005:### 图集按 Canvas 层划分\n1007:由于跨 Canvas 不合批，图集应跟着 Canvas 层走：\n1009:| 图集 | 专用 Canvas 层 | 内容 |\n1011:| **HUD图集** | Canvas_A | 血条、技能图标、摇杆 |\n1012:| **通用图集** | Canvas_B / Canvas_C | 按钮底图、边框、背景 |\n1013:| **弹窗图集** | Canvas_C | 确认框、Toast 背景 |\n1015:同一 Canvas 内用同一图集 = 1~2 个 DC，是最优配置。\n1037:5. 图集跟着 Canvas 层走，同层同图集 = 最少 DC"
+          },
+          {
+            "id": "call_092cd46e8f1741809b34bae1",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\\|图集优化\" \"35_高级主题/【笔记】Unity资源依赖与打包陷阱.md\" 2>/dev/null | head -30",
+              "description": "搜索资源依赖与打包陷阱文档中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "37:这篇综述回答一个工程痛点：**为什么包体会莫名增大、Shader/图集会被重复打包、改一个材质球会牵连十几个 Bundle 重下**——根因都在**资源依赖关系未被正确管理**。\n40:- UI 图集冗余 → 见 [[【笔记】UGUI性能优化实战总览]]\n55:- **Shader、图集总是被重复打包**到多个 Bundle 里？\n122:这就是\"删了资源包体反而变大\"\"Shader/图集被重复打包\"的直接解释：**冗余不是来自你添加的资源，而是来自被多处引用却没单独成包的公共依赖被反复内联**。项目里典型的公共依赖是 **Shader、SpriteAtlas（图集）、共享材质、字体、公用动画片段**——原文开篇的\"Shader、图集总是被重复打包\"正属此列。\n134:| UI Prefab 打成 AB 后 50MB | 该 Prefab 隐式拖入了未单独分包的大体量公共依赖（整张 UI 图集/字体/内置 Shader），被整体内联 |\n136:| Shader、图集重复打包 | Shader/图集作为公共依赖未单独成包，每个引用方各复制一份（3.2 机制） |\n157:官方推荐的核心做法：**把公共资源（材质/Shader/纹理/图集/字体）分配到它们各自的 AssetBundle**。构建时纹理等下级依赖会被自动包含，无需逐个标记。这是消除冗余最直接的手段，对应 3.2 的体积下降。\n163:### 6.3 Shader / 图集 / 字体的特殊处理\n166:- **图集（SpriteAtlas）**：late binding 模式下SpriteAtlas 易被重复引用，单独成包；UI 侧图集冗余的细节见 [[【笔记】UGUI性能优化实战总览]]。\n181:- [ ] 公共依赖（Shader/图集/材质/字体）是否都已**单独分包**，未被多处内联\n209:- [[【笔记】UGUI性能优化实战总览]] — UI 图集/SpriteAtlas 冗余的 UGUI 视角"
+          },
+          {
+            "id": "call_93e0dd25c32f47c090226fe3",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\\|图集优化\" \"20_核心系统/26_UI系统/【笔记】UGUI性能优化实战总览.md\" 2>/dev/null | head -40",
+              "description": "搜索 UGUI 性能优化实战总览中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "3:tags: [\"Unity\", \"UI\", \"UI系统\", \"UGUI\", \"性能优化\", \"综述\", \"图集\", \"适配\"]\n7:description: 综合外部原文与既有笔记，覆盖图集、合批、Mask、动静分离、适配等 UGUI 性能优化全景\n29:它的价值在于**广度 + 速查**：图集打包、合批、Mask 取舍、动静分离、界面切换、字体、特效混合、刘海屏/横竖屏适配——一条线串起来。深度机制不在本页展开，而是指向真相层笔记：\n44:| DrawCall 高 | 合批、图集、减少 Mask、Cull Transparent | [[【笔记】UGUI DrawCall影响因素全面测试]] |\n48:| 包体/内存里图集冗余 | SpriteAtlas + AssetBundle 打包策略 | 本文 §图集 |\n54:## 一、图集（Sprite Atlas）\n59:- Unity 自带 **Sprite Packer / Sprite Atlas**\n65:- 若某个 Sprite 加入了 SpriteAtlas，**真正使用该 Sprite 的资源引用的是 `sactx` 图集纹理**，而非小 Texture2D。\n66:- **SpriteAtlas 不打进 AssetBundle 时**：必须勾选 `Include in Build`，否则 `sactx` 纹理\"消失\"；且 SpriteAtlas 中所有小 Sprite **必须打进同一个 AssetBundle**，否则 `sactx` 冗余。\n67:- **SpriteAtlas 本身打进 AssetBundle 时**：`sactx` 永不冗余（指打包造成的冗余）。此时小 Sprite 也最好打进 AssetBundle，否则小 Sprite 会冗余。\n72:> 用 Sprite Packer 打图集时，**图集中的图片不能被 `RawImage` 引用**。\n77:- 若一定要引用，**不要把该图打入图集**。\n79:### 1.4 取 Sprite 在图集中的 UV\n82:// 获取 Sprite 在所在图集中的 Outer UV（用于自定义 mesh / RawImage 等）\n88:## 二、图集尺寸策略：8 张 1024 vs 2 张 2048\n93:- **单个游戏功能内部的独有图集**：建议控制在 **1024 以内**；当用量达到 **3 张 1024** 级别，才允许升到 2048。\n315:- **`SendWillRenderCanvases` 高的排查**：画布会重算 UV、重并图集；RectMask2D 持续每帧算子节点裁剪区域。优化思路：降频繁更新 UI 频率、让复杂 UI 不变动、关注 `Font.CacheFontForText`。\n323:- [ ] 图集：SpriteAtlas 与 AssetBundle 打包策略一致，无 `sactx` / 小 Sprite 冗余\n324:- [ ] `RawImage` 不引用图集中的 Sprite"
+          },
+          {
+            "id": "call_385994a4399947dbbff72f09",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\\|图集优化\" \"20_核心系统/26_UI系统/【设计原理】UGUI合批机制深度解析.md\" 2>/dev/null | head -30",
+              "description": "搜索合批机制深度解析中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "125:3. 相同的Texture（或图集）\n340:- 同一图集、同一材质\n554:### 案例2: 多图集合并方案\n556:**问题：** 5个图集导致大量DrawCall切换\n561:public class AtlasMerger : MonoBehaviour\n563:    [SerializeField] private Texture2D[] sourceAtlases;\n566:    private Texture2D mergedAtlas;\n568:    [ContextMenu(\"Merge Atlases\")]\n569:    public void MergeAtlases()\n571:        mergedAtlas = new Texture2D(atlasSize, atlasSize);\n572:        mergedAtlas.wrapMode = TextureWrapMode.Clamp;\n573:        mergedAtlas.filterMode = FilterMode.Bilinear;\n575:        Rect[] rects = new Rect[sourceAtlases.Length];\n579:        int blockSize = atlasSize / sourceAtlases.Length;\n581:        for (int i = 0; i < sourceAtlases.Length; i++)\n587:                sourceAtlases[i],\n589:                mergedAtlas,\n591:                sourceAtlases[i].width,\n592:                sourceAtlases[i].height\n595:            rects[i] = new Rect(x, y, sourceAtlases[i].width, sourceAtlases[i].height);\n598:        mergedAtlas.Apply();\n603:        AssetDatabase.CreateAsset(mergedAtlas, \"Assets/MergedAtlas.asset\");\n610:        // 实际项目中建议使用SpriteAtlas工具\n913:优先级2: 合并图集\n914:   └─> 单图集覆盖80%UI元素\n943:- 合并图集减少纹理切换"
+          },
+          {
+            "id": "call_a121bb9179fa4828bb359ab5",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\\|图集优化\" \"20_核心系统/26_UI系统/【踩坑】UGUI常见性能陷阱与根因分析.md\" 2>/dev/null | head -30",
+              "description": "搜索常见性能陷阱文档中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "729:├─> 即使使用相同图集和材质\n950:├─> 相同图集无法合批\n1088:            // TextMeshPro使用SDF纹理，与UI图集可以合批"
+          },
+          {
+            "id": "call_8ac117f9b7964219bf4f17ce",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\\|图集优化\" \"20_核心系统/26_UI系统/【片段】UGUI 性能优化规则清单.md\" 2>/dev/null | head -30",
+              "description": "搜索性能优化规则清单中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "78:- **R3.2** 同一界面的 UI 图**必须打到同一图集**；文字 atlas 与图形 atlas 分开。\n100:- **R6.2** 界面关闭后**释放其专属大纹理**；图集共享纹理不释放。\n113:| **P1** | `sharedMaterial` 规范 + 图集合并 | 低 | 高 | 全项目 |\n127:| `UnityStats.drawCalls` | **> 30** | R3：合批被打断（图集 / 材质实例化 / 层级穿插 / Mask） |\n155:- [ ] 同界面 UI 在同一图集（R3.2）"
+          },
+          {
+            "id": "call_0a9292e47d704f1196b3f772",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\\|图集优化\" \"20_核心系统/26_UI系统/【最佳实践】UI性能优化速查.md\" 2>/dev/null | head -30",
+              "description": "搜索 UI 性能优化速查中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "33:| 全景综述（图集打包/Mask/适配/特效混合等） | [[【笔记】UGUI性能优化实战总览]] |\n281:| **相同材质** | 使用相同 Shader 和纹理（同一图集） |\n302:// 1. 不同图集的图片穿插排列\n303:Image1 → Text1 → Image2(from另一图集)  // Image1 和 Image2 无法合批\n318:- 同一界面的 UI 图**打到同一图集**；文字 atlas 与图形 atlas 分开\n491:## 十、图集优化（P2）\n493:### Sprite Atlas 配置建议\n501:- Include in Build: 根据打包策略决定\n504:### 图集尺寸策略\n506:| 图集用途 | 建议尺寸 | 说明 |\n509:| 单个功能独有图集 | ≤ 1024 | 达到 3 张 1024 时可升 2048 |\n515:- **RawImage 不要引用图集中的 Sprite**——会导致该图额外打包一份，包体增大\n516:- 大图（背景等）使用单独加载，**避免打包到 UI 图集中**\n519:> SpriteAtlas 与 AssetBundle 打包的冗余规则详见 [[【笔记】UGUI性能优化实战总览]] §一。\n562:- 界面关闭后**释放其专属大纹理**；图集共享纹理不释放\n596:| DrawCalls | > 30 | 合批被打断（图集 / 材质实例化 / 层级穿插 / Mask） |\n630:- [ ] 同界面 UI 在同一图集\n653:- [ ] RawImage 不引用图集中的 Sprite\n662:- [[【笔记】UGUI性能优化实战总览]] — 全景速查（图集打包/Mask/适配/特效混合等）"
+          },
+          {
+            "id": "call_04e19d13996c42d1b89bedc5",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\\|图集优化\" \"35_高级主题/【笔记】性能优化面试问答.md\" 2>/dev/null | head -30",
+              "description": "搜索性能优化面试问答中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "35:2. **合图集**：让更多元素共享材质 → 满足合批前提\n55:**高频追问**：为什么 UI 图集也打了，DC 还是多？→ 层级穿插打断；文字字体图集差异；Mask 增加 DC。详见 [[【设计原理】UGUI合批机制深度解析]]、[[【笔记】UGUI性能优化实战总览]]。\n131:**高频追问**：UI 图集占了很大内存怎么办？→ Sprite Atlas 合理分图集、关闭 Read/Write、TMP 字体 Atlas 优化。\n255:> 用 **STAR** 结构讲：**S**ituation（什么项目、什么问题：如「战斗时偶发掉帧到 30fps」）→ **T**ask（你的职责：定位并优化到 60fps）→ **A**ction（用 Profiler 抓真机帧 → 发现是 XXX 函数每帧 GC + DC 过多 → 方案：对象池 + 合图集 + 静态批处理）→ **R**esult（GC 降为 0、DC 从 180→40、稳定 60fps，已沉淀为团队规则）。"
+          },
+          {
+            "id": "call_0c2ad0ef9108416cbf7954bf",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI性能优化实战总览.md",
+              "offset": 54,
+              "limit": 60
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "    54→## 一、图集（Sprite Atlas）\n    55→\n    56→### 1.1 打包工具\n    57→\n    58→- 第三方 **Texture Packer**\n    59→- Unity 自带 **Sprite Packer / Sprite Atlas**\n    60→\n    61→### 1.2 `Include in Build` 与 AssetBundle 冗余规则\n    62→\n    63→这是最容易踩的冗余点，原文给出明确规则：\n    64→\n    65→- 若某个 Sprite 加入了 SpriteAtlas，**真正使用该 Sprite 的资源引用的是 `sactx` 图集纹理**，而非小 Texture2D。\n    66→- **SpriteAtlas 不打进 AssetBundle 时**：必须勾选 `Include in Build`，否则 `sactx` 纹理\"消失\"；且 SpriteAtlas 中所有小 Sprite **必须打进同一个 AssetBundle**，否则 `sactx` 冗余。\n    67→- **SpriteAtlas 本身打进 AssetBundle 时**：`sactx` 永不冗余（指打包造成的冗余）。此时小 Sprite 也最好打进 AssetBundle，否则小 Sprite 会冗余。\n    68→- 勾不勾 `Include in Build` **不影响依赖关系**，唯一区别是是否\"主动显示图片\"：勾选主动显示，不勾需脚本控制显示。\n    69→\n    70→### 1.3 包体出现重复资源（RawImage 陷阱）\n    71→\n    72→> 用 Sprite Packer 打图集时，**图集中的图片不能被 `RawImage` 引用**。\n    73→\n    74→被引用则会另外打包一份，同一张图存在两处，包体增大。结论：\n    75→\n    76→- `RawImage` 不要引用 Sprite 格式图片；\n    77→- 若一定要引用，**不要把该图打入图集**。\n    78→\n    79→### 1.4 取 Sprite 在图集中的 UV\n    80→\n    81→```csharp\n    82→// 获取 Sprite 在所在图集中的 Outer UV（用于自定义 mesh / RawImage 等）\n    83→Vector4 uv = Sprites.DataUtility.GetOuterUV(activeSprite);\n    84→```\n    85→\n    86→---\n    87→\n    88→## 二、图集尺寸策略：8 张 1024 vs 2 张 2048\n    89→\n    90→原文给出的分配原则（内存与 DrawCall 权衡）：\n    91→\n    92→- **常驻内存的通用资源**：可放宽上限，允许 2048 甚至 4096 一张。\n    93→- **单个游戏功能内部的独有图集**：建议控制在 **1024 以内**；当用量达到 **3 张 1024** 级别，才允许升到 2048。\n    94→- 权衡逻辑：分配合理时，多一张贴图理论上只多 1 个 DrawCall；而把 2 张 1024 强行并成 1 张 2048，要么空白多、要么合并不合理，内存反而浪费。\n    95→- Shader 绑定贴图消耗是 ns 级，**主要消耗在渲染面积（填充率）和 DrawCall**，而非贴图绑定本身。\n    96→\n    97→---\n    98→\n    99→## 三、DrawCall 与合批（速查，深度见专题）\n   100→\n   101→深度机制见 [[【设计原理】UGUI合批机制深度解析]]、量化数据见 [[【笔记】UGUI DrawCall影响因素全面测试]]。本节只补原文两条易被忽视的实战结论。\n   102→\n   103→### 3.1 挪到屏幕外不会减少 DrawCall\n   104→\n   105→UGUI 合并网格以 **Canvas 为单位**，把 UI 元素移出屏幕并不能降 DrawCall。\n   106→\n   107→- Unity 5.2 之前：需 `Screen Space – Camera` + 把移出元素放独立 Canvas 再整体移出；\n   108→- 5.2 之后上述方法失效；\n   109→- **可行做法**：把移出的 UI 元素放在**独立 Canvas**，再把该 Canvas 的 Layer 改为相机 Culling Mask 未选中的 Layer，从而剔除这部分 Draw Call。相比直接 `Enabled = false`，能省一定 CPU 开销。\n   110→\n   111→### 3.2 `SetActive(true)` 产生 GC\n   112→\n   113→切换 `SetActive` 会产生 `GC.Alloc`。若要同时降 Batches 和 GC，原文方案：\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_ca30fc150f604928b5a831e8",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI DrawCall影响因素全面测试.md",
+              "offset": 51,
+              "limit": 90
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "    51→## 测试1: 图集对DrawCall的影响\n    52→\n    53→### 测试配置\n    54→\n    55→```csharp\n    56→// 测试场景1: 单图集\n    57→public class SingleAtlasTest : MonoBehaviour\n    58→{\n    59→    [SerializeField] private Sprite[] sprites;  // 全部来自同一图集\n    60→    [SerializeField] private GameObject uiPrefab;\n    61→\n    62→    private void Start()\n    63→    {\n    64→        for (int i = 0; i < 100; i++)\n    65→        {\n    66→            var ui = Instantiate(uiPrefab);\n    67→            var image = ui.GetComponent<Image>();\n    68→            image.sprite = sprites[i % sprites.Length];\n    69→        }\n    70→    }\n    71→}\n    72→\n    73→// 测试场景2: 多图集\n    74→public class MultipleAtlasTest : MonoBehaviour\n    75→{\n    76→    [SerializeField] private List<Sprite[]> atlasGroups;  // 5个不同图集\n    77→    [SerializeField] private GameObject uiPrefab;\n    78→\n    79→    private void Start()\n    80→    {\n    81→        for (int i = 0; i < 100; i++)\n    82→        {\n    83→            var ui = Instantiate(uiPrefab);\n    84→            var image = ui.GetComponent<Image>();\n    85→            var atlasIndex = i % atlasGroups.Count;\n    86→            image.sprite = atlasGroups[atlasIndex][i % atlasGroups[atlasIndex].Length];\n    87→        }\n    88→    }\n    89→}\n    90→\n    91→// 测试场景3: 零散纹理\n    92→public class ScatteredTexturesTest : MonoBehaviour\n    93→{\n    94→    [SerializeField] private Texture2D[] textures;  // 100个独立纹理\n    95→    [SerializeField] private GameObject uiPrefab;\n    96→\n    97→    private void Start()\n    98→    {\n    99→        for (int i = 0; i < 100; i++)\n   100→        {\n   101→            var ui = Instantiate(uiPrefab);\n   102→            var image = ui.GetComponent<Image>();\n   103→            var sprite = Sprite.Create(\n   104→                textures[i],\n   105→                new Rect(0, 0, textures[i].width, textures[i].height),\n   106→                new Vector2(0.5f, 0.5f)\n   107→            );\n   108→            image.sprite = sprite;\n   109→        }\n   110→    }\n   111→}\n   112→```\n   113→\n   114→### 测试结果\n   115→\n   116→| 场景 | 图集数量 | DrawCall | 渲染时间 | 内存占用 | GPU时间 |\n   117→|------|----------|----------|----------|----------|---------|\n   118→| **单图集** | 1 | 2 | 0.85ms | 12.4MB | 1.2ms |\n   119→| **多图集(5个)** | 5 | 10 | 4.2ms | 14.1MB | 5.8ms |\n   120→| **零散纹理** | 100 | 100 | 43.5ms | 28.7MB | 52.3ms |\n   121→\n   122→### 数据分析\n   123→\n   124→```\n   125→DrawCall增长趋势:\n   126→单图集:  1x → 2 DC\n   127→多图集:  5x → 10 DC (线性增长)\n   128→零散:    100x → 100 DC (1:1对应)\n   129→\n   130→结论: 图集数量与DrawCall呈正相关\n   131→```\n   132→\n   133→### 跨平台对比\n   134→\n   135→| 场景 | PC | iOS | Android |\n   136→|------|-----|-----|---------|\n   137→| **单图集** | 2 DC | 2 DC | 2 DC |\n   138→| **多图集(5个)** | 10 DC | 10 DC | 10 DC |\n   139→| **零散纹理** | 100 DC | 100 DC | 100 DC |\n   140→\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_ce0781ecdd7d4992ae4cc9c6",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【踩坑】UGUI常见性能陷阱与根因分析.md",
+              "offset": 545,
+              "limit": 80
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "   545→        {\n   546→            if (m_VertsDirty)\n   547→            {\n   548→                UpdateGeometry();\n   549→                m_VertsDirty = false;\n   550→            }\n   551→\n   552→            if (m_MaterialDirty)\n   553→            {\n   554→                UpdateMaterial();\n   555→                m_MaterialDirty = false;\n   556→            }\n   557→        }\n   558→    }\n   559→\n   560→    protected virtual void UpdateGeometry()\n   561→    {\n   562→        // 重新生成Mesh（耗时操作）\n   563→    }\n   564→}\n   565→```\n   566→\n   567→#### Rebuild性能开销\n   568→\n   569→```\n   570→Graphic Rebuild开销:\n   571→1. 计算顶点位置 (Position)\n   572→2. 计算UV坐标 (UV0, UV1, UV2)\n   573→3. 计算顶点颜色 (Color32)\n   574→4. 计算法线和切线 (Normal, Tangent)\n   575→5. 更新Canvas网格\n   576→6. 提交GPU\n   577→\n   578→总计: 每个Graphic 0.5-2ms\n   579→```\n   580→\n   581→### 性能测试数据\n   582→\n   583→| 场景 | UI数量 | 每帧Rebuild次数 | Frame Time |\n   584→|------|--------|-----------------|------------|\n   585→| 静态UI | 100 | 0 | 0.85ms |\n   586→| 修改1个Image | 100 | 1 | 1.35ms |\n   587→| 修改10个Image | 100 | 10 | 5.85ms |\n   588→| 修改100个Image | 100 | 100 | 50.85ms |\n   589→| 每帧修改Text | 100 | 100 | 80ms |\n   590→\n   591→### 解决方案\n   592→\n   593→```csharp\n   594→// ✅ 方案1: 使用DOTween缓动\n   595→public class TweenedImage : MonoBehaviour\n   596→{\n   597→    [SerializeField] private Image healthBar;\n   598→\n   599→    private void UpdateHealth(float newHealth)\n   600→    {\n   601→        // 使用DOTween缓动，减少Rebuild频率\n   602→        healthBar.DOFillAmount(newHealth, 0.3f).SetEase(Ease.OutQuad);\n   603→    }\n   604→}\n   605→\n   606→// ✅ 方案2: 只在值改变时更新\n   607→public class ConditionalUpdate : MonoBehaviour\n   608→{\n   609→    [SerializeField] private Image healthBar;\n   610→    private float lastHealth;\n   611→\n   612→    public void UpdateHealth(float newHealth)\n   613→    {\n   614→        // 只在值改变时更新\n   615→        if (Mathf.Abs(newHealth - lastHealth) > 0.001f)\n   616→        {\n   617→            healthBar.fillAmount = newHealth;\n   618→            lastHealth = newHealth;\n   619→        }\n   620→    }\n   621→}\n   622→\n   623→// ✅ 方案3: 降低更新频率\n   624→public class RateLimitedUpdate : MonoBehaviour\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_828218d6972642299ca3d39a",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【最佳实践】UI性能优化速查.md",
+              "offset": 491,
+              "limit": 50
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "   491→## 十、图集优化（P2）\n   492→\n   493→### Sprite Atlas 配置建议\n   494→\n   495→```\n   496→// 移动端推荐配置：\n   497→- Max Size: 1024（功能内）/ 2048（通用常驻）\n   498→- Format: ASTC 6x6（移动端首选，平衡质量与大小）\n   499→- Read/Write: false（除非需要运行时修改）\n   500→- Allow Rotation: false（UI 不建议旋转）\n   501→- Include in Build: 根据打包策略决定\n   502→```\n   503→\n   504→### 图集尺寸策略\n   505→\n   506→| 图集用途 | 建议尺寸 | 说明 |\n   507→|----------|----------|------|\n   508→| 常驻通用资源 | 2048 甚至 4096 | 一张，减少加载次数 |\n   509→| 单个功能独有图集 | ≤ 1024 | 达到 3 张 1024 时可升 2048 |\n   510→\n   511→> 权衡逻辑：分配合理时，多一张贴图只多 1 个 DrawCall；强行合并到 2048 可能空白多、内存反而浪费。\n   512→\n   513→### 注意事项\n   514→\n   515→- **RawImage 不要引用图集中的 Sprite**——会导致该图额外打包一份，包体增大\n   516→- 大图（背景等）使用单独加载，**避免打包到 UI 图集中**\n   517→- 使用九宫格（Sliced）减少图片尺寸\n   518→\n   519→> SpriteAtlas 与 AssetBundle 打包的冗余规则详见 [[【笔记】UGUI性能优化实战总览]] §一。\n   520→\n   521→---\n   522→\n   523→## 十一、内存优化（P3）\n   524→\n   525→### UI 对象池\n   526→\n   527→```csharp\n   528→public class UIPool : MonoBehaviour\n   529→{\n   530→    [SerializeField] private GameObject prefab;\n   531→    private readonly Queue<GameObject> pool = new();\n   532→\n   533→    public GameObject Get(Transform parent)\n   534→    {\n   535→        if (pool.TryDequeue(out var go))\n   536→        {\n   537→            go.transform.SetParent(parent, false);\n   538→            go.SetActive(true);\n   539→            return go;\n   540→        }\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_ace4f9ed2ccf4240bf04c046",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\" \"30_性能优化/34_启动时间优化/【最佳实践】Addressables性能优化.md\" 2>/dev/null | head -20",
+              "description": "搜索 Addressables 性能优化文档中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "684:### 4.1 打包策略\n688:│                 AssetBundle 打包策略                         │\n692:│     ├── UI_Atlas_Main (UI主图集)                           │\n693:│     ├── UI_Atlas_Popup (弹窗图集)                          │\n710:│  ├── UI 图集：2-10MB                                       │"
+          },
+          {
+            "id": "call_ccd1bdf8f01e4022bb784d45",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\" \"40_工具链/【最佳实践】Addressables性能优化.md\" 2>/dev/null | head -20",
+              "description": "搜索工具链 Addressables 性能优化文档中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "721:### 4.1 打包策略\n725:│                 AssetBundle 打包策略                         │\n729:│     ├── UI_Atlas_Main (UI主图集)                           │\n730:│     ├── UI_Atlas_Popup (弹窗图集)                          │\n747:│  ├── UI 图集：2-10MB                                       │"
+          },
+          {
+            "id": "call_59fbd91fc6394d46a23ad8fb",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\" \"性能优化/Unity性能优化 — UI模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\" 2>/dev/null | head -40",
+              "description": "搜索 UWA UI 性能优化文档中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "90:在不减少UI元素的前提下，控制DrawCall的问题，其实也就是如何使得UI元素尽量合批的问题。一般的合批要求材质相同，而在UI中却常常会发生明明是使用同一材质、同一图集制作的UI元素却无法合批的现象。这其实和UGUI DrawCall的计算原理有关。详细的原理介绍欢迎在 **UWA学堂中学习有关课程** 。\n98:（2）尽量整合并制作图集，从而使得不同UI元素的材质图集一致。图集中的按钮、图标等需要使用图片的比较小的UI元素，完全可以整合并制作图集。当它们密集地同时出现时，就有效降低了DrawCall；  \n99:（3）在同一Canvas下、且材质和图集一致的前提下，避免层级穿插。笼统地说，应使得符合合批条件的UI元素的“层级深度”相同；  \n111:2）合并图集，尽量使同一个图集最多不要超过2个Atlas，否则这个图集中的任何Sprite子图被加载进内存中会导致此图集的所有的Atlas被加载进内存。"
+          },
+          {
+            "id": "call_cd662faab9d642be8c41151d",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\" \"性能优化/关于Unity中的UGUI优化，你可能遇到这些问题 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\" 2>/dev/null | head -40",
+              "description": "搜索 UWA UGUI 优化问题文档中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "41:**Q4：在使用NGUI时，我们通常会将很多小图打成一个大的图集，以优化内存和Draw Call。而在UGUI时代，UI所使用的Image必须是Sprite；Unity提供了SpritePacker。 它的工作流程和UGUI Atlas Paker有较大的差别。在Unity Asset中，我们压根看不到图集的存在。 问题是：**  \n48:**4\\. 如果想使用NGUI Atlas Packer的工作流程，该如何去实现？**\n50:> 简单来说，UGUI和 NGUI 类似，但是更加自动化。只需要通过设定 Packing Tag 即可指定哪些 Sprite 放在同一个 Atlas 下。\n52:> 1. 可以通过 Edit -> Project Settings -> Editor -> Sprite Packer 的 Mode 来设置是否起效，何时起效（一种是进入 Play Mode 就生效，一种是 Build 时才生效）。所以只要不选 Disabled，Build 时就会把分散的 Sprite 拼起来。\n53:> 2. 可以认为 Sprite 就是一个壳子，实际上本身不包含纹理资源，所以打包的时候会把Atlas 打进去。如果不用依赖打包，那么分开打两个 Sprite 就意味各自的AssetBundle 里都会有一个 Atlas。\n54:> 3. 可以通过第三方工具（如 Texture Packer）制作 Atlas，导出 Sprite 信息（如，第 N 个 Sprite 的 Offset 和 Width，Height 等），然后在 Unity 中通过脚本将该 Atlas 转成一个 Multiple Mode 的 Sprite 纹理（即一张纹理上包含了多个 Sprite），同时禁用 Unity 的 Sprite Packer 即可。\n58:**Q5：在Unity 5.x版本下，我们在用UGUI的过程中发现它把图集都打进了包里，这样就不能自动更新了，请问图集怎么做自动更新呢？**\n60:> 在Unity 5.x中UGUI使用的Atlas确实是不可见的，因此无法直接将其独立打包。但我们建议，可以把Packing Tag相同的源纹理文件，打到同一个AssetBundle中（设置一样的AssetBundle Name），从而避免Atlas的冗余。同时这样打包可以让依赖它的Canvas的打包更加自由，即不需要把依赖它的Canvas都打在一个AssetBundle中，在更新时直接更新Atlas所在的AssetBundle即可。\n82:> 在 UGUI 中，Batch是以Canvas为单位的，即在同一个Canvas下的UI元素最终都会被Batch到同一个Mesh中。而在Batch前，UGUI会根据这些UI元素的材质（通常就是Atlas）以及渲染顺序进行重排，在不改变渲染结果的前提下，尽可能将相同材质的UI元素合并在同一个SubMesh中，从而把DrawCall降到最低。而Batch的操作只会在UI元素发生变化时才进行，且合成的Mesh越大，操作的耗时也就越大。\n127:**Q1：UGUI的图集操作中我们有这么一个问题，加载完一张图集后，使用这个方式获取其中一张图的信息：assetBundle.Load (subFile, typeof (Sprite)) as Sprite; 这样会复制出一个新贴图（图集中的子图），不知道有什么办法可以不用复制新的子图，而是直接使用图集资源 。**  \n130:> 经过测试，这确实是 Unity 在 4.x 版本中的一个缺陷，理论上这张“新贴图（图集中的子图）”是不需要的，并不应该加载。 因此，我们建议通过以下方法来绕过该问题：  \n141:> \tUI界面加载的主要耗时开销，因为在其资源加载过程中，时常伴有大量较大分辨率的Atlas纹理加载，我们在之前的 [Unity加载模块深度分析之纹理篇](http://blog.uwa4d.com/archives/LoadingPerformance_Texture.html) 有详细讲解。对此，我们建议研发团队在美术质量允许的情况下，尽可能对UI纹理进行简化，从而加快UI界面的加载效率。  \n155:**Q3：我有一个UI预设，它使用了一个图集， 我在打包的时候把图集和UI一起打成了AssetBundle。我在加载生成了GameObject后立刻卸载了AssetBundle对象， 但是当我后面再销毁GameObject的时候发现图集依然存在，这是什么情况呢？**"
+          },
+          {
+            "id": "call_7d46196062e348558886d1fc",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\" \"性能优化/2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂.md\" 2>/dev/null | head -30",
+              "description": "搜索 UWA 内存优化文档中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "235:这一点即便对于图集纹理也同样适用，特别地，Unity针对SpriteAltas提供了Variant功能，可以快捷的复制一份原图集并根据Scale参数降低该变体图集的分辨率，以供较低的分级使用。\n285:**2.3.6 图集制作**\n287:图集制作不够科学也是项目中常会发生的问题。资源列表中有时会出现数量峰值较高的图集纹理，但不一定是冗余。一种情况是，大量小图被打包到同一图集中，导致该图集纹理资源设置的最大分辨率（比如2048\\*2048）一张装不下这么多小图，该资源就会生成更多的纹理分页来打包这些小图。因此，只要游戏过程中依赖某一张纹理分页中的某一张小图，就会将该资源、也即该资源下所有的分页都全部加载进内存中，从而造成不必要的浪费。所以一般建议控制到2-3张分页以内较为合理。\n291:即便不出现上述这个较为极端的现象，很多项目中也会出现“牵一发而动全身”的现象。即明明只用图集中的一张或几张小图，却将内存占用颇大的整个纹理都加载进了内存。\n293:为此，在制作打包图集时，严格按照小图的使用场景、分类进行打包是非常重要的策略。选用合适的分辨率从而避免纹理没有被填充满而导致浪费，也是开发者需要注意的点。\n297:TextMeshPro能为UI组件提供更好的表现和便利的功能，使得其受到不少开发者的青睐。但使用TMP而产生的TMP字体图集纹理（名称中带有SDF Atlas，格式为Alpha 8的纹理）也有一些坑值得注意。\n299:1\\. 有时，结合字体资源列表注意到内存中还存在TMP图集纹理对应的.ttf字体文件。说明该TMP字体图集为动态字体。可以考虑在项目开发结束、确保游戏要用到的字符都已添加到动态字体的Altas纹理中后，将动态TMP重新设置为静态TMP，并且解除对.ttf文件的依赖。这样一来，对应的字体资源将不会出现在内存中。不过，如果这种字体还被用作用户输入，则不建议采用此方法。\n301:2\\. Atlas字体纹理的分辨率较大。此时建议在引擎中排查字符有没有填满图集纹理，纹理的制作生成是否合理。对于动态TMP，如果没有填满，如只占据了纹理的3/4不到，则可以考虑开启Multi Atlas Textures选项，并设置纹理大小，举例而言就可以使1张4096\\*4096的纹理变为3张2048\\*2048的纹理，节省32MB-3\\*8MB=8MB的空间。\n305:3\\. 资源列表中有TMP相关的资源（LiberationSans SDF Atlas、EmojiOne），它们都是TMP的默认设置，可以在Project Settings-TextMesh Pro Settings中解除对这些默认资源的依赖，就不会出现在内存中了。\n307:由于Multi Atlas Textures是动态TMP的选项，所以第1、2点无法同时使用，可以根据项目实情酌情选用。"
+          },
+          {
+            "id": "call_61a76dbbc3c240f0b584c443",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\" \"性能优化/从64MB降至5MB，TMP字体Atlas内存优化实战 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md\" 2>/dev/null | head -30",
+              "description": "搜索 TMP 字体 Atlas 优化文档中的相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "2:title: \"从64MB降至5MB，TMP字体Atlas内存优化实战 - UWA问答 | 博客 | 游戏及VR应用性能优化记录分享 | 侑虎科技\"\n7:description: \"1）TMP字体Atlas内存优化实战2）TMP内嵌图集纹理压缩改造这是第474篇UWA技术知识分享的推送，精选了UWA社区的热门话题，涵盖了UWA问答、社区帖子等技术知识点，助力大家更全面地掌握...\"\n11:## 从64MB降至5MB，TMP字体Atlas内存优化实战\n13:1）TMP字体Atlas内存优化实战  \n14:2）TMP内嵌图集纹理压缩改造\n27:**Q：GOT Online报告中显示，我们项目游戏字体Atlas出现了双实例冗余且开启RW动态图集内存占用过高的情况，是什么原因？该如何优化解决？**\n31:> A：字体Atlas实例数量为2，通常是由于该字体既在初始包中的初始场景中被引用，又在后续AssetBundle资源中重复引用，导致有2个对应的Atlas实例。建议将初始场景中使用的字符单独创建对应的小字体，从而避免初始场景中有大图集和大字体的引用。  \n33:> 当前字体Atlas是开启了RW（Read/Write Enabled，开启此项会导致 CPU 和 GPU 各存一份，内存瞬间翻倍），属于动态图集机制，因此单个字体是2×4096×4096/1024/1024=32MB。开启RW主要为支持动态补字，实时将未预加载字符填充至图集中，避免游戏出现缺字乱码。从内存优化的角度上来看，可以预先收集游戏的大部分字符集，将Atlas设置为静态图集配置，这样就可以减少16MB的占用，对于不在静态图集中的字符，可以通过TMP的Fallback机制，设定一个小分辨率（比如512×512）的动态Atlas进行字符补充。\n37:**Q：TMPAsset内嵌Atlas纹理无法压缩是什么原因？有什么脚本改造方案？**\n39:> A：当前字体Atlas纹理属于TMPAsset内嵌子资源，无法单独进行纹理压缩等参数配置。可通过Editor编辑器脚本对该纹理进行独立复制，将TMPAsset材质球关联替换为复制后的新纹理，并移除原TMPAsset内的内嵌纹理。  \n43:> **Atlas优化前后内存占用对比：**  \n47:> - 初始场景 512×512静态图集：0.25MB\n48:> - 4096×4096静态图集（ASTC8×8）：4MB"
+          },
+          {
+            "id": "call_4993a9a76ff845a89948db97",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge/UGUI\" && grep -rn \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\" \"第22章 批处理优化.md\" 2>/dev/null | head -30",
+              "description": "搜索第22章批处理优化中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "26:本章将围绕 UGUI 的批处理机制展开分析，重点讨论图集管理、材质策略、合批规则以及动态 UI 对批处理的影响，从系统层面建立对 DrawCall 优化的完整认知体系。\n28:**22.1 图集管理**\n30:在 UGUI 的批处理体系中，图集（ [SpriteAtlas](https://zhida.zhihu.com/search?content_id=275647182&content_type=Article&match_order=1&q=SpriteAtlas&zhida_source=entity) ）是影响 DrawCall 数量最关键的资源组织方式之一。它的核心作用，是将多个 Sprite 合并到同一张纹理中，从而减少纹理切换带来的合批中断问题，提高批处理效率。\n32:从渲染机制来看，UGUI 的合批条件之一是“纹理一致”。如果多个 UI 元素使用不同的纹理，即使它们的材质完全相同，也无法被合并为同一个 DrawCall。因此，图集的存在，本质上是为了解决“纹理碎片化”导致的批处理失败问题。\n34:**22.1.1 图集在批处理中的作用**\n36:在没有图集的情况下，每个 Sprite 通常对应一张独立纹理。当 UI 中同时使用多个 Sprite 时，会产生频繁的纹理绑定切换，而每一次切换都会打断当前批次，从而生成新的 DrawCall。\n38:引入图集之后，多个 Sprite 被打包到同一纹理中，UI 在渲染时只需要绑定一次纹理，即可绘制多个元素。这使得多个 UI 元素具备了合批的基础条件。\n40:从本质上来看，图集并不直接减少 UI 数量，而是通过减少“渲染状态变化”，来提升批处理的连续性。\n42:**22.1.2 图集对合批条件的影响**\n44:UGUI 的合批依赖于多个条件同时满足，其中纹理一致性是最关键的一项。图集正是通过统一纹理来源，使多个 UI 元素满足这一条件。\n50:多个 Sprite 使用同一图集后，GPU 只需绑定一次纹理，从而避免频繁状态切换。\n54:相同图集内的 UI 元素更容易在渲染顺序上保持连续，从而提升合批成功率。\n60:需要注意的是，图集只解决“纹理一致性”问题，并不能解决材质差异、Mask 以及层级穿插等其他合批中断因素。\n62:**22.1.3 图集使用中的常见问题**\n64:在实际开发中，图集使用不当也可能导致性能问题，甚至削弱其优化效果。\n66:一、图集过多\n68:如果项目中存在大量小图集，而不是集中管理，会导致纹理切换依然频繁，无法有效提升合批效率。\n70:二、图集过大\n72:单个图集过大可能导致内存占用增加，同时在加载和管理时带来额外开销。尤其在移动平台上，需要平衡内存与性能。\n74:三、跨图集使用\n76:如果 UI 元素分散在多个图集中，并且在层级中交替出现，会导致合批被频繁打断，从而增加 DrawCall。\n78:四、动态加载图集不合理\n80:运行时频繁加载或卸载图集，会导致纹理状态变化，进而破坏批处理连续性。\n82:**22.1.4 图集与 UI 结构的关系**\n84:图集优化不仅是资源层面的工作，也与 UI 结构设计密切相关。\n86:在理想情况下，相同界面或同一功能模块的 UI 元素，应尽量使用同一图集，并保持在层级结构中的连续排列。这种设计方式可以最大化合批效果。\n88:相反，如果 UI 层级中频繁交错使用不同图集资源，即使每个图集内部都是优化良好的，也可能因为渲染顺序被打断而无法合批。\n90:因此，图集设计必须与 UI 架构设计同步考虑，而不能作为独立优化手段。\n92:**22.1.5 图集优化原则**\n94:在实际项目中，可以遵循以下原则进行图集管理："
+          },
+          {
+            "id": "call_74fc4b0c1b524eafa7ee1887",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge/UGUI\" && grep -rn \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\" \"第20章 UI 性能分析基础.md\" 2>/dev/null | head -20",
+              "description": "搜索第20章中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "179:材质所使用的主纹理必须相同。 [SpriteAtlas](https://zhida.zhihu.com/search?content_id=275541058&content_type=Article&match_order=1&q=SpriteAtlas&zhida_source=entity) 的使用，正是为了解决这一问题，通过将多个 Sprite 合并到同一纹理中，从而提高合批率。\n197:未使用图集或图集拆分不合理，会导致频繁切换纹理，从而增加 DrawCall。\n209:不同类型 UI 元素在层级中交错排列，会导致合批被频繁中断。例如多个图集之间的 UI 元素交替出现。\n233:此外，还可以结合 UI 结构进行静态分析。例如检查图集使用情况、材质复用情况以及层级组织方式，从源头上优化合批条件。\n235:总体来看，DrawCall 的本质是“渲染指令的数量体现”。它既受到资源组织方式的影响，也与 UI 结构密切相关。通过合理设计图集、材质以及层级结构，可以有效控制 DrawCall 数量，从而提升 UI 渲染性能。"
+          },
+          {
+            "id": "call_bf64398fb16e48a8852edb84",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge/UGUI\" && grep -rn \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\" \"第24章 大规模 UI 优化.md\" 2>/dev/null | head -20",
+              "description": "搜索第24章大规模UI优化中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "336:如果 UI 打开时同步加载大量 Sprite、Prefab 或 Atlas，很容易导致主线程卡顿。\n346:**图集缓存**\n348:对于频繁使用的 UI 图集，可以常驻内存。"
+          },
+          {
+            "id": "call_5466678c30c442068abfb698",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\" \"35_高级主题/【笔记】Unity客户端面试题.md\" 2>/dev/null | head -20",
+              "description": "搜索 Unity 客户端面试题中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "144:- **UGUI 合批**：同 Canvas 下，材质（含 Shader）+ 主贴图/图集一致的 UI 控件网格合并为大网格，一次 DrawCall\n147:> 打断合批的因素（LLM）：不同图集/材质、Mask、不同层级穿插、Text 字体图集差异。\n152:- **合批**：打 Sprite Atlas 共享材质；注意层级穿插不要打断合批\n155:- **Text → TMP**：避免 Text 频繁变化的字体图集/网格重建，TMP 更优\n398:### 26. AB 包的打包策略"
+          },
+          {
+            "id": "call_4469a1d1a9bd4b569b82ce70",
+            "name": "Bash",
+            "input": {
+              "command": "cd \"D:\\GitHub\\Doc\\UnityKnowledge\" && grep -n \"SpriteAtlas\\|Sprite Packer\\|图集\\|sactx\\|Atlas\\|打包策略\\|图集冗余\" \"35_高级主题/【设计原理】Unity内存管理.md\" 2>/dev/null | head -20",
+              "description": "搜索 Unity 内存管理文档中的图集相关行"
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "794:    4. 使用Sprite Atlas\n1227:│     ├── 使用Sprite Atlas                                    │"
+          },
+          {
+            "id": "call_39329053580d424cbb65b128",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第22章 批处理优化.md",
+              "limit": 80,
+              "offset": 26
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "    26→本章将围绕 UGUI 的批处理机制展开分析，重点讨论图集管理、材质策略、合批规则以及动态 UI 对批处理的影响，从系统层面建立对 DrawCall 优化的完整认知体系。\n    27→\n    28→**22.1 图集管理**\n    29→\n    30→在 UGUI 的批处理体系中，图集（ [SpriteAtlas](https://zhida.zhihu.com/search?content_id=275647182&content_type=Article&match_order=1&q=SpriteAtlas&zhida_source=entity) ）是影响 DrawCall 数量最关键的资源组织方式之一。它的核心作用，是将多个 Sprite 合并到同一张纹理中，从而减少纹理切换带来的合批中断问题，提高批处理效率。\n    31→\n    32→从渲染机制来看，UGUI 的合批条件之一是“纹理一致”。如果多个 UI 元素使用不同的纹理，即使它们的材质完全相同，也无法被合并为同一个 DrawCall。因此，图集的存在，本质上是为了解决“纹理碎片化”导致的批处理失败问题。\n    33→\n    34→**22.1.1 图集在批处理中的作用**\n    35→\n    36→在没有图集的情况下，每个 Sprite 通常对应一张独立纹理。当 UI 中同时使用多个 Sprite 时，会产生频繁的纹理绑定切换，而每一次切换都会打断当前批次，从而生成新的 DrawCall。\n    37→\n    38→引入图集之后，多个 Sprite 被打包到同一纹理中，UI 在渲染时只需要绑定一次纹理，即可绘制多个元素。这使得多个 UI 元素具备了合批的基础条件。\n    39→\n    40→从本质上来看，图集并不直接减少 UI 数量，而是通过减少“渲染状态变化”，来提升批处理的连续性。\n    41→\n    42→**22.1.2 图集对合批条件的影响**\n    43→\n    44→UGUI 的合批依赖于多个条件同时满足，其中纹理一致性是最关键的一项。图集正是通过统一纹理来源，使多个 UI 元素满足这一条件。\n    45→\n    46→具体影响包括：\n    47→\n    48→一、减少纹理切换\n    49→\n    50→多个 Sprite 使用同一图集后，GPU 只需绑定一次纹理，从而避免频繁状态切换。\n    51→\n    52→二、提高批次连续性\n    53→\n    54→相同图集内的 UI 元素更容易在渲染顺序上保持连续，从而提升合批成功率。\n    55→\n    56→三、降低 DrawCall 数量\n    57→\n    58→当多个 UI 元素满足合批条件时，会被合并为同一个 DrawCall，从而减少 CPU 与 GPU 的交互次数。\n    59→\n    60→需要注意的是，图集只解决“纹理一致性”问题，并不能解决材质差异、Mask 以及层级穿插等其他合批中断因素。\n    61→\n    62→**22.1.3 图集使用中的常见问题**\n    63→\n    64→在实际开发中，图集使用不当也可能导致性能问题，甚至削弱其优化效果。\n    65→\n    66→一、图集过多\n    67→\n    68→如果项目中存在大量小图集，而不是集中管理，会导致纹理切换依然频繁，无法有效提升合批效率。\n    69→\n    70→二、图集过大\n    71→\n    72→单个图集过大可能导致内存占用增加，同时在加载和管理时带来额外开销。尤其在移动平台上，需要平衡内存与性能。\n    73→\n    74→三、跨图集使用\n    75→\n    76→如果 UI 元素分散在多个图集中，并且在层级中交替出现，会导致合批被频繁打断，从而增加 DrawCall。\n    77→\n    78→四、动态加载图集不合理\n    79→\n    80→运行时频繁加载或卸载图集，会导致纹理状态变化，进而破坏批处理连续性。\n    81→\n    82→**22.1.4 图集与 UI 结构的关系**\n    83→\n    84→图集优化不仅是资源层面的工作，也与 UI 结构设计密切相关。\n    85→\n    86→在理想情况下，相同界面或同一功能模块的 UI 元素，应尽量使用同一图集，并保持在层级结构中的连续排列。这种设计方式可以最大化合批效果。\n    87→\n    88→相反，如果 UI 层级中频繁交错使用不同图集资源，即使每个图集内部都是优化良好的，也可能因为渲染顺序被打断而无法合批。\n    89→\n    90→因此，图集设计必须与 UI 架构设计同步考虑，而不能作为独立优化手段。\n    91→\n    92→**22.1.5 图集优化原则**\n    93→\n    94→在实际项目中，可以遵循以下原则进行图集管理：\n    95→\n    96→- 优先将同一模块 UI 资源集中到同一图集\n    97→- 避免过度拆分图集，减少纹理切换\n    98→- 控制图集大小，避免极端的大图集或小图集\n    99→- 保证 UI 排列顺序与图集使用尽量连续\n   100→- 结合帧调试工具验证合批效果\n   101→\n   102→从系统角度来看，图集的本质，是“通过纹理统一降低渲染状态变化”。它并不会改变 UI 的结构，但会显著影响批处理的效率。\n   103→\n   104→因此，在批处理优化体系中，图集管理属于基础但关键的一环，是决定 DrawCall 能否有效降低的核心因素之一。\n   105→\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          },
+          {
+            "id": "call_93c7821f3cc24be08f6a9ba1",
+            "name": "Read",
+            "input": {
+              "file_path": "D:\\GitHub\\Doc\\UnityKnowledge\\性能优化\\关于Unity中的UGUI优化，你可能遇到这些问题 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md",
+              "limit": 80,
+              "offset": 38
+            },
+            "status": "completed",
+            "isExpanded": false,
+            "result": "    38→> Shared UI Mesh是在Unity 5.2 版本后UGUI系统维护的UI Mesh。在以前的版本中，UGUI会为每一个Canvas维护一个Mesh（名为BatchedMesh，其中再按材质分为不同的SubMesh）。而在Unity 5.2版本后，UGUI底层引入了多线程机制，而其Mesh的维护也发生了改变，目前Shared UI Mesh作为静态全局变量，由底层直接维护，其大小与当前场景中所有激活的UI元素所生成的网格数相关。  \n    39→> 一般来说当界面上UI元素较多，或者文字较多时该值都会较高，在使用UI/Effect/shadow和UI/Effect/Outline时需要注意该值，因为这两个Effect会明显增加文字所带来的网格数。\n    40→\n    41→**Q4：在使用NGUI时，我们通常会将很多小图打成一个大的图集，以优化内存和Draw Call。而在UGUI时代，UI所使用的Image必须是Sprite；Unity提供了SpritePacker。 它的工作流程和UGUI Atlas Paker有较大的差别。在Unity Asset中，我们压根看不到图集的存在。 问题是：**  \n    42→**1\\. SpritePacker大概的工作机制是什么样的？**\n    43→\n    44→**2\\. 如果Sprite没有打包成AssetBundle，直接在GameObject上引用，那么在Build时Unity会将分散的Sprite拼接在一起么？如果没有拼接，那SpritePacker是不是只会优化Draw Call，内存占用上和不用SpritePacker的分离图效果一样？**\n    45→\n    46→**3\\. 如果将Sprite打成AssetBundle，AssetBundle中的资源是分散的Sprite吗？如果不是，不同的AssetBundle中引用了两张Sprite，这两张Sprite恰好用SpritePacker拼在了一起，是不是就会存在两份拼接的Sprite集？**\n    47→\n    48→**4\\. 如果想使用NGUI Atlas Packer的工作流程，该如何去实现？**\n    49→\n    50→> 简单来说，UGUI和 NGUI 类似，但是更加自动化。只需要通过设定 Packing Tag 即可指定哪些 Sprite 放在同一个 Atlas 下。\n    51→> \n    52→> 1. 可以通过 Edit -> Project Settings -> Editor -> Sprite Packer 的 Mode 来设置是否起效，何时起效（一种是进入 Play Mode 就生效，一种是 Build 时才生效）。所以只要不选 Disabled，Build 时就会把分散的 Sprite 拼起来。\n    53→> 2. 可以认为 Sprite 就是一个壳子，实际上本身不包含纹理资源，所以打包的时候会把Atlas 打进去。如果不用依赖打包，那么分开打两个 Sprite 就意味各自的AssetBundle 里都会有一个 Atlas。\n    54→> 3. 可以通过第三方工具（如 Texture Packer）制作 Atlas，导出 Sprite 信息（如，第 N 个 Sprite 的 Offset 和 Width，Height 等），然后在 Unity 中通过脚本将该 Atlas 转成一个 Multiple Mode 的 Sprite 纹理（即一张纹理上包含了多个 Sprite），同时禁用 Unity 的 Sprite Packer 即可。\n    55→> \n    56→> 两种做法各有利弊，建议分析一下两种做法对于自身项目的合适程度来进行选择。\n    57→\n    58→**Q5：在Unity 5.x版本下，我们在用UGUI的过程中发现它把图集都打进了包里，这样就不能自动更新了，请问图集怎么做自动更新呢？**\n    59→\n    60→> 在Unity 5.x中UGUI使用的Atlas确实是不可见的，因此无法直接将其独立打包。但我们建议，可以把Packing Tag相同的源纹理文件，打到同一个AssetBundle中（设置一样的AssetBundle Name），从而避免Atlas的冗余。同时这样打包可以让依赖它的Canvas的打包更加自由，即不需要把依赖它的Canvas都打在一个AssetBundle中，在更新时直接更新Atlas所在的AssetBundle即可。\n    61→\n    62→**Q6：ScrollRect在滚动的时候，会产生Canvas.SendwillRenderCanvases，有办法消除吗？**\n    63→\n    64→> ScrollRect在滚动时，会产生OnTransformChanged的开销，这是UI元素在移动时触发的，但通常这不会触发Canvas.SendWillRenderCanvases。\n    65→> \n    66→> 如果观察到Canvas.SendWillRenderCanvases耗时较高，可以检查下ScrollRect所在的Canvas是否开启了Pixel Perfect的选项，该选项的开启会导致UI元素在发生位移时，其长宽会被进行微调（为了对其像素），而ScrollRect中通常有较多的UI元素，从而产生较高的Canvas.SendWillRenderCanvases开销。因此可以尝试关闭Pixel Perfect看效果是否可以接受，或者尝试在滚动过程中暂时关闭Pixel Perfect等方式来消除其开销。\n    67→\n    68→---\n    69→\n    70→## 二、网格重建\n    71→\n    72→**Q1：我在UGUI里更改了Image的Color属性，那么Canvas是否会重建？我只想借用它的Color做Animation里的变化量。**\n    73→\n    74→> 如果修改的是Image组件上的Color属性，其原理是修改顶点色，因此是会引起网格的Rebuild的（即Canvas.BuildBatch操作，同时也会有Canvas.SendWillRenderCanvases的开销）。而通过修改顶点色来实现UI元素变色的好处在于，修改顶点色可以保证其材质不变，因此不会产生额外的Draw Call。\n    75→\n    76→**Q2：Unity自带的UI Shader处理颜色时，改\\_Color属性不会触发顶点重建吗?**\n    77→\n    78→> 在UI的默认Shader中存在一个Tint Color的变量，正常情况下，该值为常数(1,1,1)，且并不会被修改。如果是用脚本访问Image的Material，并修改其上的Tint Color属性时，对UI元素产生的网格信息并没有影响，因此就不会引起网格的Rebuild。但这样做因为修改了材质，所以会增加一个Draw Call。\n    79→\n    80→**Q3：能否就UGUI Batch提出一些建议呢？是否有一些Batch的规则？**\n    81→\n    82→> 在 UGUI 中，Batch是以Canvas为单位的，即在同一个Canvas下的UI元素最终都会被Batch到同一个Mesh中。而在Batch前，UGUI会根据这些UI元素的材质（通常就是Atlas）以及渲染顺序进行重排，在不改变渲染结果的前提下，尽可能将相同材质的UI元素合并在同一个SubMesh中，从而把DrawCall降到最低。而Batch的操作只会在UI元素发生变化时才进行，且合成的Mesh越大，操作的耗时也就越大。\n    83→> \n    84→> 因此，我们建议尽可能把频繁变化（位置，颜色，长宽等）的UI元素从复杂的Canvas中分离出来，从而避免复杂的Canvas频繁重建。\n    85→\n    86→**Q4：我用的是UGUI Canvas，Unity 5.3.4版本，请问如何查看每次Rebuild Batch影响的顶点数， Memory Profiler是个办法但是不好定位。**\n    87→\n    88→> 由于Unity引擎在5.2后开始使用Shared UI Mesh来存储UI Mesh，所以确实很难查看每次Rebuild的UI顶点数。但是，研发团队可以尝试通过Frame Debugger工具对UI界面进行进一步的查看。\n    89→\n    90→**Q5：动静分离或者多Canvas带来性能提升的理论基础是什么呢？如果静态部分不变动，整个Canvas就不刷新了？**\n    91→\n    92→> 在UGUI中，网格的更新或重建（为了尽可能合并UI部分的DrawCall）是以Canvas为单位的，且只在其中的UI元素发生变动（位置、颜色等）时才会进行。因此，将动态UI元素与静态UI元素分离后，可以将动态UI元素的变化所引起的网格更新或重建所涉及到的范围变小，从而降低一定的开销。而静态UI元素所在的Canvas则不会出现网格更新和重建的开销。\n    93→\n    94→**Q6：UWA建议“尽可能将静态UI元素和频繁变化的动态UI元素分开，存放于不同的Panel下。同时，对于不同频率的动态元素也建议存放于不同的Panel中。”那么请问，如果把特效放在Panel里面，需要把特效拆到动态的里面吗？**\n    95→\n    96→> 通常特效是指粒子系统，而粒子系统的渲染和UI是独立的，仅能通过Render Order来改变两者的渲染顺序，而粒子系统的变化并不会引起UI部分的重建，因此特效的放置并没有特殊的要求。\n    97→\n    98→**Q7：多人同屏的时候，人物移动会使得头顶上的名字Mesh重组，从而导致较为严重的卡顿，请问一下是否有优化的办法？**\n    99→\n   100→> 如果是用UGUI开发的，当头顶文字数量较多时，确实很容易引起性能问题，可以考虑从以下几点入手进行优化：\n   101→> \n   102→> 1. 尽可能避免使用UI/Effect，特别是Outline，会使得文本的Mesh增加4倍，导致UI重建开销明显增大；\n   103→> 2. 拆分Canvas，将屏幕中所有的头顶文字进行分组，放在不同的Canvas下，一方面可以降低更新的频率（如果分组中没有文字移动，该组就不会重建），另一方面可以减小重建时涉及到的Mesh大小（重建是以Canvas为单位进行的）；\n   104→> 3. 降低移动中的文字的更新频率，可以考虑在文字移动的距离超过一个阈值时才真正进行位移，从而可以从概率上降低Canvas更新的频率。\n   105→\n   106→---\n   107→\n   108→## 三、界面切换\n   109→\n   110→**Q1：游戏中出现UI界面重叠，该怎么处理较好？比如当前有一个全屏显示的UI界面，点其中一个按钮会再起一个全屏界面，并把第一个UI界面盖住。我现在的做法是把被覆盖的界面 SetActive(False)，但发现后续 SetActive(True) 的时候会有 GC.Alloc 产生。这种情况下，希望既降低 Batches 又降低 GC Alloc 的话，有什么推荐的方案吗？**\n   111→\n   112→> 可以尝试通过添加一个 Layer 如 OutUI， 且在 Camera 的 Culling Mask 中将其取消勾选（即不渲染该 Layer）。从而在 UI 界面切换时，直接通过修改 Canvas 的 Layer 来实现“隐藏”。但需要注意事件的屏蔽，禁用动态的 UI 元素等等。  \n   113→> 这种做法的优点在于切换时基本没有开销，也不会产生多余的 Draw Call，但缺点在于“隐藏时”依然还会有一定的持续开销（通常不太大），而其对应的 Mesh 也会始终存在于内存中（通常也不太大）。  \n   114→> 以上的方式可供参考，而性能影响依旧是需要视具体情况而定。\n   115→\n   116→**Q2：如图，我们在UI打开或者移动到某处的时候经常会观测到CPU上的冲激，经过进一步观察发现是因为Instantiate产生了大量的GC。想请问下Instantiate是否应该产生GC呢？我们能否通过资源制作上的调整来避免这样的GC呢？如下图，因为一次性产生若干MB的GC在直观感受上还是很可观的。**  \n   117→![请输入图片描述](http://uwa-ducument-img.oss-cn-beijing.aliyuncs.com/Blog%2FTechSharing_13%2F1.jpg)\n\n<system-reminder>\nWhenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.\n</system-reminder>\n"
+          }
+        ],
+        "isExpanded": false,
+        "result": "信息已经非常充分了。下面整理完整的搜索结果报告。\n\n---\n\n## 搜索结果总报告：图集（Sprite Atlas / Sprite Packer / 图集相关）文档\n\n在 `D:\\GitHub\\Doc\\UnityKnowledge` 中共发现 **20+ 篇文档** 包含图集相关内容。以下按重要性分层整理。\n\n---\n\n### 一、核心专题文档\n\n#### 1. UGUI 第12章 -- UI 资源与图集系统（最完整的专题）\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第12章 UI 资源与图集系统.md`\n\n这是整个知识库中关于图集最系统、最深入的专题章节（全文约 660 行），涵盖五大板块：\n\n- **12.1 Sprite 与 Texture2D 关系**：Sprite 本质是 Texture2D 区域描述对象，不保存像素。GPU 只认识 Texture 不认识 Sprite。2048x2048 RGBA32 纹理约 16MB，切出一千个 Sprite 内存不变。\n- **12.2 SpriteAtlas 打包机制**：\n  - SpriteAtlas 本质是图集资源管理器（配置资源），不是存储图片的。构建阶段自动 Packing 生成真正图集纹理。\n  - **运行时 Texture 替换机制**（核心）：Sprite 资源本身不变，变的是 Sprite 内部引用的 Texture 被替换为图集纹理，UV 重新映射。开发者不需要修改 `Image.sprite`。\n  - **Padding 是必要保护机制**：防止双线性过滤/Mipmap/缩放时纹理串色。\n  - **Include In Build 选项**：开启则直接打进 Player；关闭则用于 Addressables/AssetBundle 热更新。\n  - **关键结论：\"图集并不是越大越好\"**：超大图集带来 GPU 内存压力、纹理上传卡顿、加载耗时增加、热更新粒度变差。移动端 4096 图集会造成显存压力。应按功能拆分（主界面/商城/战斗/活动/通用图标）。\n- **12.3 动态图集原理**：\n  - 动态图集是运行时自动将小纹理合并到临时大 Texture，不是真正合并纹理（原始纹理仍存在），会额外增加纹理复制开销。\n  - 大小限制通常 1024 或 2048，空间不足时创建新的动态图集。\n  - **CPU 开销是最大隐藏问题**，尤其第一次打开 UI 时可能明显卡顿。\n  - 限制条件多：尺寸过大、Mipmap、Crunch 压缩、Read/Write 异常、RenderTexture、不同 FilterMode/WrapMode 等均无法进入。\n- **12.4 图集对合批的影响**：\n  - **核心结论：\"图集真正减少的并不是图片数量，而是 GPU 的纹理切换次数\"**。\n  - 图集只解决 Texture 合并问题，无法解决 Material 分裂问题。\n  - Mask 是最容易打断 Batch 的系统之一；不同 Canvas 之间默认不合批。\n  - **图集优化真正核心目标：让真正需要同时渲染的 UI 使用同一张 Texture**，而非图集越少越好。\n- **12.5 资源加载与 UI 生命周期**：\n  - **SpriteAtlas 与 AssetBundle 的关系特殊**：Sprite 位于一个 Bundle，Atlas 位于另一个 Bundle 且未提前加载时，Sprite 会退回原始纹理，直接破坏 Batch。\n  - **SpriteAtlas 为什么不会立即释放**：通常属于共享资源，多个 UI 引用同一图集。\n  - **关键数据**：2048x2048 RGBA32 图集 CPU 内存十几 MB，GPU 显存同样占用十几 MB。\n\n---\n\n#### 2. UGUI 第22章 -- 批处理优化（图集管理专节）\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\UGUI\\第22章 批处理优化.md` (第 28-104 行)\n\n22.1 节专门讨论 \"图集管理\"，关键结论：\n\n- 图集本质是 \"通过纹理统一降低渲染状态变化\"，不直接减少 UI 数量。\n- 图集使用四大常见问题：**图集过多**（纹理切换频繁）、**图集过大**（内存增加）、**跨图集使用**（层级交替打断合批）、**动态加载不合理**（纹理状态变化破坏连续性）。\n- 图集设计必须与 UI 架构设计同步考虑。\n- 优化原则：同模块 UI 集中到同图集、避免过度拆分、控制大小、排列连续、结合 Frame Debugger 验证。\n\n---\n\n### 二、实战总结与规则文档（26_UI系统 目录）\n\n#### 3. UGUI 性能优化实战总览 -- 图集章节\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI性能优化实战总览.md` (第 54-96 行)\n\n这是图集实战速查的核心文档，包含关键的 **sactx 冗余规则**：\n\n- **sactx 规则**（最重要的工程结论之一）：\n  - 若 Sprite 加入了 SpriteAtlas，真正被引用的是 `sactx` 图集纹理，而非小 Texture2D。\n  - **SpriteAtlas 不打进 AB 时**：必须勾选 `Include in Build`，否则 `sactx` 消失；且所有小 Sprite **必须打进同一个 AB**，否则 `sactx` 冗余。\n  - **SpriteAtlas 本身打进 AB 时**：`sactx` 永不冗余。此时小 Sprite 也最好打进 AB，否则小 Sprite 冗余。\n  - 勾不勾 `Include in Build` 不影响依赖关系，唯一区别是是否\"主动显示图片\"。\n- **RawImage 陷阱**：图集中的图片不能被 `RawImage` 引用，否则另外打包一份，包体增大。\n- **图集尺寸策略（8 张 1024 vs 2 张 2048）**：\n  - 常驻通用资源：允许 2048 甚至 4096。\n  - 功能独有图集：控制在 1024 以内；达到 3 张 1024 才升 2048。\n  - 分配合理时多一张贴图只多 1 个 DrawCall；强行合并内存反而浪费。\n- 获取 Sprite 在图集中的 UV：`Sprites.DataUtility.GetOuterUV(activeSprite)`\n\n---\n\n#### 4. UGUI DrawCall 影响因素全面测试 -- 图集量化数据\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI DrawCall影响因素全面测试.md` (第 51-140 行)\n\n**关键测试数据**：\n\n| 场景 | 图集数量 | DrawCall | 渲染时间 | 内存占用 | GPU 时间 |\n|------|----------|----------|----------|----------|----------|\n| 单图集 | 1 | 2 | 0.85ms | 12.4MB | 1.2ms |\n| 多图集(5个) | 5 | 10 | 4.2ms | 14.1MB | 5.8ms |\n| 零散纹理 | 100 | 100 | 43.5ms | 28.7MB | 52.3ms |\n\n**结论**：图集数量与 DrawCall 呈正相关。单图集 100 个 UI 元素仅需 2 DC，零散纹理 1:1 对应 100 DC。\n\n图集按 Canvas 层划分的建议：\n\n| 图集 | 专用 Canvas 层 | 内容 |\n|------|---------------|------|\n| HUD 图集 | Canvas_A | 血条、技能图标、摇杆 |\n| 通用图集 | Canvas_B/C | 按钮底图、边框、背景 |\n| 弹窗图集 | Canvas_C | 确认框、Toast 背景 |\n\n---\n\n#### 5. UI 性能优化速查 -- 图集优化章节\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【最佳实践】UI性能优化速查.md` (第 491-519 行)\n\nSprite Atlas 移动端推荐配置：\n- Max Size: 1024（功能内）/ 2048（通用常驻）\n- Format: ASTC 6x6\n- Read/Write: false\n- Allow Rotation: false（UI 不建议旋转）\n- Include in Build: 根据打包策略决定\n\n---\n\n#### 6. UGUI 性能优化规则清单\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【片段】UGUI 性能优化规则清单.md`\n\n关键规则：\n- **R3.2**：同一界面的 UI 图**必须打到同一图集**；文字 atlas 与图形 atlas 分开。\n- **R6.2**：界面关闭后释放其专属大纹理；图集共享纹理不释放。\n- **P1 优先级**：`sharedMaterial` 规范 + 图集合并（低开销、高收益、全项目适用）。\n\n---\n\n#### 7. UGUI 深度解析 -- 图集与 SpriteAtlas 运行时行为\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\20_核心系统\\26_UI系统\\【笔记】UGUI深度解析.md`\n\n包含代码层面的分析（第 3379-3850 行附近），包括：\n- `AtlasManager` 代码示例（从 SpriteAtlas 获取 Sprite）\n- `DynamicAtlas` 动态图集运行时合并代码示例\n- SpriteAtlas 编译时行为：打包时合并 Sprite 到一张纹理，原始 Sprite 引用被重定向到图集纹理\n- SpriteAtlas 运行时行为：作为 AB 或 Resources 加载，返回的 `Sprite.texture` 指向图集纹理\n- 合批与图集的关系：同一 Sprite Atlas 下的 Sprite 共享同一纹理\n\n---\n\n#### 8. 其他 26_UI系统 文档\n\n- **`【设计原理】UGUI合批机制深度解析.md`** (第 125, 340, 554 行)：合批条件要求相同纹理（图集）；多图集合并方案代码示例（`AtlasMerger`）。\n- **`【踩坑】UGUI常见性能陷阱与根因分析.md`** (第 729, 950 行)：相同图集但 Mask 打断、层级穿插导致不合批的陷阱分析。\n- **`【实战案例】UI卡顿优化全流程.md`**：涉及图集缓存策略。\n- **`【教程】UI系统架构.md`**：系统层面对图集的引用。\n\n---\n\n### 三、资源依赖与打包陷阱\n\n#### 9. Unity 资源依赖与打包陷阱\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\35_高级主题\\【笔记】Unity资源依赖与打包陷阱.md`\n\n核心观点：\n- \"Shader、图集总是被重复打包\"的根因：**公共依赖（Shader、SpriteAtlas、共享材质、字体）未被单独成包，被反复内联**。\n- 官方推荐做法：把公共资源（材质/Shader/纹理/图集/字体）分配到各自的 AssetBundle。\n- **图集（SpriteAtlas）特殊处理**：late binding 模式下易被重复引用，必须单独成包。\n\n---\n\n### 四、UWA 外部文章（性能优化目录）\n\n#### 10. UGUI 优化常见问题\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\性能优化\\关于Unity中的UGUI优化，你可能遇到这些问题 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md`\n\n关键 Q&A（第 41-60 行）：\n- **Sprite Packer 工作机制**：通过 Packing Tag 指定 Sprite 放在同一 Atlas；Edit > Project Settings > Editor > Sprite Packer 的 Mode 控制。\n- **Sprite 打包 AB 时的冗余**：Sprite 是壳子不包含纹理，如果不用依赖打包，分开打两个 Sprite 意味着各自 AB 里都会有一个 Atlas。\n- **Unity 5.x 图集自动更新**：把 Packing Tag 相同的源纹理打到同一个 AB，避免 Atlas 冗余。\n- **UGUI Batch 规则**：以 Canvas 为单位，按材质（通常就是 Atlas）重排，尽可能合并相同材质的 UI 元素。\n\n#### 11. UWA UI 性能优化\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\性能优化\\Unity性能优化 — UI模块 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md` (第 90-111 行)\n\n关键结论：\n- 合并图集使材质图集一致，有效降低 DrawCall。\n- 同一 Canvas 下、材质和图集一致的前提下，避免层级穿插。\n- **\"合并图集，尽量使同一个图集最多不要超过 2 个 Atlas\"**，否则任何 Sprite 子图被加载会导致所有 Atlas 被加载进内存。\n\n#### 12. UWA 内存管理\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\性能优化\\2｜分门别类地控制运行时内存_Unity移动端游戏性能优化简谱_UWA学堂.md` (第 235-307 行)\n\n关键结论：\n- **SpriteAtlas Variant 功能**：可快捷复制原图集并根据 Scale 参数降低分辨率。\n- **图集制作建议**：控制到 2-3 张分页以内较为合理。\n- **\"牵一发而动全身\"**：只用图集中一张小图却加载整个纹理。\n- **TMP 字体图集优化**：动态 TMP 项目结束后转静态；Multi Atlas Textures 选项可将 1 张 4096 变为 3 张 2048，节省 8MB。\n\n#### 13. TMP 字体 Atlas 内存优化实战\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\性能优化\\从64MB降至5MB，TMP字体Atlas内存优化实战 - UWA问答  博客  游戏及VR应用性能优化记录分享  侑虎科技.md`\n\n关键数据：\n- 字体 Atlas 双实例冗余：初始包 + AB 重复引用导致 2 个 Atlas 实例。\n- 开启 RW 的动态图集：2x4096x4096 = 32MB（CPU 和 GPU 各存一份，内存翻倍）。\n- **优化方案**：预收集字符集设为静态图集 + Fallback 小分辨率动态 Atlas 补字。\n- **优化效果**：从 64MB 降至 5MB（初始场景 512x512 静态图集 0.25MB + 4096x4096 静态 ASTC8x8 = 4MB）。\n\n---\n\n### 五、Addressables 与图集\n\n#### 14. Addressables 性能优化\n\n**文件路径**:\n- `D:\\GitHub\\Doc\\UnityKnowledge\\30_性能优化\\34_启动时间优化\\【最佳实践】Addressables性能优化.md` (第 721 行)\n- `D:\\GitHub\\Doc\\UnityKnowledge\\40_工具链\\【最佳实践】Addressables性能优化.md` (第 684 行)\n\nAB 打包策略中按功能划分：UI_Atlas_Main（UI 主图集）、UI_Atlas_Popup（弹窗图集），UI 图集大小参考 2-10MB。\n\n---\n\n### 六、面试与高级主题\n\n#### 15. 性能优化面试问答\n\n**文件路径**: `D:\\GitHub\\Doc\\UnityKnowledge\\35_高级主题\\【笔记】性能优化面试问答.md`\n\n高频追问要点：\n- \"为什么 UI 图集也打了，DC 还是多？\" -- 层级穿插打断、字体图集差异、Mask 增加 DC。\n- \"UI 图集占了很大内存怎么办？\" -- Sprite Atlas 合理分图集、关闭 Read/Write、TMP 字体 Atlas 优化。\n\n#### 16. 其他面试/高级文档\n\n- `D:\\GitHub\\Doc\\UnityKnowledge\\35_高级主题\\【笔记】Unity客户端面试题.md`：合批要求材质+图集一致。\n- `D:\\GitHub\\Doc\\UnityKnowledge\\35_高级主题\\【笔记】高级Unity游戏开发面试复习地图.md`：Sprite Atlas 共享材质合批。\n- `D:\\GitHub\\Doc\\UnityKnowledge\\35_高级主题\\【片段】项目面试STAR话术.md`：STAR 话术中合图集优化案例。\n- `D:\\GitHub\\Doc\\UnityKnowledge\\35_高级主题\\【设计原理】Unity内存管理.md`：使用 Sprite Atlas 减少内存。\n\n---\n\n### 关键结论速查\n\n| 主题 | 核心结论 | 来源文件 |\n|------|---------|----------|\n| 图集本质 | 图集减少的不是图片数量，而是 GPU 纹理切换次数 | 第12章 / DrawCall测试 |\n| sactx 冗余规则 | SA 不打 AB 时所有 Sprite 必须同 AB；SA 打 AB 时 sactx 永不冗余 | 实战总览 1.2 |\n| 图集尺寸 | 功能图集 <=1024，通用常驻可 2048/4096；3 张 1024 才升 2048 | 实战总览 二 / 速查 十 |\n| RawImage 陷阱 | 不能引用图集中的 Sprite，否则额外打包一份 | 实战总览 1.3 |\n| 图集与 AB | Sprite 与 Atlas 分属不同 Bundle 且 Atlas 未加载时，退回原始纹理破坏 Batch | 第12章 12.2.9 |\n| 动态图集代价 | 运行时纹理复制有 CPU 开销，第一次打开 UI 可能卡顿 | 第12章 12.3.8 |\n| DrawCall 量化 | 单图集 100 个 UI = 2 DC；零散纹理 = 100 DC | DrawCall 测试 |\n| TMP Atlas 优化 | 从 64MB 降至 5MB：静态图集 + Fallback 动态补字 | UWA TMP 文章 |"
+      }
+    }
   },
-  "currentNote": "35_高级主题/global-metadata.dat文件加密.md",
   "usage": {
     "model": "opus",
-    "inputTokens": 7568,
+    "inputTokens": 931,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 46016,
+    "cacheReadInputTokens": 105088,
     "contextWindow": 200000,
-    "contextTokens": 53584,
-    "percentage": 27,
-    "contextWindowIsAuthoritative": true
+    "contextTokens": 106019,
+    "percentage": 53
   }
 }

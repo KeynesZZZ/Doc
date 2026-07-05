@@ -1,0 +1,23 @@
+{
+  "id": "conv-1783057398292-755j1ajte",
+  "providerId": "claude",
+  "title": "我来帮你补充UI架构中MVP vs MVC的文档。首先让我查看一下UI系统目录下的现有文档结构...",
+  "titleGenerationStatus": "success",
+  "createdAt": 1783057398293,
+  "updatedAt": 1783144347370,
+  "lastResponseAt": 1783057688567,
+  "sessionId": "672b2727-10fe-408b-ad3f-8f08c7ad8c6b",
+  "providerState": {
+    "providerSessionId": "672b2727-10fe-408b-ad3f-8f08c7ad8c6b"
+  },
+  "usage": {
+    "model": "opus",
+    "inputTokens": 148,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 57024,
+    "contextWindow": 200000,
+    "contextTokens": 57172,
+    "percentage": 29,
+    "contextWindowIsAuthoritative": true
+  }
+}
