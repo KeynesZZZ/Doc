@@ -1,0 +1,24 @@
+{
+  "id": "conv-1783350527712-d1sbsdgvs",
+  "providerId": "claude",
+  "title": "我需要了解您指的是哪种冲突场景才能提供准确的解决方案。\n\n根据项目内容，可能的冲突场景包括：\n...",
+  "titleGenerationStatus": "success",
+  "createdAt": 1783350527712,
+  "updatedAt": 1783350565369,
+  "lastResponseAt": 1783350565369,
+  "sessionId": "c73f8ba8-628c-48aa-8aa9-650f25c3ef34",
+  "providerState": {
+    "providerSessionId": "c73f8ba8-628c-48aa-8aa9-650f25c3ef34"
+  },
+  "currentNote": "100_项目实战/01_休闲游戏云存档系统/09-冲突解决策略.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 7623,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 31424,
+    "contextWindow": 200000,
+    "contextTokens": 39047,
+    "percentage": 20,
+    "contextWindowIsAuthoritative": true
+  }
+}

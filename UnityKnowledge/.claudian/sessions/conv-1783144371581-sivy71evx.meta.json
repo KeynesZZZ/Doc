@@ -4,20 +4,20 @@
   "title": "我来帮你查找关于 YooAsset 资源加载和依赖处理的相关信息。让我查找项目中的 YooAs...",
   "titleGenerationStatus": "success",
   "createdAt": 1783144371581,
-  "updatedAt": 1783176885429,
-  "lastResponseAt": 1783176885429,
+  "updatedAt": 1783344493354,
+  "lastResponseAt": 1783344493354,
   "sessionId": "8cae45bc-7f6e-412b-b8fb-1c2f82bd7e2a",
   "providerState": {
     "providerSessionId": "8cae45bc-7f6e-412b-b8fb-1c2f82bd7e2a"
   },
   "usage": {
     "model": "opus",
-    "inputTokens": 876,
+    "inputTokens": 105,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 98560,
+    "cacheReadInputTokens": 78272,
     "contextWindow": 200000,
-    "contextTokens": 99436,
-    "percentage": 50,
+    "contextTokens": 78377,
+    "percentage": 39,
     "contextWindowIsAuthoritative": true
   }
 }
