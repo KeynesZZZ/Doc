@@ -1,0 +1,24 @@
+{
+  "id": "conv-1785222328475-p90idw6yg",
+  "providerId": "claude",
+  "title": "Define excellent game framework design",
+  "titleGenerationStatus": "success",
+  "createdAt": 1785222328490,
+  "updatedAt": 1785222373529,
+  "lastResponseAt": 1785222373529,
+  "sessionId": "35e96976-8201-4fe2-b54e-186f2c598902",
+  "selectedModel": "haiku",
+  "providerState": {
+    "providerSessionId": "35e96976-8201-4fe2-b54e-186f2c598902"
+  },
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 7,
+    "cacheCreationInputTokens": 12351,
+    "cacheReadInputTokens": 43453,
+    "contextWindow": 200000,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 55811,
+    "percentage": 28
+  }
+}

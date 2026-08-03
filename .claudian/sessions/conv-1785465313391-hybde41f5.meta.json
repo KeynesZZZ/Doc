@@ -1,0 +1,24 @@
+{
+  "id": "conv-1785465313391-hybde41f5",
+  "providerId": "claude",
+  "title": "Fix mergeCooking DST timezone offset",
+  "titleGenerationStatus": "success",
+  "createdAt": 1785465313397,
+  "updatedAt": 1785466710441,
+  "lastResponseAt": 1785466710441,
+  "sessionId": "1746ae28-10d4-4d23-a7f0-92cb3b8de628",
+  "selectedModel": "haiku",
+  "providerState": {
+    "providerSessionId": "1746ae28-10d4-4d23-a7f0-92cb3b8de628"
+  },
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 3,
+    "cacheCreationInputTokens": 700,
+    "cacheReadInputTokens": 143048,
+    "contextWindow": 200000,
+    "contextWindowIsAuthoritative": true,
+    "contextTokens": 143751,
+    "percentage": 72
+  }
+}

@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "f3266832f74fb324",
+        "id": "960ea6efd7b5e012",
         "type": "tabs",
         "children": [
           {
-            "id": "30cd1ffe63c09f2c",
+            "id": "dfc3affdf87e6e7a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "UnityKnowledge/25_DOTS技术栈/【教程】ECS架构入门.md",
+                "file": "UnityKnowledge/100_项目实战/03_MergeCooking/遇到问题/时间计算-必须用UTC秒.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "【教程】ECS架构入门"
+              "title": "时间计算-必须用UTC秒"
             }
           }
         ]
@@ -164,13 +164,23 @@
               "icon": "lucide-list",
               "title": "【教程】ECS架构入门 的大纲"
             }
+          },
+          {
+            "id": "a75d7b8c502952ee",
+            "type": "leaf",
+            "state": {
+              "type": "claudian-view",
+              "state": {},
+              "icon": "bot",
+              "title": "Claudian"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 601.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -180,17 +190,47 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "bases:新建数据库": false
+      "bases:新建数据库": false,
+      "realclaudian:Open Claudian": false
     }
   },
-  "active": "30cd1ffe63c09f2c",
+  "active": "dfc3affdf87e6e7a",
   "lastOpenFiles": [
-    "UnityKnowledge/25_DOTS技术栈/【教程】DOTS学习路径.md",
-    "UnityKnowledge/25_DOTS技术栈/【教程】Burst编译器.md",
-    "UnityKnowledge/00_元数据与模板/元数据规范.md",
-    "UnityKnowledge/00_元数据与模板/标签体系.md",
-    "UnityKnowledge/10_架构设计/【设计原理】命令模式本质.md",
-    "UnityKnowledge/10_架构设计/【设计原理】策略模式本质.md",
-    "UnityKnowledge/10_架构设计/【代码片段】策略模式.md"
+    "UnityKnowledge/100_项目实战/03_MergeCooking/README.md",
+    "UnityKnowledge/100_项目实战/README.md",
+    "UnityKnowledge/100_项目实战/03_MergeCooking/遇到问题/时间计算-必须用UTC秒.md",
+    "UnityKnowledge/100_项目实战/03_MergeCooking/遇到问题",
+    "UnityKnowledge/100_项目实战/03_MergeCooking/优化",
+    "UnityKnowledge/100_项目实战/03_MergeCooking/UnityKnowledge/100_项目实战/03_MergeCooking/README.md",
+    "UnityKnowledge/20_核心系统/21_动画系统/README.md",
+    "UnityKnowledge/20_核心系统/README.md",
+    "UnityKnowledge/00_元数据与模板/README.md",
+    "UnityKnowledge/90_项目复盘/README.md",
+    "UnityKnowledge/100_项目实战/03_MergeCooking/UnityKnowledge/100_项目实战/03_MergeCooking",
+    "UnityKnowledge/100_项目实战/03_MergeCooking/UnityKnowledge/100_项目实战",
+    "UnityKnowledge/100_项目实战/03_MergeCooking/UnityKnowledge",
+    "UnityKnowledge/90_项目复盘/【实战案例】休闲游戏框架复盘.md",
+    "UnityKnowledge/100_项目实战/03_MergeCooking/TimeSystem.md",
+    "【踩坑】欧洲冬夏令时问题与UTC解决方案.md",
+    "【深度解析】UTC方案的完整性分析与边界情况.md",
+    "UnityKnowledge/00_元数据与模板/学习路径导航.md",
+    "UnityKnowledge/00_元数据与模板/文档定位指南.md",
+    "UnityKnowledge/00_元数据与模板/【模板】系统设计说明书.md",
+    "UnityKnowledge/00_元数据与模板/【模板】性能分析.md",
+    "UnityKnowledge/00_元数据与模板/【模板】综述.md",
+    "UnityKnowledge/00_元数据与模板/【模板】Bug记录.md",
+    "UnityKnowledge/100_项目实战/03_MergeCooking/MergeCooking_DST分析交付总结.md",
+    "UnityKnowledge/100_项目实战/03_MergeCooking/【片段】TimeSystem快速上手指南.md",
+    "UnityKnowledge/100_项目实战/03_MergeCooking/【代码片段】DST处理的多语言实现示例.md",
+    "UnityKnowledge/100_项目实战/03_MergeCooking/【代码片段】TimeSystem-Unity时间系统完整实现.md",
+    "UnityKnowledge/100_项目实战/03_MergeCooking/【总结】交付清单.md",
+    "UnityKnowledge/100_项目实战/03_MergeCooking/【深度解析】UTC方案的完整性分析与边界情况.md",
+    "UnityKnowledge/100_项目实战/03_MergeCooking/【踩坑】欧洲冬夏令时问题与UTC解决方案.md",
+    "AIKnowledge/30_工作流/【教程】AI辅助开发工作流.md",
+    "UnityKnowledge/100_项目实战/03_MergeCooking",
+    "UnityKnowledge/90_项目复盘/MergeCooking",
+    "未命名.base",
+    "未命名",
+    "AIKnowledge/AI基础"
   ]
 }
