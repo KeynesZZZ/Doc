@@ -164,3 +164,11 @@
 - [[25_DOTS技术栈/【笔记】大规模单位战斗结算]]：战斗 DOTS 事件化——为何 OnTriggerEnter/SendMessage 不行 → 碰撞只产出事件(Unity.Physics ITriggerEventsJob + NativeQueue.ParallelWriter，或自建 UniformGrid) → 伤害 DynamicBuffer<DamageEvent>+ECB 单点结算(无写竞争) → 死亡 IEnableableComponent(AliveTag) 软禁用 + ECB 延迟回收(禁每帧 DestroyEntity) → AOE 复用伤害管线 → 系统时序(碰撞→伤害→回收→动画 UpdateAfter + Lookup 每帧刷新)
 - 诚实标注：FlowField 可读版托管数组需改 NativeArray 才能 Burst；RVO2 数学忠实移植自公开 RVO2 库；Unity.Physics API 据 1.4 手册；性能无编造基准，代码为骨架需按项目调
 - 更新 DOTS专题索引（收录 12→15、类型分布 +笔记4/片段3、推荐阅读顺序 #9-#11、片段分类补 2 条 + 笔记分类补 1 条 + 目录条目）；重生成 UnityKnowledge/index.md（297 篇）；lint ERROR=50/WARN=38 不变，三篇零 issue
+
+## [2026-07-06] ingest | YooAsset 弱联网与海外安卓分包方案
+- 读源：YooAsset 官方文档 ×2
+  - 弱联网方案A https://www.yooasset.com/docs/solution/WeakNetworkA
+  - 海外安卓分包 https://www.yooasset.com/docs/solution/AndroidInstall
+- 新增 [[60_第三方库/【笔记】YooAsset弱联网与海外分包方案]]（author:llm，sources 含两条官方 URL）
+- 覆盖：①弱联网方案A——远端优先→本地兜底流程、两个关键初始化参数（`CopyBuiltinPackageManifest=true` 拷贝内置清单、`InstallCleanupMode=None` 覆盖安装不清）、版本号持久化契约（仅完整下载成功才写 PlayerPrefs）、首装离线走 `GetBuildinPackageVersionOperation`、本地完整性校验（`TotalDownloadCount > 0` 即不完整）②海外安卓分包——Play Asset Delivery install-time 模式、目录对齐（`YooFolderName` 与 asset pack 名称必须一致）、业务层零改动
+- 与既有 [[【笔记】YooAsset核心概念与架构]] 和 [[【代码片段】YooAsset常用API速查]] 互链

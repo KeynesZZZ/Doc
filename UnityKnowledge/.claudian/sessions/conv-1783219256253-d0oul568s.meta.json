@@ -1,0 +1,23 @@
+{
+  "id": "conv-1783219256253-d0oul568s",
+  "providerId": "claude",
+  "title": "我来帮你设计海外休闲游戏的 YooAsset 和热更新架构。首先让我查询 YooAsset 的...",
+  "titleGenerationStatus": "success",
+  "createdAt": 1783219256253,
+  "updatedAt": 1783344237413,
+  "lastResponseAt": 1783298344321,
+  "sessionId": "27600709-a9bc-4524-ba67-28a150e6f444",
+  "providerState": {
+    "providerSessionId": "27600709-a9bc-4524-ba67-28a150e6f444"
+  },
+  "usage": {
+    "model": "opus",
+    "inputTokens": 320,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 53440,
+    "contextWindow": 200000,
+    "contextTokens": 53760,
+    "percentage": 27,
+    "contextWindowIsAuthoritative": true
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "conv-1783351300305-mu6k4lrvs",
+  "providerId": "claude",
+  "title": "根据您提供的YooAsset文档链接，我为这个对话生成的标题是：\n\n**YooAsset弱网优...",
+  "titleGenerationStatus": "success",
+  "createdAt": 1783351300305,
+  "updatedAt": 1783351571847,
+  "lastResponseAt": 1783351571847,
+  "sessionId": "dce373c7-9024-41ed-8717-ed3856eb4603",
+  "providerState": {
+    "providerSessionId": "dce373c7-9024-41ed-8717-ed3856eb4603"
+  },
+  "usage": {
+    "model": "opus",
+    "inputTokens": 564,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 52544,
+    "contextWindow": 200000,
+    "contextTokens": 53108,
+    "percentage": 27,
+    "contextWindowIsAuthoritative": true
+  }
+}

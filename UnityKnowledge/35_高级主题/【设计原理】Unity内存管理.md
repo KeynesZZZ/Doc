@@ -3,7 +3,7 @@ title: 【设计原理】Unity内存管理
 tags: ["Unity", "高级主题", "内存管理", "设计原理"]
 category: 高级主题
 created: "2026-03-05 08:41"
-updated: "2026-05-29 00:00"
+updated: "2026-07-08 00:00"
 description: Unity内存管理机制深度分析
 unity_version: 2021.3+
 status: 待验证
@@ -158,7 +158,11 @@ public static class MemoryAnalyzer
 
 ## 2. 托管堆与GC
 
-### 2.1 C#垃圾回收机制
+> **重要修正（2026-07-08）**：本节原将 .NET CoreCLR 的分代 GC（Gen 0/1/2）描述为"C# GC 基础"，容易误导读者以为 Unity 使用分代 GC。实际上 Unity 无论 Mono 还是 IL2CPP 后端都使用 **Boehm GC（非分代、非压缩）**。已修正描述。
+>
+> GC 完整工作原理见 [[../30_性能优化/32_内存管理/【设计原理】GC工作原理深度解析]]。
+
+### 2.1 Unity 的 GC 机制（Boehm GC）
 
 ```csharp
 using UnityEngine;
@@ -171,36 +175,39 @@ using System.Collections.Generic;
 public class GCFundamentals : MonoBehaviour
 {
     /*
-    ========== C# GC 基础 ==========
+    ========== .NET CoreCLR 的 GC（非 Unity） ==========
 
+    标准的 .NET Framework / CoreCLR 使用分代 GC：
     1. 分代回收 (Generational GC)
-       - Gen 0: 短期对象，频繁回收
+       - Gen 0: 短期对象，频繁回收（~0.1ms，几乎无感）
        - Gen 1: 中期对象
-       - Gen 2: 长期对象，完整回收
+       - Gen 2: 长期对象，完整回收（~50-200ms）
 
-    2. 回收触发条件
-       - Gen 0 满时
-       - 手动调用 GC.Collect()
-       - 系统内存不足时
-       - AppDomain 卸载时
+    ⚠️ Unity 不使用此 GC！以上是 .NET CoreCLR 的行为，不是 Unity 的。
 
-    3. GC对游戏的影响
-       - 停顿时间 (Pause Time)
-       - CPU峰值
-       - 帧率波动
+    ========== Unity 实际使用的 GC ==========
 
-    ========== Unity中的GC ==========
+    Unity 使用 Boehm GC（无论 Mono 还是 IL2CPP 后端）
+    - 非分代：每次 GC 都是 Full GC，全堆扫描
+    - 非压缩：不移动对象，不整理碎片
+    - 保守式：可能误判非指针为引用
+    - Stop-the-world：GC 期间暂停所有托管线程
 
-    Unity使用Boehm GC（非分代）
-    - Stop-the-world 回收
-    - 不压缩内存
-    - 可能造成内存碎片
-    - 移动端影响更明显
+    每次 GC 耗时与托管堆大小正相关：
+    - 50MB 堆 → ~15-60ms
+    - 100MB 堆 → ~30-80ms+
+    - 这就是 Unity GC Spike 的根本原因
 
-    Unity 2020+ 可切换到增量式GC
-    - 分帧执行回收
-    - 减少单帧卡顿
-    - 启用方式: Player Settings > Incremental GC
+    详细原理见 → [[【设计原理】GC工作原理深度解析]]
+
+    ========== 增量 GC（Unity 2019+）==========
+
+    Unity 2019+ 引入 Incremental GC
+    - 将 Boehm GC 的标记阶段分摊到多帧执行
+    - 减少单帧卡顿（单帧额外 ~1-3ms）
+    - 本质仍是 Boehm GC：仍然不分代、不压缩
+    - 只是"分期付款"，不是根治方案
+    - 启用方式: Player Settings > Other Settings > Incremental GC
     */
 
     [Header("GC Settings")]

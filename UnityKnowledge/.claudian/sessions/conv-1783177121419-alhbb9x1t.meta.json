@@ -4,20 +4,20 @@
   "title": "我来帮您为性能优化专题生成一份脑图。首先让我查看一下现有的性能优化文档结构。让我直接探索性能优...",
   "titleGenerationStatus": "success",
   "createdAt": 1783177121419,
-  "updatedAt": 1783182240206,
-  "lastResponseAt": 1783178412996,
+  "updatedAt": 1783219192967,
+  "lastResponseAt": 1783218353347,
   "sessionId": "c0ef5128-6d4b-491f-8f08-e7d743243a02",
   "providerState": {
     "providerSessionId": "c0ef5128-6d4b-491f-8f08-e7d743243a02"
   },
   "usage": {
     "model": "opus",
-    "inputTokens": 440,
+    "inputTokens": 322,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 95680,
+    "cacheReadInputTokens": 106624,
     "contextWindow": 200000,
-    "contextTokens": 96120,
-    "percentage": 48,
+    "contextTokens": 106946,
+    "percentage": 53,
     "contextWindowIsAuthoritative": true
   }
 }

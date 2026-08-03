@@ -3,13 +3,15 @@ title: 【设计原理】GC工作原理深度解析
 tags: ["Unity", "性能优化", "内存管理", "设计原理", "GC", "垃圾回收", "IL2CPP"]
 category: 性能优化/内存管理
 created: "2026-03-05 18:00"
-updated: "2026-07-04 00:00"
-description: Unity Boehm GC 的真实工作原理，包含 mark-sweep 算法、非分代非压缩特性、触发条件、优化策略
+updated: "2026-07-07 00:00"
+description: Unity Boehm GC 的真实工作原理，包含 mark-sweep 算法、非分代非压缩特性、触发条件、内存分配底层机制、优化策略
 unity_version: 2021.3+
 status: 待验证
 validation: 未经测试
 related: ["[[【最佳实践】GC优化清单]]", "[[【踩坑】内存泄漏模式]]", "[[../../31_代码优化/【最佳实践】Update优化清单]]"]
 author: llm
+sources:
+  - "Jamin. Unity IL2CPP的GC原理. UWA (侑虎科技), 2024. https://mp.weixin.qq.com/s?__biz=MzI3MzA2MzE5Nw==&mid=2668943544&idx=1&sn=a036f9d59db85e299938903d542f01f8"
 ---
 
 # 【设计原理】GC工作原理深度解析
@@ -198,8 +200,11 @@ Boehm GC 没有分代阈值，触发机制基于堆空间使用率：
 
 堆增长策略：
 ├─ Boehm GC 维护一个动态增长的堆
-├─ 初始堆大小由 GC_FREE_SPACE_DIVISOR 控制（默认值约 3-7）
-├─ 当已用内存 / 总堆容量 > 阈值时，触发 GC
+├─ 核心参数 GC_free_space_divisor（官方默认值 = 3）
+│   ├─ 触发公式：当可用空闲空间 < heap_size / GC_free_space_divisor 时触发 GC
+│   ├─ 值越大 → 堆越小但 GC 越频繁（省内存费 CPU）
+│   ├─ 值越小 → 堆越大但 GC 越稀少（费内存省 CPU）
+│   └─ 设为 1 → 几乎禁用 GC，堆无限增长
 ├─ GC 后如果回收了大量内存，堆可能缩小
 ├─ GC 后如果回收不够，堆会继续增长
 └─ 整体目标是：堆越大，GC 频率越低（代价是单次 GC 更耗时）
@@ -278,7 +283,224 @@ GC从instance开始标记，enemies也会被标记为存活
 
 ---
 
-## 五、GC性能影响
+## 五、Boehm GC 内存分配底层机制
+
+> 本节深入 Boehm GC 的内存分配实现，理解这些机制有助于理解 GC 内存碎片和堆扩展的根因。
+> 参考：Jamin《Unity IL2CPP的GC原理》(UWA)
+
+### 5.1 分配入口
+
+Boehm GC 的使用非常简单，将 `malloc` 替换为 `GC_malloc` 即可，之后无需手动 `free`：
+
+```c
+// 分配链：GC_malloc → GC_malloc_kind → GC_malloc_kind_global
+void *GC_malloc(size_t lb) {
+    return GC_malloc_kind(lb, NORMAL);
+}
+```
+
+分配器底层通过平台相关接口向操作系统申请内存，**每次批量申请 4KB 的倍数**以提高效率。
+
+核心思路：根据内存大小归类为**小内存对象**（≤2048 字节）和**大内存对象**（>2048 字节），分别走不同分配路径。
+
+### 5.2 小内存分配
+
+#### 粒度对齐（GRANULE）
+
+Boehm GC 以 **GRANULE（16 字节）** 为基本分配单位：
+
+```
+原始大小 → GRANULE 数（通过 GC_size_map 映射表）
+
+示例：
+  1 字节  → 1 GRANULE = 16 字节
+  18 字节 → 2 GRANULE = 32 字节
+  100 字节 → 7 GRANULE = 112 字节
+
+上限：128 GRANULE = 2048 字节（小内存上限）
+```
+
+`GC_size_map` 是一个索引映射表，维护原始大小到 GRANULE 数的映射，最多 128 个 GRANULE。
+
+#### 空闲链表 ok_freelist
+
+确定 GRANULE 数后，首先从**空闲链表**中查找可用内存：
+
+```c
+struct obj_kind {
+    void **ok_freelist;         // 空闲链表（二维指针）
+    struct hblk **ok_reclaim_list;
+    ...
+} GC_obj_kinds[3];  // 三种内存类型
+```
+
+三种内存类型：
+
+| 类型 | 说明 | GC 行为 |
+|------|------|---------|
+| **PTRFREE** | 无指针对象 | GC 时跳过引用扫描 |
+| **NORMAL** | 通用对象（保守式） | GC 时扫描可能的指针 |
+| **UNCOLLECTABLE** | Boehm 自用 | 不标记、不回收 |
+
+`ok_freelist` 维护了 0~127 个链表索引，每个索引对应一种 GRANULE 大小的内存池：
+
+```
+ok_freelist[0] → null（不可能存在 0 GRANULE）
+ok_freelist[1] → [16B空闲块] → [16B空闲块] → ...
+ok_freelist[2] → [32B空闲块] → [32B空闲块] → ...
+  ...
+ok_freelist[127] → [2032B空闲块] → ...
+```
+
+分配时计算 GRANULE 索引，查对应 freelist，有空闲则直接返回。
+
+### 5.3 核心内存块链表 GC_hblkfreelist
+
+当 `ok_freelist` 无可用内存时，向底层内存池申请。底层维护了 `GC_hblkfreelist`——一个 **60 个元素的分级空闲链表**，基本单位是 **4KB（一个内存页）** 的 `hblk`：
+
+```c
+struct hblk {
+    char hb_body[HBLKSIZE];  // HBLKSIZE = 4096
+};
+```
+
+每个 `hblk` 有对应的 header 信息：
+
+```c
+struct hblkhdr {
+    struct hblk *hb_next;      // 链表后继
+    struct hblk *hb_prev;      // 链表前驱
+    unsigned char hb_obj_kind; // PTRFREE/NORMAL/UNCOLLECTABLE
+    word hb_sz;                // 分配给上层=实际单位；空闲=内存块大小
+    word hb_marks[MARK_BITS_SZ]; // GC 标记位
+};
+```
+
+#### 链表分级规则
+
+`GC_hblkfreelist` 的 60 个链表索引按所需 4KB 块数映射：
+
+```
+所需块数          → 链表索引
+1~32             → 直接映射（index = blocks_needed）
+33~256           → 8 块一组（index = (blocks-32)/8 + 32）
+>256             → 全部归入 index 60
+```
+
+#### 查找与分割策略
+
+1. **精确查找**：先从 `GC_hblkfreelist[blocks_needed]` 精确匹配
+2. **升序查找**：精确失败则逐级增大 index，从更大块链表中查找
+3. **分割返回**：找到更大块后，一分为二——前半返回使用，后半加入对应链表
+
+```
+示例：申请 1 个 hblk (4KB)
+  ├─ 先查 freelist[1]：精确匹配 4KB → 直接返回
+  └─ 若无，查 freelist[2]：找到 8KB → 拆为 4KB(使用) + 4KB(加入 freelist[1])
+```
+
+#### 新内存块申请
+
+若所有链表都无可用块，通过 `GC_expand_hp_inner` 向操作系统申请内存：
+
+```
+GC_expand_hp_inner → GET_MEM(系统调用) → GC_add_to_heap(加入链表)
+```
+
+`GC_add_to_heap` 还会检查相邻地址的空闲块，**合并连续内存块**生成更大的块。
+
+### 5.4 大内存分配（>2048 字节）
+
+大对象不走 GRANULE 路径，直接以 hblk(4KB) 为单位分配：
+
+```c
+// 9000 字节 → 需要 3 个 hblk (12KB)
+n_blocks = OBJ_SZ_TO_BLOCKS(9000);  // = 3
+h = GC_allochblk(lb, k, flags);     // 走 hblkfreelist 查找
+```
+
+与小型分配不同：大块找到后**不拆分构建 ok_freelist**，直接返回整块地址。
+
+分配失败时会尝试触发 GC 回收内存后重试：
+
+```c
+while (0 == h && GC_collect_or_expand(n_blocks, ...)) {
+    h = GC_allochblk(lb, k, flags);  // GC 后重试
+}
+```
+
+### 5.5 完整分配流程
+
+```
+GC_malloc(lb)
+  │
+  ├─ lb ≤ 2048？──→ 小内存路径
+  │    │
+  │    ├─ GC_size_map[lb] → gran (GRANULE 数)
+  │    ├─ 查 ok_freelist[gran]
+  │    │    ├─ 有空闲 → 直接返回
+  │    │    └─ 无空闲 → GC_allocobj → GC_new_hblk
+  │    │         ├─ GC_allochblk: 从 hblkfreelist 查/分割/系统申请
+  │    │         └─ GC_build_fl: 将 hblk 拆分为 GRANULE 块，构建 ok_freelist
+  │    └─ 返回内存地址
+  │
+  └─ lb > 2048？──→ 大内存路径
+       │
+       ├─ OBJ_SZ_TO_BLOCKS(lb) → n_blocks
+       ├─ GC_alloc_large → GC_allochblk
+       │    ├─ hblkfreelist 查找（不拆分）
+       │    └─ 失败 → GC_collect_or_expand → 重试
+       └─ 返回 hblk->hb_body
+```
+
+### 5.6 为什么 Unity 托管堆只增不减
+
+理解了上述机制，就能解释 Unity 托管堆的几个关键行为：
+
+1. **堆扩展后优先复用而非归还**：`GC_expand_hp_inner` 申请的内存加入 `GC_hblkfreelist`，优先复用。BDW GC v8.0.0+ 在 `USE_MUNMAP` 启用时会归还**完全空闲**的 hblk 给 OS（通过 `munmap`/`VirtualFree(MEM_DECOMMIT)`），但碎片化导致大部分 hblk 有零星存活对象，极少能整块归还
+2. **非压缩导致碎片**：Mark-Sweep 只标记+清除，不移动对象，空闲 hblk 可能分散在各处。真实案例：736MB 可达对象因碎片占用 1GB 堆空间 [^BoneFragment]
+3. **碎片触发堆扩展**：总空闲空间够但无连续大块 → 分配失败 → GC → 仍失败 → 扩展堆
+
+> 这就是为什么**减少托管堆分配**比优化 GC 频率更根本——不产生垃圾就不会触发 GC，不扩展堆就不会产生碎片。
+
+[^BoneFragment]: Paul Bone. Memory Fragmentation in BDWGC. 2016. https://paul.bone.id.au/blog/2016/10/08/memory-fragmentation-in-boehmgc/
+
+### 5.7 补充：SGen GC
+
+SGen（Simple Generational GC）是 Mono 的**分代 GC**，比 Boehm GC 更先进：
+
+| 特性 | Boehm GC | SGen GC |
+|------|----------|---------|
+| 分代 | 否 | 是（Nursery + Old Gen） |
+| 压缩 | 否 | 是 |
+| 回收类型 | 全堆 Full GC | Minor GC（初生代）+ Major GC（全堆） |
+| Unity 支持 | IL2CPP 默认 | Mono 实验性（非默认） |
+
+**SGen 内存结构**：
+
+```
+初生代 (Nursery)：
+├─ 固定大小连续内存（默认 4MB）
+├─ 多线程各自 TLAB (4KB) 内指针碰撞分配
+├─ 不划分粒度
+└─ Minor GC 回收（频率高、耗时短）
+
+旧生代 (Old Generation)：
+├─ Section(1MB) → Block(16KB) → Page(4KB) → Slot(不同粒度)
+├─ 从 Nursery 晋升的对象按粒度存入对应 Slot
+├─ 空闲 Slot 返还 freelist，清空的层级逐级向上返还
+└─ Major GC 回收（频率低）
+
+大对象 (>8KB)：
+├─ ≤1MB：存于 Mono 托管堆 LOSSection
+└─ >1MB：直接向 OS 申请，清理后归还 OS
+```
+
+> **注意**：目前 Unity IL2CPP 后端**不支持 SGen**，只能用 Boehm GC。SGen 仅在 Mono 后端作为实验性选项。Unity 官方在探索精确式 GC 但尚无明确时间线。
+
+---
+
+## 六、GC性能影响
 
 ### 5.1 GC卡顿原因
 
@@ -363,9 +585,9 @@ Full GC 耗时（与托管堆大小正相关）：
 
 ---
 
-## 六、减少GC触发的策略
+## 七、减少GC触发的策略
 
-### 6.1 核心策略
+### 7.1 核心策略
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -398,7 +620,7 @@ Full GC 耗时（与托管堆大小正相关）：
 
 ---
 
-### 6.2 具体技巧
+### 7.2 具体技巧
 
 #### 技巧1：复用集合
 
@@ -458,9 +680,9 @@ void ProcessValue<T>(T value) where T : struct
 
 ---
 
-## 七、GC优化检查清单
+## 八、GC优化检查清单
 
-### 7.1 快速检查清单
+### 8.1 快速检查清单
 
 ```
 □ 没有在Update中new对象
@@ -477,7 +699,7 @@ void ProcessValue<T>(T value) where T : struct
 
 ---
 
-### 7.2 Profiler检查
+### 8.2 Profiler检查
 
 ```
 使用Unity Profiler检查GC：
@@ -503,7 +725,7 @@ void ProcessValue<T>(T value) where T : struct
 
 ---
 
-## 八、常见问题
+## 九、常见问题
 
 ### Q1: 手动调用GC好吗？
 
